@@ -2,7 +2,74 @@
 
 
 @import url(otra_hoja.css);
+
+
+/*el movimiento se ve animado*/
+html{
+    scroll-behavior: smooth;
+}
 h1 {
     color:orangered;
     background-color: black;
+}
+
+/*
+    Selectores Basicos.
+    1) etiquetas - son elementos html
+    2) Identificadores - atributo id - #
+    3) Clases - atributo class - .
+*/
+
+
+p{
+    color: midnightblue;
+}
+
+/*Dar estilos con ID  se considera un AntiPatron(mala practica)*/
+#parrafo-dos{
+    background-color: skyblue;
+}
+
+/*dar estilos con clases nos permite reutilizar nuestro codigo css*/
+
+.text-20{
+    font-size: 20px;
+
+}
+
+.text-32{
+    font-size: 32px;
+}
+
+.text-white{
+    color: white;
+}
+.bg-skyblue{
+    background-color: skyblue;
+}
+
+.bg-steelblue{
+    background-color: steelblue;
+}
+
+.hijos-directos >li {
+    background-color: thistle;
+}
+
+/*el espacio representa sin inportar en el orden en el que se encuentren*/
+.hijos-descendientes b {
+    background-color: thistle;
+}
+
+/*
+    los selectores de hermanos van a aplicar a los elementos que son hermanos 
+    y que esten por debajo del elemento de referencia
+*/
+
+.hermanos-general ~ li{ 
+    background-color: thistle;
+}
+
+.hermanos-adyacentes + li{ 
+    background-color: thistle;
 }
