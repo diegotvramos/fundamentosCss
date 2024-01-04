@@ -118,3 +118,75 @@ del elemento de referencia hacia abajo.
 ```
 
 ### selectores de atributos
+
+Podemos aplicar estilos css tomando referencia de cualquier atributo de cualquier etiqueta html
+para escribir mas rapido usa el siguiente comando emet `ul>li*6>a[target="_blank"]`
+
+´´´html
+    <ul>
+                <li><a href="" target="_blank">Inicio</a></li>
+                <li><a href="" target="_blank">Cursos</a></li>
+                <li><a href="" target="_blank">Blog</a></li>
+                <li><a href="" target="_blank">Cv</a></li>
+                <li><a href="" target="_blank">Ahora</a></li>
+                <li><a href="" target="_blank">Notas</a></li>
+    </ul>
+´´´
+
+El comodin del * aplica el estilo si contiene el texto encuestion en cuelquier parte.
+```css
+    .selectores-atributos a[href*="hola"]
+    /*el comodin del circunflejo (^) aplica el estilo si contiene el texto en cuestion al inicio*/
+    .selectores-atributos a[href^="http:"]
+```
+### Selector universal
+
+Aplica los estilos a todos los elementos html que tengas dentro de tu documento, contextualmente es decir depende de donde nos encontremos
+
+    ```css
+    *{
+    font-family: sans-serif;
+    }
+    ```
+## Pseudoclases
+
+Dan estilos dependiendo el contexto la posicion del elemento al que le queremos aplicar estilos o dependiendo de ciertos estados que tenga el elmento HTML
+
+- _https://developer.mozilla.org/es/docs/Web/CSS/Pseudo-classes_
+
+```css
+    /*como es una pseudoclase interactiva es mejor ponerla al final*/
+        .menu-pseudoclases a:hover{
+            color: orange;
+        }
+    /*cuando el elmento ID llamado "Temario" tenga el TARGET(tenga en la url el ID activo...)
+    es el principio basico para hacer menús moviles  sein la necesidad de java script, de tal manera que cuando
+    pulsamos un enlace activamos el menú y lo abrimos y cuando perdemos el target se cierra.
+    */
+    #temario-css:target{
+        background-color: lightgreen;
+    }
+```
+### Pseudoclases por posicion y tipo
+
+```css
+    /*[p] no es el primer elemento hijo*/
+    .articulo-pseudoclases p:first-of-type{
+        background-color: pink;
+    }
+```
+## Pseudoelementos
+
+Dan estilos a partes especificas de un elemento, se usa el `::` para diferenciarlos de las pseudoclases
+
+```css
+    .p-pseudoelementos::first-letter{
+    font-weight: bold;
+    font-size: 32px;
+    }
+
+    .input-pseudoelementos::placeholder{
+    color: green;
+    }
+```
+
