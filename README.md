@@ -124,12 +124,12 @@ para escribir mas rapido usa el siguiente comando emet `ul>li*6>a[target="_blank
 
 ´´´html
     <ul>
-                <li><a href="" target="_blank">Inicio</a></li>
-                <li><a href="" target="_blank">Cursos</a></li>
-                <li><a href="" target="_blank">Blog</a></li>
-                <li><a href="" target="_blank">Cv</a></li>
-                <li><a href="" target="_blank">Ahora</a></li>
-                <li><a href="" target="_blank">Notas</a></li>
+        <li><a href="" target="_blank">Inicio</a></li>
+        <li><a href="" target="_blank">Cursos</a></li>
+        <li><a href="" target="_blank">Blog</a></li>
+        <li><a href="" target="_blank">Cv</a></li>
+        <li><a href="" target="_blank">Ahora</a></li>
+        <li><a href="" target="_blank">Notas</a></li>
     </ul>
 ´´´
 
@@ -144,9 +144,9 @@ El comodin del * aplica el estilo si contiene el texto encuestion en cuelquier p
 Aplica los estilos a todos los elementos html que tengas dentro de tu documento, contextualmente es decir depende de donde nos encontremos
 
     ```css
-    *{
-    font-family: sans-serif;
-    }
+        *{
+            font-family: sans-serif;
+        }
     ```
 ## Pseudoclases
 
@@ -189,4 +189,130 @@ Dan estilos a partes especificas de un elemento, se usa el `::` para diferenciar
     color: green;
     }
 ```
+
+>- https://github.com/jonmircha/youtube-html-css/blob/main/02-CursosCSS/index.html
+>- https://developer.mozilla.org/es/docs/Web/CSS/Pseudo-elements
+
+## Agrupar Selectores
+
+Imagina que a ciertos elementos html necesitas aplicarle los mismos estilos entonces para eso nos va servir  la (COMA)
+
+```css
+    /*Agrupar Selectores  (la coma nos va servir como agrupador)*/
+    .form-agrupar-selectores input[type= "text"],
+    .form-agrupar-selectores input[type= "email"],
+    .form-agrupar-selectores textarea{
+        border-color: yellow;
+        border-width: 2px; /*ancho del borde para todo los elementos*/
+        border-style: dashed;
+        background-color: black;
+        font-size: 20px;
+        display: block; /*hace que cada elemento ocupe una linea*/
+        width: 300px;
+}
+```
+
+---
+
+## El Algoritmo de CSS
+
+El Algoritmo de CSS es la forma en que el navegador aplica los estilos a los documentos html, es de vital importancia entender este concepto para que entiendas como se plican y an algunas ocaciones se sobreescriben las reglas CSS, cuando tengas problemas de que algunos estilos no se apliquen, es por que seguramente no estas cumpliendo con estas caracteristicas
+
+1. La cascada.
+2. La especificidad.
+3. La herencia.
+
+### La Cascada
+
+Va ser el mecanismo que tiene el navegador web para ir aplicando los estilos, toma tres aspectos en particular:
+
+* Por defecto - el origen del codigo
+    *  `user Agent` son los estilos que ya por defecto le va aplicando el navegador a las etiquetas,
+    * La personalizada - la configuracion de mi sistema operativo influye en el navegador, ejemplo el modo oscuro, el taño de letra, etc.
+    * Estilos del Autor css.
+* Especificidad del selector. (el que tiene mayor peso)
+* Orden de aparicion. (el navegador lee de arriba hacia abajo, y de izquierda a derecha)
+
+![estilos en el elemento h1](/assets/aplicacion%20css%20a%20h1.JPG)
+
+### La especificidad
+
+Imagina que cada selector tiene un puntaje(peso) acá no tiene importancia la cascada.
+
+> La Especificidad es el peso que tiene un selector cuando hay conflicto de estilos. Se calcula de la siguiente forma:
+    Etiquetas y pseudoelementos -------------- 0,0,0,1 (sumas en el ultimo digito)
+    Clases, atributos y pseudoclases ------------0,0,1,0 (por clada clase o tributo sumas en el 2do digito de R a L)
+    Identificadores -------------------------------0,1,0,0
+    Estilos en línea--------------------------------1,0,0,0
+    !important ------------------Rompe la especificidad
+
+
+hay 2 casos de herramientas que se suelen utilizar en el desarrollo web, suelen utilizar malas practicas, el tratar de modificar el codigo css de una plantilla que tu compres en marketplace eje Wordpress pues si no tienes los suficientes conocimientos de CSS es muy dificil saber las modificaciones derepente dices, estoy aplicando estos estilos y no hacen efecto entonces muchas veces como para no seguir indagando el problema del por que no está cargando dicho estilo y seguramente es un problema de especificidad por que seguramente en las hojas del estilo del template hay un selector que tiene mayor peso que el que nosotros estamos escribiendo entonces a mucha genge se le hace facil  el `IMPORTANT` altos valores de especificidad se considera mala práctica. En la medida de lo posible traten de utilizar clases para maquetar sus interfaces, utiliza una classe y aplico estilo a los elementos hijos a las b que estan dentro de este selector evita que pasen de 2  0.2.0
+
+```css
+    .hijos-descendientes b {
+    background-color: thistle;
+    }
+```
+
+#### Practicando cascada y especificidad.
+
+`blockquote` texto que hace mencion a una cita
+
+La Herencia, es la capacidad de un selector de obtener (heredar) los valores de sus ancestros más cercanos, para aplicarla se usa el valor inherit, si queremos evitarla podemos asignar otro valor o inicializar la propiedad en cuestión con el valor initial
+
+https://web.dev/learn/css/inheritance/#which-properties-are-inheritable
+
+* ![especificidad](/assets/especificidad.JPG)
+
+```css
+    /*
+    Cuando aplicas estilos a las etiquetas se las aplicas a todas las que existan en el documento html
+    */
+
+
+
+    blockquote#cita-marco.cita-marco{
+        background-color: lightskyblue;
+    }
+
+    blockquote{
+        background-color: burlywood;
+    }
+
+    #cita-marco{
+        background-color: lightgreen;
+    }
+
+    /*ser muy especifico es mala practica*/
+
+    blockquote.cita-marco {  /*especificidad 0,1,1*/
+    background-color: tomato;
+    }
+
+    .cita-marco{ /*especificidad 0,1,0*/
+        background-color: cornflowerblue;
+    }
+
+    .cita-marco {
+        background-color: mediumaquamarine !important;
+    }
+
+    blockquote#cita-marco{
+        background-color: lightsalmon;
+    }
+
+    .cita-marco {
+        background-color: moccasin !important; /*esto se considera una mala practica*/
+        background-color: darkorange !important;
+        font-size: 32px;
+        border-style: dotted;
+        border-color: red;
+    }
+```
+
+la hoja de estilo css viene mimificada para que pese menos.
+
+
+
 

@@ -246,3 +246,66 @@ p{
 .input-pseudoelementos::placeholder{
     color: green;
 }
+
+/*Agrupar Selectores  (la coma nos va servir como agrupador)*/
+
+.form-agrupar-selectores input[type= "text"],
+.form-agrupar-selectores input[type= "email"],
+.form-agrupar-selectores textarea{
+    border-color: yellow;
+    border-width: 2px; /*ancho del borde para todo los elementos*/
+    border-style: dashed;
+    background-color: black;
+    font-size: 20px;
+    display: block; /*hace que cada elemento ocupe una linea*/
+    width: 300px;
+}
+
+/*
+    Cuando aplicas estilos a las etiquetas se las aplicas a todas las que existan en el documento html
+*/
+
+
+
+blockquote#cita-marco.cita-marco{
+    background-color: lightskyblue;
+}
+
+blockquote{
+    background-color: burlywood;
+}
+
+#cita-marco{
+    background-color: lightgreen;
+}
+
+/*ser muy especifico es mala practica*/
+
+blockquote.cita-marco {  /*especificidad 0,1,1*/
+ background-color: tomato;
+}
+
+.cita-marco{ /*especificidad 0,1,0*/
+    background-color: cornflowerblue;
+}
+
+.cita-marco {
+    background-color: mediumaquamarine !important;
+  }
+
+blockquote#cita-marco{
+    background-color: lightsalmon;
+}
+
+.cita-marco {
+    background-color: moccasin !important; /*esto se considera una mala practica pero no es prohibido usarlo, musho frameworks lo usan como bootstrap, materializa etc. */
+    background-color: darkorange !important;
+    /*font-size: 16px;
+    border-style: dotted;
+    border-color: red;*/
+  } 
+  
+.cita-marco cite{
+    background-color: pink;
+    background-color: inherit; /*heredalo*/
+}
