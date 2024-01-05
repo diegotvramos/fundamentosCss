@@ -300,12 +300,16 @@ blockquote#cita-marco{
 .cita-marco {
     background-color: moccasin !important; /*esto se considera una mala practica pero no es prohibido usarlo, musho frameworks lo usan como bootstrap, materializa etc. */
     background-color: darkorange !important;
-    /*font-size: 16px;
+    font-size: 32px;
     border-style: dotted;
-    border-color: red;*/
+    border-color: red;
   } 
   
 .cita-marco cite{
     background-color: pink;
     background-color: inherit; /*heredalo*/
+    font-size: 24px;
+    font-size: initial;
+    border-style: inherit;
+    border-color: inherit;
 }

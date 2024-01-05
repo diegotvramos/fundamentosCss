@@ -259,9 +259,7 @@ hay 2 casos de herramientas que se suelen utilizar en el desarrollo web, suelen 
 
 `blockquote` texto que hace mencion a una cita
 
-La Herencia, es la capacidad de un selector de obtener (heredar) los valores de sus ancestros más cercanos, para aplicarla se usa el valor inherit, si queremos evitarla podemos asignar otro valor o inicializar la propiedad en cuestión con el valor initial
 
-https://web.dev/learn/css/inheritance/#which-properties-are-inheritable
 
 * ![especificidad](/assets/especificidad.JPG)
 
@@ -311,8 +309,38 @@ https://web.dev/learn/css/inheritance/#which-properties-are-inheritable
     }
 ```
 
+https://cdn.jsdelivr.net/npm/bootstrap@5.3.x/dist/css/bootstrap.css 
 la hoja de estilo css viene mimificada para que pese menos.
 
+### La herencia.
+
+La Herencia, es la capacidad de un selector de obtener (heredar) los valores de sus ancestros más cercanos, para aplicarla se usa el valor inherit, si queremos evitarla podemos asignar otro valor o inicializar la propiedad en cuestión con el valor initial
+
+para mayor informacion: 
+
+https://web.dev/learn/css/inheritance/#which-properties-are-inheritable
+
+```css
+    .cita-marco {
+    background-color: moccasin !important; /*esto se considera una mala practica pero no es prohibido usarlo, musho frameworks lo usan como bootstrap, materializa etc. */
+    background-color: darkorange !important;
+    font-size: 32px;
+    border-style: dotted;
+    border-color: red;
+    } 
+  
+.cita-marco cite{
+    background-color: pink;
+    background-color: inherit; /*heredalo*/
+    font-size: 24px;
+    font-size: initial;
+    border-style: inherit;
+    border-color: inherit;
+    }
+```
+
+>- el color no se hereda.
+>- todo lo que tiene que ver con tipografia si se hereda
 
 
 
