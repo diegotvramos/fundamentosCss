@@ -122,7 +122,7 @@ del elemento de referencia hacia abajo.
 Podemos aplicar estilos css tomando referencia de cualquier atributo de cualquier etiqueta html
 para escribir mas rapido usa el siguiente comando emet `ul>li*6>a[target="_blank"]`
 
-´´´html
+```html
     <ul>
         <li><a href="" target="_blank">Inicio</a></li>
         <li><a href="" target="_blank">Cursos</a></li>
@@ -131,7 +131,7 @@ para escribir mas rapido usa el siguiente comando emet `ul>li*6>a[target="_blank
         <li><a href="" target="_blank">Ahora</a></li>
         <li><a href="" target="_blank">Notas</a></li>
     </ul>
-´´´
+```
 
 El comodin del * aplica el estilo si contiene el texto encuestion en cuelquier parte.
 ```css
@@ -240,11 +240,11 @@ Va ser el mecanismo que tiene el navegador web para ir aplicando los estilos, to
 Imagina que cada selector tiene un puntaje(peso) acá no tiene importancia la cascada.
 
 > La Especificidad es el peso que tiene un selector cuando hay conflicto de estilos. Se calcula de la siguiente forma:
-    Etiquetas y pseudoelementos -------------- 0,0,0,1 (sumas en el ultimo digito)
-    Clases, atributos y pseudoclases ------------0,0,1,0 (por clada clase o tributo sumas en el 2do digito de R a L)
-    Identificadores -------------------------------0,1,0,0
-    Estilos en línea--------------------------------1,0,0,0
-    !important ------------------Rompe la especificidad
+-       Etiquetas y pseudoelementos -------------- 0,0,0,1 (sumas en el ultimo digito)
+-       Clases, atributos y pseudoclases ------------0,0,1,0 (por clada clase o tributo sumas en el 2do digito de R a L)
+-       Identificadores -------------------------------0,1,0,0
+-       Estilos en línea--------------------------------1,0,0,0
+-       !important ------------------Rompe la especificidad
 
 
 hay 2 casos de herramientas que se suelen utilizar en el desarrollo web, suelen utilizar malas practicas, el tratar de modificar el codigo css de una plantilla que tu compres en marketplace eje Wordpress pues si no tienes los suficientes conocimientos de CSS es muy dificil saber las modificaciones derepente dices, estoy aplicando estos estilos y no hacen efecto entonces muchas veces como para no seguir indagando el problema del por que no está cargando dicho estilo y seguramente es un problema de especificidad por que seguramente en las hojas del estilo del template hay un selector que tiene mayor peso que el que nosotros estamos escribiendo entonces a mucha genge se le hace facil  el `IMPORTANT` altos valores de especificidad se considera mala práctica. En la medida de lo posible traten de utilizar clases para maquetar sus interfaces, utiliza una classe y aplico estilo a los elementos hijos a las b que estan dentro de este selector evita que pasen de 2  0.2.0
@@ -341,6 +341,20 @@ https://web.dev/learn/css/inheritance/#which-properties-are-inheritable
 
 >- el color no se hereda.
 >- todo lo que tiene que ver con tipografia si se hereda
+
+## Reseteo y Normalizacion de estilos.
+
+la mayoria de los navegadores van a la par y tratan de estandarizarse hay 2 formas populares de resetear las hojas de estilo
+
+https://meyerweb.com/eric/tools/css/reset/ 
+
+https://necolas.github.io/normalize.css/   te combiene está.  o tu puedes hacerla.
+
+estas hojas de estilo recetean y normalizan las etiquetas html por defecto lo ideal es que por cascada aplique estos estilos y despues nuestra hoja particular **`esto no lo pegues en tu hoja de estilos propia`** 
+
+si vas a usar alguna de estas herramientas de normalizado y reseteo te recomiendo que sea la herramienta de normalize.
+
+## Prefijos de los navegadores.
 
 
 
