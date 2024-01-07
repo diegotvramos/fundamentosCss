@@ -356,5 +356,46 @@ si vas a usar alguna de estas herramientas de normalizado y reseteo te recomiend
 
 ## Prefijos de los navegadores.
 
+html, css son estandares abiertos que viven en nuestros navegadores web, no debemos descargar nada. html (para contenido) css (presentacion) y js (programacion) entonces no debemos instalar absolutamente nada basta con un navegador web.  el navegador ya debe tener capacidad de detectar estas heramientas. Cada navegador web es desarrollado por una empresa chrome - google firefox - la fundacion mozilla  edge - microsoft safari - aple, cada una destas empresas tiene su ruta critica de implementacion que se van dando en los comites de la `w3e`. 
 
+https://caniuse.com/?search=grid 
 
+opera tenia su propio motor que interpretaba el codigo css pero de algunos años para aca cambio al motor de webkit que es navegador que tiene chrome, safari brave
+
+```css
+/* 
+https://autoprefixer.github.io/
+https://caniuse.com/
+
+Prefijos de los navegadores
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+*/
+
+```
+## Modelo de Caja
+
+es la forma en como css interpreta las etiquetas HTML para css  cada una de las etiquetas o elementos de html son una caja que pueden ser cajas de linea  o caja de bloque
+
+![box-model](/assets/box-model.JPG).
+
+>- Padding -  distancia interna existente del borde de la caja al contenido como tal
+>- Margin - distancia externa es la distancia que hay de un elemento html a otro  o a su contenedor eje body.
+
+hacen referencia en pixeles.
+
+https://developer.mozilla.org/es/docs/Learn/CSS/Building_blocks/El_modelo_de_caja
+
+Modelo de Caja: Es la forma en que CSS ve a los elementos HTML y ¿cómo los ve? como si fueran cajas con las siguientes propiedades:
+  1. El contenido (content): El contenido (texto) del elemento HTML, tomando en cuanta sus dimensiones (width & height)
+  2. El borde (border): Lo que delimita cada uno de los elementos HTML
+  3. El relleno (padding): Son las distancias internas (La distancia del borde al contenido)
+  3. El márgen (margin): Son las distancias externas (La distancia entre el elemento html y sus elementos hermanos o padres)
+
+Dentro del modelo de caja hay que considerar que una caja tendrá 4 lados: en base a las manecillas del reloj
+  1. Arriba (top)
+  2. Derecha (right)
+  3. Abajo (bottom)
+  4. Izquierda (left)
