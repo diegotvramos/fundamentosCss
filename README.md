@@ -21,6 +21,7 @@ Una regla de CSS consta de 2 partes
         atributo-de-mas-dos-palabras: otro-valor
         }
     ```
+
 ## COMENTARIOS EN CSS.
 
 /**/este seria un comentarios en css
@@ -139,6 +140,7 @@ El comodin del * aplica el estilo si contiene el texto encuestion en cuelquier p
     /*el comodin del circunflejo (^) aplica el estilo si contiene el texto en cuestion al inicio*/
     .selectores-atributos a[href^="http:"]
 ```
+
 ### Selector universal
 
 Aplica los estilos a todos los elementos html que tengas dentro de tu documento, contextualmente es decir depende de donde nos encontremos
@@ -148,6 +150,7 @@ Aplica los estilos a todos los elementos html que tengas dentro de tu documento,
             font-family: sans-serif;
         }
     ```
+
 ## Pseudoclases
 
 Dan estilos dependiendo el contexto la posicion del elemento al que le queremos aplicar estilos o dependiendo de ciertos estados que tenga el elmento HTML
@@ -175,6 +178,7 @@ Dan estilos dependiendo el contexto la posicion del elemento al que le queremos 
         background-color: pink;
     }
 ```
+
 ## Pseudoelementos
 
 Dan estilos a partes especificas de un elemento, se usa el `::` para diferenciarlos de las pseudoclases
@@ -375,7 +379,8 @@ user-select: none;
 */
 
 ```
-## Modelo de Caja
+
+## Modelo de Caja.
 
 es la forma en como css interpreta las etiquetas HTML para css  cada una de las etiquetas o elementos de html son una caja que pueden ser cajas de linea  o caja de bloque
 
@@ -395,7 +400,79 @@ Modelo de Caja: Es la forma en que CSS ve a los elementos HTML y ¿cómo los ve?
   3. El márgen (margin): Son las distancias externas (La distancia entre el elemento html y sus elementos hermanos o padres)
 
 Dentro del modelo de caja hay que considerar que una caja tendrá 4 lados: en base a las manecillas del reloj
-  1. Arriba (top)
-  2. Derecha (right)
-  3. Abajo (bottom)
-  4. Izquierda (left)
+
+                        1. Arriba (top)
+    4. Izquierda (left)                   2. Derecha (right)
+                        3. Abajo (bottom)
+  
+
+![reloj](/assets/png-transparent-rolex-gmt-master-ii-fashion-clothing-watch-rolex.png)
+
+## Width & Height. (anchura y altura)
+
+  El contenido (content): El contenido (texto) del elemento HTML, tomando en cuanta sus dimensiones (width & height)
+
+  > **Note:** view port es la parte que visualiza contenido en el navegador.
+
+
+## Border.
+
+El borde (border): Lo que delimita cada uno de los elementos HTML tiene 3 propiedades. (color)color, (width)ancho y (style)estilo.
+
+```css
+    h1{
+    width: 400px;
+    height: 200px;
+    /*Propiedades de tipo shorhand -  quiere decir que aplica estilos a los 4 lados*/
+    border-color: green;
+    border-top-color: red;
+    border-width: medium;/*thin - delgado 1px, medium - 3px,  thick - 5px || puedes usar las palabas o la unidad de media en px*/
+    border-style: solid;
+    /*con este comando simplificamos o sintetisar aun más esto depende de las necesidades que tengas, entre
+    cada propiedad debes dar espacio en blanco y el 2 no debes separarlo de su unidad de media que es el PX*/
+    border: 2px dashed blue;
+}
+```
+
+para consultar la ![documentacion](https://cssreference.io/property/border-style/)
+
+## Margin & Padding
+
+> **Nota:** ✍ a los `divs` los navegadores no le aplican ningun espaciado por defecto como si pasa con los parrafos o con los titulos que es mas gramatical y semantico.
+> El padding son las distancias internas.
+
+![margin de user agent stylesheet](/assets/margin_UserAgent_de_body.JPG)
+
+los siguientes cursos que tendrias que tomas son: `flex-box y grid || taller de maquetacion`.
+
+> _Nota: no olvider mirar tu modelo de caja en el navegador._
+
+## Cajas de linea VS cajas de Bloque.
+
+Caja de Línea
+  - **Ocupan el espacio necesario** para mostrar su contenido.
+  - No tienen dimensiones modificables (alto, ancho).
+  - Permiten otros elementos a su lado.
+  - Padding y margin solo empujan a elementos adyacentes en horizontal, NUNCA EN VERTICAL.
+Caja de Bloque
+  - Ocupan todo el ancho disponible, lo que genera **saltos de línea**.
+  - Tienen dimensiones modificables (alto, ancho).
+  - No permiten otros elementos a su lado (aunque especifique un ancho, siguen ocupando todo el espacio disponible a lo ancho, generando saltos de línea).
+
+
+![tabla periodica de los elementos](/assets/html-periodic-table.png)
+
+> **📝las de color amarillo 🟨, las de abajo color moradas🟪 que son elementos multimedia y las de color verde 🟩 salvo el `form` son elementos que trabajan en linea y los demas elementos trabajan en bloque**.
+
+> _Diferencia entre altura anchura y los lados_
+
+---                 | --- | 
+Anchura y altura(contenido) | Cuatro Lados de la caja |
+---                 | --- | 
+Width               | 1. Arriba (top)|
+Height              | 2. Derecha (right)|
+                    | 3. Abajo (bottom) |
+                    | 4. Izquierda (left) |
+---                 | --- |
+
+
