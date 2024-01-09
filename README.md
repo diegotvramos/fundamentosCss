@@ -466,13 +466,13 @@ Caja de Bloque
 
 > _Diferencia entre altura anchura y los lados_
 
----                 | --- | 
+
 Anchura y altura(contenido) | Cuatro Lados de la caja |
 ---                 | --- | 
 Width               | 1. Arriba (top)|
 Height              | 2. Derecha (right)|
-                    | 3. Abajo (bottom) |
-                    | 4. Izquierda (left) |
+ | 3. Abajo (bottom) |
+ | 4. Izquierda (left) |
 ---                 | --- |
 
 
