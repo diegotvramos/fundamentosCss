@@ -85,10 +85,190 @@ Caja de Bloque
 
 .caja-bloque {
   margin: 32px;
-  /* display: block; */
+  display: block;
+  display: inline;
 }
 
 .caja-linea {
   margin: 48px;
-  /* display: inline; */
+  display: inline;
+  display: block; /*Por cascada aplica el ultimo valor*/
 }
+
+/* 
+Propiedad Display(visualizacion)
+  inline
+  block
+  inline-block - Se comporta como un elemento de línea pero acepta modificar sus dimensiones (alto y ancho)
+  none
+  table - en la practica nunca los apliqúe a elementos que no formen parte de tablas o list items no aplicas a un parrafo esta propiedad.
+  list-item
+  flex - ve mi curso de Flexbox CSS
+  grid - ve mi curso de Grid CSS
+*/
+
+.caja-none,
+.caja-linea-bloque,
+.caja-hidden{
+  background-color: darkgoldenrod;
+  color: white;
+  /* padding: 16px; */
+  width: 600px;
+  height: 300px;
+  border: thin solid black;
+}
+
+/*
+  Recuerda: una caja inline-block  es una caja de linea(que ingnora sus dimenciones de ancho y alto), cuando le aplicamos 
+  la propiedad INLINE-BLOCK  una caja de linea se comporta como de linea pero adicionalmente acepta valores de ancho y alto
+*/
+.caja-linea-bloque{
+  display: inline-block;
+}
+
+/*
+  la propiedad NONE oculta la caja de la interfaz visual, es como si saliera de el documento html pero no significa que no se cargue el contenido
+  Segun Responsive design,es mala practica por que igualmente te consume los megas.
+  Utilidades de display none -  en formularios para que nos aparesca advertencias al no escribir bien
+*/
+.caja-none{
+  display: none;
+}
+
+.caja-hidden{
+  visibility: hidden;
+  /* visibility: visible; */
+}
+
+.overflow{
+  background-color: darkcyan;
+  width: 200px;
+  height: 100px;
+  overflow: visible;
+  overflow: hidden;
+  overflow: scroll;
+  overflow: auto;
+  /* overflow-y: scroll;
+  overflow-x: scroll; */
+}
+
+/*
+  Tamaño de Caja
+*/
+
+.box-sizing-content{
+  background-color: deepskyblue;
+  width: 500px;
+
+}
+
+.box-sizing-content,
+.box-sizing-border {
+  background-color: deepskyblue;
+  box-sizing: content-box;
+  width: 500px;
+  height: 250px;
+  padding: 10px;
+  border: thick solid black;
+  /* w 500 + 10 + 10 + 5 + 5 = 530 */
+  /* h 250 + 10 + 10 + 5 +5  = 280 */
+}
+
+.box-sizing-border {
+  box-sizing: border-box;
+  padding: 30px;
+}
+
+.container-col-3{
+  background-color: burlywood;
+  width: 600px;
+  height: 300px;
+  margin-top: 20px;
+}
+
+/*
+  esto de poner flotantes ya pasó de moda, es una tecnica muy vieja que hace que pierda el color.
+*/
+.container-col-3 > *{
+  box-sizing:border-box ;/*empieza  a contar el tamaño de la caja desde el borde  considera todo lo que el usuario aplique a bordes,  a paddings*/
+  width: 200px;
+  float: left;
+  border: thin solid red;
+  padding: 10px;
+
+}
+
+/* 
+https://www.paulirish.com/2012/box-sizing-border-box-ftw/
+apply a natural box layout model to all elements, but allowing components to change
+*/
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+/*
+  Floats
+*/
+
+.container-floats{
+  background-color: paleturquoise;
+}
+
+.float-left{
+  float: left;
+}
+
+.float-right{
+  float: right;
+}
+
+/*para solucionar los efectos secundarios de flotar los elementos.*/
+.clearfix{
+ clear: both;
+}
+
+/*
+  Colapso de Márgenes Verticales
+*/
+
+.margin-collapse{
+  background-color: skyblue;
+}
+
+.margin-collapse section{
+  border: thin solid black;
+  margin-top: 16px; /*son distancias externas, no aplican color*/
+  margin-bottom: 16px;
+}
+
+.margin-collapse span{
+  border: thin solid black;
+  display: inline-block;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+/*
+  Centrado de Cajas
+*/
+
+.sitio-web{
+  border: thin solid black;
+  background-color: #0d1117;
+  color: white;
+  width: 800px;
+  height: 1000px;
+  padding: 16px;
+  margin-top: 200px;
+  text-align: center;/*Centra el contenido mas no la caja*/
+  margin-left: auto; /*lo centra proporcionalmente a ambos margenes*/
+  margin-right: auto;/* aplicarlo a ambos lados*/
+  /*margin: 0 auto;/* SHOR HAND no es buena idea por que aplia valores 0 arriba y abajo.*/
+}
+

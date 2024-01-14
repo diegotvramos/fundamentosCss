@@ -434,7 +434,7 @@ El borde (border): Lo que delimita cada uno de los elementos HTML tiene 3 propie
 }
 ```
 
-para consultar la ![documentacion](https://cssreference.io/property/border-style/)
+para consultar la [documentacion](https://cssreference.io/property/border-style/)
 
 ## Margin & Padding
 
@@ -471,8 +471,256 @@ Anchura y altura(contenido) | Cuatro Lados de la caja |
 ---                 | --- | 
 Width               | 1. Arriba (top)|
 Height              | 2. Derecha (right)|
- | 3. Abajo (bottom) |
- | 4. Izquierda (left) |
+- | 3. Abajo (bottom) |
+- | 4. Izquierda (left) |
 ---                 | --- |
 
+## Propiedad Display
 
+Nos va permitir mostrar nuestras cajas.
+
+Propiedad Display(visualizacion)
+
+- inline
+- block
+- inline-block - Se comporta como un elemento de línea pero acepta modificar sus dimensiones (alto y ancho)
+- none
+
+```css
+    .caja-none{
+  display: none;
+}
+```
+user agent stylesheet pone un display a las tablas. estan hechas para tablas, no hay necesidad e ponerlas en un parrafo.
+
+```html
+    <table>
+        tr*3>td*3{Celda $}
+    </table>
+
+    <table>
+        <tr>
+            <td>Celda 1</td>
+            <td>Celda 2</td>
+            <td>Celda 3</td>
+        </tr>
+        <tr>
+            <td>Celda 1</td>
+            <td>Celda 2</td>
+            <td>Celda 3</td>
+        </tr>
+        <tr>
+            <td>Celda 1</td>
+            <td>Celda 2</td>
+            <td>Celda 3</td>
+        </tr>
+    </table>
+```
+
+```css
+td {
+    display: table-cell;
+    vertical-align: inherit;
+}
+```
+## Propiedad Visibility
+
+se puede confundir con display.
+
+imagina que tienes que ocultar el elemento pero concervar el espacio
+
+```css
+    .caja-hidden{
+        visibility: hidden;
+    }
+```
+>- **Conclucion!** cuando necesitas ocultar un elemento sin conservar el espacio que ocupaba en le interfaz usa **`display: none;`** cuando necesites que se oculte pero que conserver el espacio que ocupaba usa: **`visibility: hidden;`**
+
+## Propiedad Overflow
+
+cuando ocurre un desbordamiento. ocurre cuano aplicas tamaño especifico al contenido.
+
+![overflow](/assets/overflow.JPG)
+
+esta propiedad nos va sacar de apuros cuando nosotros no sepamos cuando el contenido que va tener una caja lo desborde.
+
+```css
+    .overflow{
+  background-color: darkcyan;
+  width: 200px;
+  height: 100px;
+  overflow: visible;
+  overflow: hidden;
+  overflow: scroll;
+  overflow: auto;
+  /* overflow-y: scroll;
+  overflow-x: scroll; */
+}
+```
+
+## Tamaño de Caja
+
+```css
+    .box-sizing-content,
+    .box-sizing-border {
+    background-color: deepskyblue;
+    box-sizing: content-box;
+    }
+
+    .box-sizing-border {
+        box-sizing: border-box;
+    }
+```
+
+está propiedad considera el tamaño de la caja desde el borde, todo los valores que hemos aplicado de padding y de borders están considerados en la altura y anchura que tu especificaste en las propiedades width y height.
+
+Hoy en dia el valor por defecto de está propiedad es _**content-box**_. 
+
+>- Hoy en dia en todo los proyectos hacemos un reseteo para que toda las cajas empiencen a considerar su tamaño desde el **borde** 
+
+APLICAMOS EL RESETEO AL PRINCIPIO DE NUESTRA HOJA DE ESTILOS. https://www.paulirish.com/2012/box-sizing-border-box-ftw/ 
+
+```css
+    /* 
+        apply a natural box layout model to all elements, but allowing components to change
+    */
+    html {
+    box-sizing: border-box;
+    }
+
+    *,
+    *:before,
+    *:after {
+    box-sizing: inherit;
+    }
+```
+
+La gente de bootstrap tambien aplica este reseteo
+
+## Porpiedad Float & Clear
+
+nos permite fotar hacia la izquierda o hacia la derecha elementos, pero hace que pierda la capacidad de seguir el flujo de la etiqueta html, salen de la disposicion y alineacion del documento html y flotan, antes de que tubieramos los modelos de maquetacion **Flexbox & Grid**  no teniamos una manera de acomodar en columnas y filas los elementos de la interfaz de la IU.  y float ayudo mucho pero ya hoy se considera una mala practica trabajar con está propiedad, el efecto secundario que sufren es que despues de flotar despues hay un problema de superposicion con los siguientes elementos que siguen y que no flotan como tal ademas de que si no defines altura o anchura no aplica color.
+
+Dejar un Html vacio es una muy mala practica.
+
+```css
+    .float-left{
+        float: left;
+    }
+```
+
+>- **Conclucion!** En la medida de lo posible trata de evitar el uso de _Floats_  https://960.gs/ aprende a maquetar con grid y flexbox que son los modulos adecuados de Css.
+
+## Colapso de Márgenes Verticales
+
+los margenes se superponen se enciman **no se suman**, los margenes horizontales si se suman
+
+![margin](/assets/margin-vertical.JPG)
+
+¿que se puede hacer? cuando vayamos a aplicar margenes verticales solo utilizar una de estas propiedades,
+
+>- o todos `margin-top: 16px;`
+>- o todos `margin-bottom: 16px;`
+
+pero no trates de usar ambos.
+
+> cuando vayas a trabajar en las interfaces entre las distancias de un elemento a otro trata de siempre ocupar margin top o margin botton.
+
+## adicion de margenes orizontales.
+
+```css
+    .margin-collapse span{
+        border: thin solid black;
+        display: inline-block;
+        margin-left: 16px;
+        margin-right: 16px;
+        }
+```
+
+## Centrado de Cajas
+
+quiero centrarlo con respecto a la ventana del navegador.
+
+```css
+    .sitio-web{
+  border: thin solid black;
+  background-color: #0d1117;
+  color: white;
+  width: 800px;
+  height: 1000px;
+  padding: 16px;
+  margin-top: 200px;
+  text-align: center;/*Centra el contenido mas no la caja*/
+  margin-left: auto; /*lo centra proporcionalmente a ambos margenes*/
+  margin-right: auto;/* aplicarlo a ambos lados*/
+  /*margin: 0 auto;/* SHOR HAND no es buena idea por que aplia valores 0 arriba y abajo.*/
+}
+```
+
+## Posicionamiento CSS
+
+La propiedades FLOAT y POSITION nos permiten modificar la posición natural de cualquier elemento del documento HTML.
+
+
+El navegador coloca cada elemento teniendo en cuenta el orden en el que aparece en el documento y su tipo de visualización dependiendo si es un elemento de línea o de bloque.
+
+Con FLOAT y POSITION podemos modificar este comportamiento.
+
+    imagina una fila para el banco, y uno empieza a flotar con un globo de helio. 🍧
+
+Elementos Flotantes
+- float: Convierte un elemento en flotante desplazándolo hasta la zona más a la izquierda o más a la derecha de la posición en la que originalmente se encontraba.
+- clear: Limpia la flotación (left, right, both)
+
+Tipos de Posicionamiento:
+- static (default)
+- relative
+- absolute
+- fixed
+- sticky
+
+Para mover los elementos posicionados se activan las propiedades:
+- top (vertical - eje Y)
+- bottom (vertical - eje Y)
+- left (horizontal - eje X)
+- right (horizontal - eje X)
+- z-index (profundidad - eje Z)
+
+Las propiedades top y left van a tener preferencia por sobre bottom y right respectivamente.
+
+Estás 5 propiedades no funcionan con el valor de static.
+
+
+## Posicionamiento Static
+
+```css
+    .static{
+    background-color: yellow;
+    position: static;/*es  el valor po defecto*/
+    top: 10px;
+    left: 10px;
+    }
+```
+## Posicionamiento Relative
+
+el navegador respeta el espacio original del elemento posicionado
+
+```css
+    .relative {
+    background-color: turquoise;
+    position: relative;
+    width: 300px;
+    height: 50px;
+    /*  top: 50px;
+    left: 50px; */
+    bottom: 50px;
+    right: 50px;
+    top: -30px;
+    left: -10px;
+    top: 300px; /*tiene preferencia sobre botton y right*/
+    left: 50px; /*tiene preferencia sobre botton y right*/
+  }
+```    
+
+![positions](/assets/positions.JPG)
+> **Recuerda, se alejan del margen**
