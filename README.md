@@ -723,4 +723,204 @@ el navegador respeta el espacio original del elemento posicionado
 ```    
 
 ![positions](/assets/positions.JPG)
+
 > **Recuerda, se alejan del margen**
+
+## Posicionamiento absolute
+
+absolute: El elemento pierde sus dimensiones y posición original en el flujo del documento. Si se mueve puede tomar como referencia 2 elementos:
+  1) El primer ancestro(pader) con posicionamiento relativo
+  2) Si no encuentra un ancestro relativo, se mueve respecto del documento HTML. 
+
+```css
+    .absolute{
+    background-color: tomato;
+    position: absolute;
+
+  }
+
+  .relative-parent{
+    background-color: khaki;
+    position: relative;
+
+  }
+
+  .absolute-child{
+    background-color: lightcoral;
+    position: absolute;
+
+  }
+```
+
+perdio sus dimenciones, parece una caja de linea
+
+## Posicionamiento fijo
+
+fixed: El elemento pierde sus dimensiones y posición original en el flujo del documento. 
+  Si se mueve toma como referencia el documento HTML y queda fijo en la posición, cuando 
+  el scroll se mueva, el elemento no lo hará, queda FIJO
+
+    ```css
+        .fixed{
+        background-color: lightgreen;
+        position: fixed;
+        width: 300px;
+        height: 50px;
+        }
+    ```
+## Posicionamiento Sticky  
+
+sticky: es un combinación de posicionamiento relative y fixed, para este posicionamiento las propiedades de top,
+left, bottom y right no mueven el elemento, sirven como un punto de referencia, mientras no lleguen a ese valor 
+el elemento se comporta como relative, cuando llega se convierte en fixed
+
+Para que este comportamiento funcione el elemento sticky debe ser hijo directo del body o su elemento 
+contenedor debe tener dimensiones definidas y sólo será sticky dentro de las dimensiones de su contenedor padre.
+
+Cuando 2 elementos se superponen, gana el que tiene posicionamiento diferente al estatico
+
+```css
+    .sticky{
+  background-color: lightblue;
+  position: sticky;/*Tiene que ser hijo directo del body*/
+  top: 50px;
+}
+
+.sticky-parent{
+  border: thin dashed black;
+  height: 600px; /*El contenedor padre debe tener contenedor definido con height o width*/
+}
+
+.sticky-child{
+  background-color: lightslategray;
+  position: sticky;
+  top: 70px;
+}
+```
+### Propiedad z-index
+
+z-index: propiedad que permite controlar la profundidad de los elementos posicionados, 
+su valor por defecto es auto, acepta número positivos, negativos y cero.
+
+> A mayor valor el elemento esta más al frente, a menor valor más al fondo.
+
+Un elemento padre nunca podrá estar sobre sus elementos hijos, sin embargo 
+los elementos hijos si pueden dándoles un valor negativo **y que el elemento padre no tenga definido valor de z-index** 
+
+el primer documento que aparesca posicionado en nuestro html es el que va al fondo, es la misma logica de los editores de foto como photoshop o figma.
+
+Cuando estas diseñando una interfaz y empiezas por la cabecera el menú, el contenido, el pie de pagina, pero cuando ya esamos trabajando en la practica https://www.youtube.com/watch?v=ErtR07GLq54 hay cosas que derepente surgen y tienes que ir agregando elementos html e irles dando estilos. z-index 999
+
+```css
+     .z-index-1,
+ .z-index-2{
+  background-color: mediumaquamarine;
+  position: relative;/*Z-indez funciona a cualquier valor menos el estático.*/
+  border: thin solid black;
+  width: 200px;
+  height: 200px;
+ }
+
+ .z-index-1{
+  z-index: 1;
+  z-index: -1;
+ }
+
+ .z-index-2{
+  top: -200px;
+  left: 100px;
+  z-index: 2;
+ }
+
+ .z-index-parent{
+  background-color: mediumorchid;
+  width: 300px;
+  height: 300px;
+  position: relative;
+  /*z-index: 2; /*es muy raro que un elemento que tiene mas cosas tenga que sobreponerse sobre sus hij@s*/
+ }
+
+ .z-index-child{
+  background-color: mediumvioletred;
+  position: relative;
+  width: 150px;
+  height: 150px;
+  top: -75px;
+  left: 75px;  
+  z-index: -30;/*aplicas numero negativo y funciona*/
+}
+```
+
+## Cabecera Fixed VS Cabecera Sticky
+
+siempre hay que tener Orden. 
+
+Como el position fixed pierde su lugar usamos `Sticky` cuando quiereas posicionar una cabecera el ganador es:
+
+```css
+    .sticky-top{
+    position: sticky;
+    top: 0;
+    }
+```
+
+## Efecto de Slides con position sticky
+
+```css
+    .slide{
+    background-color: paleturquoise;
+    width: 100%;
+    /* height: 100vh; */ /*Lo comente por que desbordaba el contenido*/
+}
+
+.slide:nth-child(odd){
+    background-color: palevioletred;
+}
+
+.slide-title{
+    background-color: palegreen;
+    padding: 16px;
+    text-align: center;
+    position: sticky;
+    top: 50px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+```
+## Ventana Modal / Menú Movil con posicionamiento fixed
+
+te recomiendo hacer posicion fixed te puede servir para un menú de navegacion movil que a la hora de pulsar el boton que abre el menu en lugar de que lo abra hacia ariba o hacia abajo o hacia los lados que aparesca con un efecto de opacidad o tambien vistos en las ventanas modales
+
+```css
+    .modal-window{
+    background-color: black;
+    /* position: absolute; */
+    color: antiquewhite;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.5;
+    display: none;
+}
+
+.modal-window:target{
+    display: block;
+}
+```
+
+## Margenes Negativos
+
+valores negativos dentro del BOX model solo lo podemos aplicar para las distancias externas `margin's`
+
+```css
+    
+.box{
+    background-color: sandybrown;
+    padding: 20px;
+    margin-top: -30px; /*los margenes funcionan muy similar a las propiedades left top boton y right*/
+    margin-left: -30px;
+    padding-right: -30px; /*no aplica*/
+}
+```
