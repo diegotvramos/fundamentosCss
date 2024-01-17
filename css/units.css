@@ -1,0 +1,62 @@
+/* 
+Unidades de Medida
+  1) Absolutas (Su valor no cambia, son unidades del mundo real)
+    pc, cm, mm, in, Q
+    pt (1/72in)
+    px (1/96in)
+  2) Relativas (Su valor es relativo a un contexto)
+    em, rem, ex, ch - al tamaño de la fuente
+      em - basada en la anchura de la "m" de la fuente del elemento
+      rem -  basada en la anchura de la "m" de la fuente del elemento raíz (html)
+      ex - basada en la altura de la "x" de la fuente del elemento
+      ch - basada en la anchura del "0" de la fuente del elemento
+    % - al tamaño del contenedor
+    vw, vh, vmin, vmax - al tamaño del viewport
+      vw - ancho del viewport van de 1 a 100
+      vh - alto del viewport van de 1 a 100
+      vmax - entre vw y vh toma el que tenga mayor valor
+      vmin - entre vw y vh toma el que tenga menor valor
+
+  Conversiones entre unidades - https://pxtoem.com/
+*/
+
+html{
+    box-sizing: border-box;
+}
+
+/*pool erich*/
+*,
+*::after,
+*::before{
+    box-sizing: inherit;
+}
+
+.pixels{
+    background-color: cadetblue;
+    width: 500px;
+    height: 400px;
+    padding: 20px;
+    font-size: 16px; /*valor por defecto que los navegadores aplican al tamaño de la letra es de 16 px en la medida de lo posible hay 
+    que utilizar unidades de medida relativas ¿Por que? el concepto de responsive design dependiendo de el dispositivo en la que nos 
+    encontremos no es bueno usar pixeles por que son unidades absolutas son unidades que no varian por que vienen del mundo real pero 
+    si vas a diseñar una interfaz que se va imprimir ahi si puedes usar pixeles cm, pulgadas*/
+    border: thick solid rebeccapurple;
+}
+
+/**/
+
+.ems{
+    background-color: cadetblue;
+    font-size: 24px; /*se toma como el tamaño de la fuente BASE*/
+    padding: 1em; /*pone el mismo tamaño de la fuente font-size*/
+    border: thick solid rebeccapurple;
+}
+
+.em-child{
+    background-color: salmon;
+    border: thick solid beige;
+    margin: 0.5em; /*se basan en el font-size de este mismo elemento*/
+    padding: 1em;
+    font-size: 2em; /*Busca el ancestro mas inmediato*/
+
+}

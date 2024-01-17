@@ -1,0 +1,127 @@
+
+
+.color-by-name{
+    background-color: coral;
+    color: rebeccapurple;
+    border: thick solid greenyellow;
+}
+
+.color-hex{
+    background-color: #FF6600;
+    background-color: #F60; /*lo podemos simplificar*/
+    background-color: #00000050; /*agregando canal de opacidad al 50 % no hay nesecidad de poner 100 ya con el color es suficiente*/
+    background-color: #0005;
+    color: rebeccapurple;
+    border: thick solid #ff0000;
+    border: thick solid #f00;
+
+    /* border: thick solid #00ff00; */
+}
+
+
+/*
+    Sistme RGB
+
+    Debemos utilizar una funcion RGB() y debemos poner el color de 0-255.
+    Acepta 8 bits por canal
+    Bit(0/1) para asignar cada uno de los colores que existen en la gama de paleta de colores para cada canal tenemos 8 posiciones
+    ¿por que 255? 2 elevado a la potencia 8 = 255
+    Por cada canal de color tenemos valores que van de 0 a 255
+*/
+.color-rgb{
+    background-color: rgb(255, 255, 255);
+    background-color: rgb(255, 0, 0);
+    background-color: rgb(0, 255, 0);
+    background-color: rgb(0, 0, 255);
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, .5); /*'A' representa el canal alfa*/
+    color: rgb(255, 102, 0);
+    border: thick solid rgb(128, 109, 7);
+}
+
+/*  
+    Sistema HSL 
+
+    Contempla los 2 sistemas, tanto para el sistema de color para medios impresos
+    como el que va para medios digitales.
+
+    HueSaturationLightness(Tono-Saturacion-Luminosidad)
+
+    El primer valor es Hue (Circulo Cromático)
+
+    0º -> red
+    60º -> yellow
+    120º -> green
+    180º -> cyan
+    240º -> blue
+    300º -> magenta
+
+    El segundo valor es la saturacion (Intensidad del Color)
+
+    0% -> Escala de grises
+    100% -> color puro
+
+    El tercer valor es Lightness (luminosidad del Color)
+
+     0% -> negro
+     50% -> color puro
+     100% -> blanco
+*/
+
+.color-hsl{
+    background-color: hsl(0, 100%, 50%);
+    background-color: hsl(120, 100%, 50%);
+    background-color: hsl(240, 100%, 50%);
+    background-color: hsl(30, 100%, 50%);
+    background-color: hsla(30, 100%, 50%, 0.5);/*canal alpha para la opacidad va de 0 - 1*/
+    color: hsl(0, 0%, 0%);
+    color: hsl(0, 0%, 100%);
+    border: thick solid hsl(210, 74%, 65%);
+}
+
+
+/*
+    Valor transparent: color transparente es igual a aplicar rgba(0,0,0,0)
+    Valor currentColor: Hereda el valor por defecto o asignado de la propiedad color, del ancestro que tenga
+    definida está propiedad, busca el ancestro mas cercano al mas alejado.
+*/
+.color-transparent-current{
+    background-color: darkmagenta;
+    background-color: currentColor;/*El siguiente ancestro seria el body, lo cual el color de texto es negro,*/
+    /* color: white; */
+    background-color: transparent; /*RGBA*/
+    color: olive;
+    border: thick solid currentColor; /*hace referencia al valor de la propiedad color del elemento y si el
+    elemento no tiene color definido entonces va buscando al ancestro mas inmediato*/
+}
+
+/*
+    Opacity
+*/
+
+.opacity{
+    background-color: orchid;
+    color: navy;
+    border: thick solid black;
+    opacity: 0.5; /*aplica a todo el elemento*/
+    opacity: 0; /*no se ve pero está ahi*/
+    opacity: .75;
+}
+
+/*esto algunos frameworks como bootstrap*/
+.opacity-00{
+    opacity: 0;   
+}
+
+.opacity-10{
+    opacity: 0.1;   
+}
+
+.opacity-20{
+    opacity: 0.2;   
+}
+
+.opacity-30{
+    opacity: 0.3;   
+}
+

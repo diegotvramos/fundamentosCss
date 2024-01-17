@@ -924,3 +924,250 @@ valores negativos dentro del BOX model solo lo podemos aplicar para las distanci
     padding-right: -30px; /*no aplica*/
 }
 ```
+
+***
+
+---
+
+## **Colores en CSS**
+
+
+
+>- Color al fondo `backgraund-color:;`
+>- Color al al texto `color: ;`
+>- Color al borde de la caja `border`
+
+hay 4 formas diferentes de trabajar con los colores: https://htmlcolorcodes.com/
+
+>- a traves de los nombres
+>- Sistema hexadecimal
+>- Sistema **RGB**
+>- HSl.
+
+
+### Colores a traves de los nombres
+
+¿Donde sale la lista de los colores? https://htmlcolorcodes.com/color-names/
+
+Cuando estas haciendo un trabajo de investigacion en microsoft word y agregar una imagen, y si alguna vez haz impreso fisicamente, quizá ves una gran diferencia entre el color que imprimio tu impresora  contra lo que tu vez en la pantalla y eso es por que microsoft word está pensado para pantallas digitales no para imprimir entonces el sistema de colores es RGB  en cambio CMYK es para impresos pero en la web no vamos a usar el CMYK peero con esto de demuestro que está pagina te muestra los colores en diferentes sistemas
+
+```css
+    .color-by-name{
+    background-color: coral;
+    color: rebeccapurple;
+    border: thick solid greenyellow;
+    }
+```
+
+**Comvertidor de colores**
+
+en el buscador debes poner:
+
+>- RGB to hex
+
+### Sistema Hexadecimal
+
+está basado en el sistema de numeracion hexadecimal
+
+> 0123456789ABCDEF
+
+> RedGreenBlue (Medios Digitales)  vs CyanMagentaYellowKey(Medios Impresos) Sofware de diseño  que son pensados para impresos como Adobe InDesign, Adobe Illustrator inclulso Photoshop tiene este sistema CMYK.
+
+los colores en HEX van a tener 6 digitos eje:
+
+>- `#FF6600`
+
+los 2 primeros valores son para el canal Rojo, los 2 siguientes son para el canal Verde, y los 2 ultimos es para el Azul, si son iguales los digitos, se pueden simplificar a 3 valores: 
+
+>- `#f60`
+
+```css
+    .color-hex{
+    background-color: #FF6600;
+    background-color: #F60; /*lo podemos simplificar*/
+    background-color: #00000050; /*agregando canal de opacidad al 50 % no hay nesecidad de poner 100 ya con el color es suficiente*/
+    background-color: #0005;
+    color: rebeccapurple;
+    border: thick solid #ff0000;
+    border: thick solid #f00;
+    }
+```
+
+en los colores hexadecimales tambien podemos controlar la opacidad (transparente o la presencia 100%)
+
+### Sistema RGB
+
+Debemos utilizar una funcion RGB() y debemos poner el color de 0-255.
+    Acepta 8 bits por canal
+    Bit(0/1) para asignar cada uno de los colores que existen en la gama de paleta de colores para cada canal tenemos 8 posiciones
+    ¿por que 255? 2 elevado a la potencia 8 = 255
+    Por cada canal de color tenemos valores que van de 0 a 255
+
+```css
+    .color-rgb{
+    background-color: rgb(255, 255, 255);
+    background-color: rgb(255, 0, 0);
+    background-color: rgb(0, 255, 0);
+    background-color: rgb(0, 0, 255);
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, .5); /*'A' representa el canal alfa*/
+    color: rgb(255, 102, 0);
+    border: thick solid rgb(128, 109, 7);
+}
+```
+### Sistema HSL
+
+Contempla los 2 sistemas, tanto para el sistema de color para medios impresos
+    como el que va para medios digitales.
+
+    HueSaturationLightness(Tono-Saturacion-Luminosidad)
+
+    El primer valor es Hue (Circulo Cromático)
+
+    0º -> red
+    60º -> yellow
+    120º -> green
+    180º -> cyan
+    240º -> blue
+    300º -> magenta
+
+    El segundo valor es la saturacion (Intensidad del Color)
+
+    0% -> Escala de grises
+    100% -> color puro
+
+    El tercer valor es Lightness (luminosidad del Color)
+
+     0% -> negro
+     50% -> color puro
+     100% -> blanco
+
+```css
+    .color-hsl{
+    background-color: hsl(0, 100%, 50%);
+    background-color: hsl(120, 100%, 50%);
+    background-color: hsl(240, 100%, 50%);
+    background-color: hsl(30, 100%, 50%);
+    background-color: hsla(30, 100%, 50%, 0.5);/*canal alpha para la opacidad va de 0 - 1*/
+    color: hsl(0, 0%, 0%);
+    color: hsl(0, 0%, 100%);
+    border: thick solid hsl(210, 74%, 65%);
+}
+```
+
+### ¿Que sistema de colores uso?
+
+la verdad es que cualquier sistema de colores que quieras usar es bien venido no es que uno sea mejor que otro,cualquier sistema de color el navegador lo computa con el sistema RGB O RGBA.
+
+> _depende tambien de las guias de estilo que tu equipo de trabajo tenga_ si tu trabajas independientemente pues ahi tu evalua que sitema de colores de combiene, lo que si note recomiendo es estar mesclando varios sistemas de colores en un mismo proyecto.
+
+### Transparent & currentColor
+
+imaginate  que aveces vas a tener la necesidad de en version movil (responsive design otro tema) pero ya en la version de tableta o computadora necesitas quitarle el color ¿Como le puedes quitar el color a un elemento? pues hay un valor especial que se llama transparent.
+
+```css
+    .color-transparent-current{
+    background-color: darkmagenta;
+    background-color: currentColor;/*El siguiente ancestro seria el body, lo cual el color de texto es negro,*/
+    /* color: white; */
+    background-color: transparent; /*RGBA*/
+    color: olive;
+    border: thick solid currentColor; /*hace referencia al valor de la propiedad color del elemento y si el
+    elemento no tiene color definido entonces va buscando al ancestro mas inmediato*/
+    }
+```
+
+### Propiedad Opacity
+
+cuando aplicamos la propiedad `opacity` aplica para toda las propiedades css que tenga el selector al que le estamos aplicando la opacidad
+
+```css
+    .opacity-00{
+    opacity: 0;   
+}
+
+.opacity-10{
+    opacity: 0.1;   
+}
+```
+
+### Unidades de medida en CSS
+
+Unidades de Medida
+  1) Absolutas (Su valor no cambia, son unidades del mundo real)
+    pc, cm, mm, in, Q
+    pt (1/72in) (puntos)
+    px (1/96in)
+  2) Relativas (Su valor es relativo a un contexto)
+    **em, rem, ex, ch - al tamaño de la fuente**
+      em - basada en la anchura de la "m" de la fuente del elemento (por que es el caracter más ancho)
+      rem -  basada en la anchura de la "m" de la fuente del elemento raíz (html)
+      ex - basada en la altura de la "x" de la fuente del elemento
+      ch - basada en la anchura del "0" de la fuente del elemento
+    % - al tamaño del contenedor
+    **vw, vh, vmin, vmax - al tamaño del viewport**
+      vw - ancho del viewport van de 1 a 100
+      vh - alto del viewport van de 1 a 100
+      vmax - entre vw y vh toma el que tenga mayor valor
+      vmin - entre vw y vh toma el que tenga menor valor
+
+  Conversiones entre unidades - https://pxtoem.com/
+
+  ![imagen](/assets/units.png)
+
+  #### PIXELES
+
+  es muy importante que todo proyecto que inicies tenga el siguiente reseteo.
+
+```css
+    html{
+    box-sizing: border-box;
+    }
+
+    /*pool erich*/
+    *,
+    *::after,
+    *::before{
+        box-sizing: inherit;
+    }
+
+    .pixels{
+    background-color: cadetblue;
+    width: 500px;
+    height: 400px;
+    padding: 20px;
+    font-size: 16px; /*valor por defecto que los navegadores aplican al tamaño de la letra es de 16 px en la medida de lo posible hay 
+    que utilizar unidades de medida relativas ¿Por que? el concepto de responsive design dependiendo de el dispositivo en la que nos 
+    encontremos no es bueno usar pixeles por que son unidades absolutas son unidades que no varian por que vienen del mundo real pero 
+    si vas a diseñar una interfaz que se va imprimir ahi si puedes usar pixeles cm, pulgadas*/
+    border: thick solid rebeccapurple;
+    }
+```
+
+  #### EMS Unidades relativas al tamaño de la fuente.
+
+  los pixeles siempre van a tener el tamaño bien definido en cambio cuando empezamos a aplicar porcentajes EMS estamos tomando como referencia un contexto
+
+  los **ems** siempre van a hacer referencia al tamaño de fuente es decir a la propiedad `font-size` que tenga el contenedor padre que tiene dicho elemento
+
+  ```css
+    .ems{
+    background-color: cadetblue;
+    font-size: 24px; /*se toma como el tamaño de la fuente BASE*/
+    padding: 1em; /*pone el mismo tamaño de la fuente font-size*/
+    border: thick solid rebeccapurple;
+}
+
+.em-child{
+    background-color: salmon;
+    border: thick solid beige;
+    margin: 0.5em; /*se basan en el font-size de este mismo elemento*/
+    padding: 1em;
+    font-size: 2em; /*Busca el ancestro mas inmediato*/
+
+}
+  ```
+
+
+
+
