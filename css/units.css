@@ -20,10 +20,6 @@ Unidades de Medida
   Conversiones entre unidades - https://pxtoem.com/
 */
 
-html{
-    box-sizing: border-box;
-}
-
 /*pool erich*/
 *,
 *::after,
@@ -31,6 +27,18 @@ html{
     box-sizing: inherit;
 }
 
+html{
+    box-sizing: border-box;
+    font-size: 16px;/*por defecto es 16px*/
+    /* font-size: 20px; */
+    background-color: bisque;
+}
+
+
+body{
+  background-color: orange;
+  margin: 0; /*por defecto tiene 8 px de margen*/
+}
 .pixels{
     background-color: cadetblue;
     width: 500px;
@@ -43,7 +51,7 @@ html{
     border: thick solid rebeccapurple;
 }
 
-/**/
+/*EM's*/
 
 .ems{
     background-color: cadetblue;
@@ -55,8 +63,104 @@ html{
 .em-child{
     background-color: salmon;
     border: thick solid beige;
-    margin: 0.5em; /*se basan en el font-size de este mismo elemento*/
-    padding: 1em;
-    font-size: 2em; /*Busca el ancestro mas inmediato*/
+    margin: 0.5em; /*se basan en el font-size de este mismo elemento osea 48px*/
+    padding: 1em; /*esto se combierte en 48 px*/
+    font-size: 2em; /* 48px Busca el ancestro mas inmediato*/
+}
 
+
+/*
+  REM's no debemos estar buscando entre ancestros padres
+*/
+.rems{
+  background-color: cadetblue;
+  font-size: 24px; 
+  padding: 1rem; 
+  border: thick solid rebeccapurple;
+}
+
+.rem-child{
+  background-color: salmon;
+  border: thick solid beige;
+  margin: 0.5rem; 
+  padding: 1rem;
+  font-size: 2rem; 
+}
+
+/*exs */
+.ex{
+  background-color: cadetblue;
+  font-size: 24px; 
+  padding: 1ex; 
+  border: thick solid rebeccapurple;
+}
+
+.ex-child{
+  background-color: salmon;
+  border: thick solid beige;
+  margin: 0.5ex; 
+  padding: 1ex;
+  font-size: 2ex; 
+}
+
+/*
+  chs
+*/
+
+.chs{
+  background-color: cadetblue;
+  width: 10ch;
+}
+
+/*
+  Percentages %
+*/
+
+.percentages{
+  background-color: khaki;
+  width: 80%; /*los elementos de linea ignoran las propiedades de ancho y alto*/
+  font-size: 100%;/*del tamaño del la fuente bas*/
+  padding: 5%; /*5% de que¿? del contenedor padre*/
+  margin: 20% 10%;
+  height: 100% ;/*es un tema bastante peculiar, una de las reglas de oro que tienes que entender en la maquetacion 
+  es que la mayoria de las veces la altura del contenido va estar delimitado por el tamaño del contenido de cada etiqueta*/
+}
+
+.height-parent{
+  background-color: brown;
+  width: 500px;
+  height: 500px;
+}
+
+.height-child{
+  background-color:coral;
+  width: 50%;
+  /* height: 50%; */
+  height: 100%
+}
+
+/*Viewport*/
+
+.viewport{
+  background-color: darkcyan;
+  width: 50vw; /*estan basados en el tamaño de a pantalla sin importar los devices.*/
+  /*Recuerda, que la etiqueta body tiene margenes por defecto y recuerda que las barras de 
+  scroll del navegador tambien forman parte del viewport.*/
+  width: 100%;
+  width: 100vw;
+  height: 50vh; 
+  height: 100vh;
+  font-size: 2vw;/*aplicas mas de 5 empieza a desbordar*/
+  padding: 2vh 2vw;
+
+}
+
+/*El tamaño va fluyendo de grande a pequeño, proporcionalmente al tamaño que tenemos de pantalla*/
+
+.vmin,
+.vmax{
+  background-color: darksalmon;
+  width: 50vmax;
+  height: 50vmin;
+  border: thick solid sienna;
 }

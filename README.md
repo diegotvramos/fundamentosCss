@@ -1093,31 +1093,31 @@ cuando aplicamos la propiedad `opacity` aplica para toda las propiedades css que
 }
 ```
 
-### Unidades de medida en CSS
+## Unidades de medida en CSS
 
 Unidades de Medida
-  1) Absolutas (Su valor no cambia, son unidades del mundo real)
+1) Absolutas (Su valor no cambia, son unidades del mundo real)
     pc, cm, mm, in, Q
     pt (1/72in) (puntos)
     px (1/96in)
-  2) Relativas (Su valor es relativo a un contexto)
-    **em, rem, ex, ch - al tamaño de la fuente**
-      em - basada en la anchura de la "m" de la fuente del elemento (por que es el caracter más ancho)
-      rem -  basada en la anchura de la "m" de la fuente del elemento raíz (html)
-      ex - basada en la altura de la "x" de la fuente del elemento
-      ch - basada en la anchura del "0" de la fuente del elemento
-    % - al tamaño del contenedor
-    **vw, vh, vmin, vmax - al tamaño del viewport**
-      vw - ancho del viewport van de 1 a 100
-      vh - alto del viewport van de 1 a 100
-      vmax - entre vw y vh toma el que tenga mayor valor
-      vmin - entre vw y vh toma el que tenga menor valor
+2) Relativas (Su valor es relativo a un contexto)
+**em, rem, ex, ch - al tamaño de la fuente (_estan basados en el tamaño del contenedor padre_)**
+    em - basada en la anchura de la "m" de la fuente del elemento (por que es el caracter más ancho)
+    rem -  basada en la anchura de la "m" de la fuente del elemento raíz (html)
+    ex - basada en la altura de la "x" de la fuente del elemento
+    ch - basada en la anchura del "0" de la fuente del elemento
+    % - el contexto que toman como relativo es el (al) tamaño del contenedor
+**vw, vh, vmin, vmax - al tamaño del viewport**
+    vw - ancho(with) del viewport van de 1 a 100
+    vh - alto del viewport van de 1 a 100
+    vmax - entre vw y vh toma el que tenga mayor valor
+    vmin - entre vw y vh toma el que tenga menor valor
 
   Conversiones entre unidades - https://pxtoem.com/
 
   ![imagen](/assets/units.png)
 
-  #### PIXELES
+  ### PIXELES
 
   es muy importante que todo proyecto que inicies tenga el siguiente reseteo.
 
@@ -1146,7 +1146,9 @@ Unidades de Medida
     }
 ```
 
-  #### EMS Unidades relativas al tamaño de la fuente.
+---
+
+  ### EMS Unidades relativas al tamaño de la fuente.
 
   los pixeles siempre van a tener el tamaño bien definido en cambio cuando empezamos a aplicar porcentajes EMS estamos tomando como referencia un contexto
 
@@ -1170,6 +1172,128 @@ Unidades de Medida
 }
   ```
 
+### REM's 
 
+El tamaño está basado en el tamaño de la fuente `font-zise` del documento `html` no hay tanto problema, por que se basa en el tamoño de letra que tiene asignado nuestro `html`
+
+```css
+    html{
+    box-sizing: border-box;
+    font-size: 16px;/*por defecto es 16px*/
+    }
+
+    /*
+        REM's no debemos estar buscando entre ancestros padres
+    */
+    .rems{
+    background-color: cadetblue;
+    font-size: 24px; 
+    padding: 1rem; 
+    border: thick solid rebeccapurple;
+    }
+
+    .rem-child{
+    background-color: salmon;
+    border: thick solid beige;
+    margin: 0.5rem; 
+    padding: 1rem;
+    font-size: 2rem; 
+    }
+```
+
+### EX's 
+
+En la practica no se utilizan mucho.
+
+```css
+    .ex{
+  background-color: cadetblue;
+  font-size: 24px; 
+  padding: 1ex; 
+  border: thick solid rebeccapurple;
+    }
+```
+### CH's
+
+toma como base de medida el numero `0` tambien son relativos al tamaño de la fuente en ``html``
+
+imaginate que tu tengas que definir el diseño de un boton y el texto que pueda introducirse dentro del boton pero tu sabes que ese boton que estas diseñando es maximo para una palabra que no ocupe mas de 10 caracteres y ahi es donde nos van a ayudar los CHES.
+
+> _utiliza cuando en las dimenciones, necesites que siertos elementos de la interfaz visual conserven cierto numero de caracteres_
+
+
+```css
+    .chs{
+  background-color: cadetblue;
+  width: 10ch;
+    }
+```
+
+### Porcentages %
+
+Cuando hablamos de los porcentajes hay que tener en cuenta la naturaleza de la etiqueta (bloque, linea)
+
+> `width: 80%;`
+
+la caja de bloque está al 80% de su contenedor padre el contenedor padre en esté caso es el ``body``
+
+Es muy importante el tamaño que le damos al `font-zise` del `html` por que eso define la base para unidades relativas.
+
+El `body` va ir creciendo conforme baya creciedo su contenido.
+
+Nosotros podemos hacer cambiar este comportamiento sobre todo en la propiedad `heigt` cuando ya tiene un valor establecido
+
+> **``como los pixeles son absolutos, no redimencionan aunque el tamaño de la pantalla sea menor a diferencia de las unidades relativas.``**
+
+en el ancho no hay problema, se va adaptar al ancho del contenedor
+
+### Unidades del Viewport
+
+Es la parte visible donde vemos el contenido html
+
+> Recuerda, los porcentajes son basados en el tamaño del contenedor,  entonces el `body` que tenemos de 8 pixeles a los cuatro lados no afecta cuendo yo tengo un with del ``100%``
+
+
+> **_en conclucion: usa vh para el alto y 100% para el ancho_**
+
+si quisieras generar componentes como las ``Herro image``  podrias generar una clase tipo full scri
+
+```css
+    .viewport{
+  background-color: darkcyan;
+  width: 50vw; /*estan basados en el tamaño de a pantalla sin importar los devices.*/
+  /*Recuerda, que la etiqueta body tiene margenes por defecto y recuerda que las barras de 
+  scroll del navegador tambien forman parte del viewport.*/
+  width: 100%; /*✅*/
+  width: 100vw;
+  height: 50vh; 
+  height: 100vh;/*✅*/
+}
+```
+
+> _No importa que un elemento sea hijo de otro, va ignorar los atributos de: alto, ancho font-size, etc. siempre va tomar las dimenciones de la pantalla disponible_
+
+las unidades del viewport son unidades que permiten fluir diferentes valores a la que los aplicamos.
+
+### ¿Cuándo usar cada unidad de medida?
+
+> _1 absolutas: para cuando una pagina se vaya a imprimir_
+
+> _2 Unidades relativas: el font-size siempre definelo en ``px``_
+
+>_Todo lo que tiene que ver con tipografia te sugiero que lo expreses en ``REMS``_ tambien para aplicar distancias de margin y padding.
+
+> _Ems puedes usarlo en las cards_
+
+> _Exs, si ya sabes cuantos reglones va a recivir,  entonces la altura que tenga de esta caja que tenga la descripcion la puedes definir en EXS (se basa en la distancia de los caracteres)._
+
+> _CHS, en los casos donde debes de definir el numero de los caracteres_
+
+en el diseño responsivos se usa mucho en definicion de ancho y alto de ciertas secciones de tu contenido
+
+**las unidades del viewport** cuando tengas que tomar como referencia el tamaño de la pantalla (herro image, textos fluidos) 
+
+## Variables y Funciones en CSS
+Una variable es un espacio recervado de de memoria en nuestra computadora que va almacenar un dato, las variables css así como en los lenguajes de programacion van a tener un alcance un ambito en el que existan. ese ambito va ser el selector en el que nosotros definamos la declaracion de la variable y todo sus elementos subsecuentes (hijos)
 
 
