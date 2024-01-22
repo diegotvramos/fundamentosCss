@@ -1,5 +1,67 @@
+:root{
+    color: darkgreen;
+    --default-bg-color:skyblue;
+}
 
+html{
+    color: red;
+    box-sizing: border-box;
+}
+*,
+*::after,
+*::before{
+    box-sizing: inherit;
+}
 
 .custom-props-1{
-    
+    --primary-color: gray; /*Recuerda _existea en este elemento y sus hijos_ */
+    --font-zize:32px;
+    background-color: var(--primary-color);
+}
+
+.custom-props-2{
+    background-color: var(--default-bg-color);
+    border: thin solid var(--border-color);
+    padding: 1rem;
+}
+
+.custom-props-3{
+    font-size: var(--font-zize);
+    border: thin solid var(--border-color);
+}
+
+.title-props{
+    --primary-color:navy;
+    color: var(--primary-color, orange); /*En el caso de que no exista el primari color aplica Orange*/
+    background-color: var(--default-bg-color);
+}
+
+
+/*Funcion Cal*/
+
+.ch-10{
+    --padding-size:4ch;
+    --num-ch:10ch;
+    background-color: var(--default-bg-color);
+    font-size: 2rem;
+    padding: var(--padding-size);
+    width:calc(var(--num-ch) + var(--padding-size)*2);/*Cuando tenemos operador como (+-*) y los operandos (var, 2)8es importante dejar espacio */
+}
+
+/*no podemos tener padding negativos */
+
+/*Funcion min() & max()*/
+
+.min-max{
+    background-color: var(--default-bg-color);
+    margin-top: 1rem;
+    width: min(300px, 20vw, 20rem); /*300px es menor que el 20% de la pantalla de viewport (Siempre va  ganar el que tenga menor valor)*/
+    height: max(200px, 25vh);
+}
+
+/*Funcion Clamp()*/
+
+h1{
+    font-size: clamp(2rem, 1rem + 3vw, 3rem);
+    background-color: darkgoldenrod;
 }

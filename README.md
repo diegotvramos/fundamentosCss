@@ -1296,4 +1296,259 @@ en el diseño responsivos se usa mucho en definicion de ancho y alto de ciertas 
 ## Variables y Funciones en CSS
 Una variable es un espacio recervado de de memoria en nuestra computadora que va almacenar un dato, las variables css así como en los lenguajes de programacion van a tener un alcance un ambito en el que existan. ese ambito va ser el selector en el que nosotros definamos la declaracion de la variable y todo sus elementos subsecuentes (hijos)
 
+### Custom Properties y Funcion Var()
 
+las variables se tienen que definir dentro de un selector
+
+- `para definir variables en CSS deben empesar con 2 giones (--)`
+
+las variables se les puede heredar a los elementos hijos. 
+
+Hay ciertar reglas que nuestras variables css deben cumplir y una de esas es el `Ambito` hasta que punto existen nuestras variables.
+- > las variables se deben definir dentro de selectores.
+- > Y van a existir para todo los elementos hijos 
+
+si quieres que tus variables existan para todo tus elementos html lo que debes hacer es declarar tus variables en la etiqueta html. Pero en lugar de utilizar la etiqueta html vamos a utilizar una pseudoclase llamda ``ROOT`` hace referencia ala etiqueta `html`  con la difirencia que tiene mayor peso, es decir que tiene mayor especificidad (0.0.1) (0.1.0) esto lo vimos en el tema de la especificidad.
+
+- > si quieres que tus variables apliquen para todo tus elementos(etiquetas) html lo ideal es que lo vayas declarando en el selector root. 
+
+herramientas como bootstrap ya empiezan a utilizar en su hoja de estilos en las variables
+
+```css
+    :root{
+    color: darkgreen;
+    --default-bg-color:skyblue;
+    }
+
+    html{
+        color: red;
+    }
+
+    .custom-props-1{
+        --primary-color: gray; /*Recuerda _existea en este elemento y sus hijos_ */
+        --font-zize:32px;
+        background-color: var(--primary-color);
+    }
+
+    .custom-props-2{
+        background-color: var(--default-bg-color);
+        border: thin solid var(--border-color);
+        padding: 1rem;
+    }
+
+    .custom-props-3{
+        font-size: var(--font-zize);
+        border: thin solid var(--border-color);
+    }
+
+    .title-props{
+        --primary-color:navy;
+        color: var(--primary-color, orange); /*En el caso de que no exista el primari color aplica Orange*/
+        background-color: var(--default-bg-color);
+    }
+```
+
+### Funcion URL
+
+url()  nos sirve para cargar una hoja de estilos:
+
+`@import url("otra-hoja.css")`
+
+tambien puede servir para mandar a llamar tipografias y fondos, para mandar a cargar contenido externo
+
+### Función Cal()
+
+nos sirve para hacer calculos aritméticos.
+
+```css
+    .ch-10{
+    --padding-size:4ch;
+    --num-ch:10ch;
+    background-color: var(--default-bg-color);
+    font-size: 2rem;
+    padding: var(--padding-size);
+    width:calc(var(--num-ch) + var(--padding-size)*2);/*Cuando tenemos operador como (+-*) y los operandos (var, 2)8es importante dejar espacio */
+}
+
+/*no podemos tener padding negativos */
+```
+
+### Funcion min() & max() 
+
+Son funciones a las que podemos dar diferentes valores separados por comas y siempre va tomar el valor que sea minimo o maximo de la funcio que estemos utilizando
+
+- > Min: va listar va asignar  el que menor valor tenga
+
+- > Max: va listar va asignar  el que mayor valor tenga  
+
+```css
+    .min-max{
+    background-color: var(--default-bg-color);
+    margin-top: 1rem;
+    width: min(300px, 20vw, 20rem); /*300px es menor que el 20% de la pantalla de viewport (Siempre va  ganar el que tenga menor valor)*/
+    height: max(200px, 25vh);
+}
+```
+
+### Funcion Clamp()
+
+¿donde lo podemos aplicar espectacularmente?
+
+en los titulos de tamaño dinamico.
+
+```css   
+    h1{
+        font-size: clamp(2rem, 1rem + 3vw, 3rem);
+        background-color: darkgoldenrod;
+    }
+```
+## Estilos de Fuentes y Textos 
+
+[Title](fonts-texts.html) ¿como llego esto?
+
+La familia de fuentes es el conjunto de tipografias.
+
+Font es un shord hand. asi como ``border, margin, padding`` que tiene 4 lados
+
+    font-family
+    font-size
+    font-weight
+    font-style
+    font-variant
+    line-height  (la altura que va tener en el interlineado)
+    font
+
+depende de la familia tipografica si tiene ese peso o no.
+
+``BOLD`` el navegador aplica una negrita ficticia.
+
+en la paractica utilizas:
+
+- > `font-family, font-size, font-weight`
+
+```css
+    .font{
+    font-family: Georgia, "Times New Roman", Times, serif; /*si la primera opcion está disponible aplicalá*/
+    font-family: sans-serif;
+    font-size: 32px;
+    /*No toda las tipografias tiene el mismo grosor*/
+    font-weight: bold;
+    font-style: italic; /*se puso en cursiva*/
+    font-variant: small-caps; /*Comvierte todo a mayusculas*/
+    line-height: 2;
+    font: italic small-caps bold 24px / 1.5 monospace; /*Respetando el orden*/
+    }
+```
+
+### Fuentes Externas (@font-face & font-display)
+
+¿Que pasa si yo tengo la necesidad de agregar una tipografia que no se encuentran en mi sitema operativo?, para eso podemos usar una regla de css que se llama @font face y mandar a llamar una tipografia externa, entonces para eso necesitarmos tener un achivo fisico de la tipografia.
+
+font-display:
+  auto - permite que el navegador utilice el método predeterminado que suele ser block
+  block - oculta brevemente el texto hasta que la fuente haya sido descargada por completo
+  swap - indica al navegador que utilice la fuente alternativa para mostrar el texto hasta que la fuente personalizada se haya cargado por completo
+  fallback - es una mezcla de auto y swap
+  optional -ocultará el texto, luego lo cargará con la fuente alternativa y finalmente aplicará la fuente personalizada
+
+
+```css
+    @font-face{
+    font-family: "Chalet";
+    src: url("../assets/Chalet.woff") format("woff"); /*sube un nivel y carga el archivo...*/
+    font-display: swap;
+    /* 
+    src: url("../assets/Chalet.woff") format("woff"),
+        url(../assets/Chalet.woff2) format(woff2); */
+    
+}
+
+.chalet{
+    font-family: "Chalet", sans-serif; /*sans-serif en la tipografia alternativa*/
+    font-size: 2rem;
+}
+```
+
+### Google Fonts
+
+cuando decidas elegir una tipografia, tambien revisa y toma en cuenta las necesidades de contenido textual que vas a tener en tu sitio eje: en el Idioma ingles no existe la Ñ. 
+
+https://fonts.google.com/specimen/Raleway?query=raleway 
+
+sé precavido con el numero de estilos y el numero de fuentes ``utilizar 3 o mas tipografias se puede considerar mala practica`` considera que cada archivo tipografico lo tiene que cargar el navegador entonces podemos tener problemas de rendimiento a la hora de visualizar el contenido un uso de fuentes puede ser uno o dos, ademas usar mas de 3 tipografias podemos confundir a usuario
+
+poner atencion el los glifos(Glyphs) que soporta y caracteres especiales. 
+
+### Estilos de Textos.
+
+ 
+text-align
+text-decoration
+text-indent
+text-overflow
+  overflow: hidden;
+  white-space: nowrap;
+text-transform
+
+letter-spacing
+
+white-space  (nos va decir que hacer con los espacios enblanco)
+white-space: pre; respeta todo los espacios en blanco, esto lo vimos en html cuando respeta los espacios*
+
+word-break
+word-spacing (e smus similar a letter-spacing solo que este trabaja con palabras)
+writing-mode
+
+
+``siempre puedes consultar a la pagina: cssreference.io``
+
+```css
+    .text{
+    
+    font-size: 2rem;
+    text-align: right;
+    text-align: center;
+    text-align: justify;
+    text-align: left;
+    text-decoration:overline ;
+    text-decoration: none;
+    text-indent: 3rem; /*Es la sangria del parrafo. una indentacion a linea que comienza el parrafo*/
+    text-transform: capitalize; /*Toda las palabras locombierte en mayuscula en capital leter*/
+    text-transform: lowercase; /*los correos siempre se escribe en minusculas*/
+    text-transform: uppercase; /*Todo locombiertes a mayuscula*/
+    text-transform: none; /*no apliques ninguna transformacion*/
+    letter-spacing: 0.5rem; /*ES el espaciado que va tener cada caracter*/
+    /*white-space: pre; /*/
+    word-break: keep-all;/*normalita*/
+    word-break: break-all;/*parte las palabras a */
+    writing-mode: horizontal-tb;
+    writing-mode: vertical-rl;/*rigt to left*/
+
+}
+
+.text a{
+    text-decoration: none;
+}
+
+.text-overflow{
+    background-color: blanchedalmond;
+    border: thin solid black;
+    padding: 1rem;
+    font-size: 2rem;
+    width: 50%;
+    overflow: hidden; /*lo va ocultar*/
+    white-space: nowrap; /*hace que se vaya a una sola linea*/
+    text-overflow: ellipsis;
+    
+}
+
+.white-space{
+    white-space: pre; /*Se comporta como una etiqueta codigo*/
+}
+
+
+.word-spacing{
+    font-size: 2rem;
+    word-spacing: 1rem;
+}
+```
