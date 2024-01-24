@@ -1552,3 +1552,29 @@ writing-mode
     word-spacing: 1rem;
 }
 ```
+
+## Iconos Tipograficos.
+
+vamos a revisar 3 librerias que nos ofrecen iconos vectoriales que estan basados en tipografias en lugar de generar texto nos va generar iconos.
+
+¿Como implementamos estos iconos de google fonts que nos podrian servir si estamos haciendo un dashboard un administrador?
+
+Estos iconos forman parte del Material Design (que es le lenguaje visual de las gias de estilo de google).
+
+https://fonts.google.com/icons
+https://icons.getbootstrap.com/#install 
+
+Bootstrap ya tiene sus iconos CDN: content developen network las grandes empresas tienen cdns CDN: es una infraestructura en internet que nos permite alojar las librertias mas populares de CSS y Js 
+
+otra pagina de Iconos:
+https://fontawesome.com/  nos pide que ingresemos nuestro correo electronico entonces usamos una pagina externas netamente de CDN's
+
+https://cdnjs.com/libraries/font-awesome
+
+
+buscamos la version gratuita
+https://fontawesome.com/search?m=free&o=r (tiene iconos regulare, solidos e iconos de marcas)
+
+click en:`Copy ling tag`
+
+> Resumen: _mandar a llamar la hoja de estilos que carga la tipografia de iconos, ir a revisasr los iconitos y obtener el codigo html que  nos permite visualizar esos iconos la ventaja de estos iconos es que no son imagenes, son caracteres_
