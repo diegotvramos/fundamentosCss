@@ -1,0 +1,90 @@
+/* 
+background-color: define el color de fondo del elemento
+background-image: define la imagen de fondo del elemento
+background-size: define el tamaño de la imagen de fondo, primer valor x, segundo y
+    - cover: cambia el tamaño de la imagen de fondo para asegurarse de que permanezca completamente visible
+    - contain: cambia el tamaño de la imagen de fondo para asegurarse de que el elemento esté completamente cubierto
+background-repeat: define cómo se repite la imagen de fondo en el elemento
+background-position:
+  define la posición de la imagen de fondo, primer valor x, segundo y, si no se especifica un segundo valor éste será center
+  aparte de valores numéricos podemos indicar el posicionamiento con las palabras: center, top, bottom, left and right
+background-clip: define cuánto debe extenderse el fondo dentro del elemento.
+background-origin: define el origen de la imagen de fondo.
+background-attachment: define cómo se comportará la imagen de fondo al desplazarse por la página
+*/
+
+.box{
+    margin: 2rem auto;
+    width: 300px;
+    height: 300px;
+    border: thick dashed red;
+}
+
+.bg-color{
+    background-color: black;
+}
+
+.bg-image{
+    background-image: url("../assets/Nissan_Skyline_GT-R_R34.jpg");
+}
+
+.bg-size{
+    background-image: url("../assets/Nissan_Skyline_GT-R_R34.jpg");
+    /* background-size: 300px 200px; */
+    background-size: 300px; /* la proporcion de mi imagen es la misma el ancho es de 300px pero el alto la está calculando automaticamente*/
+    background-size: cover; /*cubre con una sola imagen sin deformarla [cora la imagen]*/
+    background-size: contain;/*toda la imagen se visualiza en el contenedor*/
+}
+
+.bg-repeat{
+    background-image: url("../assets/Nissan_Skyline_GT-R_R34.jpg");
+    background-size: 100px;
+    background-repeat: repeat;
+    background-repeat: repeat-x;
+    background-repeat: repeat-y;
+    background-repeat: no-repeat;
+}
+
+.bg-position{
+    background-color: skyblue;
+    background-image: url("../assets/Nissan_Skyline_GT-R_R34.jpg");
+    background-size: 100px;
+    background-repeat: no-repeat;
+    background-position: 10px 20 px; /*puedes utilizar unidades de medida o palabras Recervadas si usas palabras evita usar unidades de medida*/
+    background-position: 1rem 2rem;
+  background-position: 10% 20%;
+  background-position: 10%;
+  background-position: 10% center;
+  background-position: top center;
+  background-position: top right;
+  background-position: top left;
+  background-position: bottom center;
+  background-position: bottom right;
+  background-position: bottom left;
+  background-position: bottom;
+}
+
+.bg-clip { /*Esta orientada hacia el fondo*/
+    background-color: skyblue;
+    background-image: url("../assets/Nissan_Skyline_GT-R_R34.jpg");
+    background-repeat: no-repeat;
+    background-size: 200px;
+    background-size: cover;
+    background-clip: border-box; /* default */
+    background-clip: padding-box;
+    background-clip: content-box;/**/
+    padding: 1rem;
+  }
+  
+  /*Para la imagen de fondo*/
+  .bg-origin {/*de dece la posicion desde donde deberia empezar la imagen de fondo*/
+    background-color: skyblue;
+    background-image: url("../assets/Nissan_Skyline_GT-R_R34.jpg");
+    background-repeat: no-repeat;
+    background-size: 200px;
+    background-size: cover;
+    background-origin: padding-box; /* default */
+    background-origin: border-box;
+    background-origin: content-box;
+    padding: 1rem;
+  }

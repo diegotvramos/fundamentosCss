@@ -1578,3 +1578,179 @@ https://fontawesome.com/search?m=free&o=r (tiene iconos regulare, solidos e icon
 click en:`Copy ling tag`
 
 > Resumen: _mandar a llamar la hoja de estilos que carga la tipografia de iconos, ir a revisasr los iconitos y obtener el codigo html que  nos permite visualizar esos iconos la ventaja de estos iconos es que no son imagenes, son caracteres_
+
+## Propiedades Border Radius
+
+Una caracteristicas de los bordes es la capacidad de Redondeo
+
+`Border-radius` es un short hands para cuatro propiedades
+
+si se van a la pagina de 
+
+podemos colocar bordes de forma redonda y bordes de forma eliptica.
+
+> https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius
+
+Cuando nosotros aplicamos border radius con la diagonal a 2 valores eso significa que en lugar de hacer un borde totalmente redondeado tomando como referencia una circunferencia perfecta lo vamo hacer como si fuera una elipce
+
+```css
+    .box{
+    background-color: black;
+    margin: 2rem auto;
+    width: 400px;
+    height: 400px;
+    border: thick solid red;
+}
+
+
+.border-radius{   
+    border-radius: 2rem;
+    border-top-left-radius: 4rem;
+    border-top-right-radius: 4rem;
+    border-bottom-left-radius: 4rem;
+    border-bottom-right-radius: 4rem;
+    border-radius: 2rem 4rem;
+    border-radius: 2rem 4rem 0;
+    border-radius: 4rem 3rem 2rem 1rem; /*en sentido de las manecillas del reloj*/
+    border-radius: 2rem;
+}
+
+.border-radius-2{
+    border-radius: 2rem / 4rem; /*Estoy aplicando '2rem' en X y '4rem' en y*/
+    border-radius: 2rem 4rem/ 4rem 8rem;/*expresandolo a n valores*/
+    /*border-top-left-radius: 4rem;/*tambien podrian expresarlo con las propiedades que afectan a un solo lado*/
+}
+
+/*Circulo*/
+.border-radius-3{
+    border-radius: 50%; /*Significa que se va redondear a la mitad [Obenemos un circulo]*/
+}
+
+/*pero tiene que ser una caja cuadrada en dimenciones a ancho y alto*/
+.border-radius-4{
+    width: 400px;
+    height: 200px;
+    border-radius: 50%; /*[Obtenemos una elipce] */
+}
+```
+## Propiedades Outline
+
+Es como un borde externo, No forma parte del modelo de caja no existe ``Outline a los 4 lados`` .
+
+Es como un aura  que no va interrumpir el espacio que tienen los demas elementos.
+
+Los elementos que mas aprovechan esto del Outline son los elementos de formulario. Cuando quieras ver pseuda clases en el inspector de elementos click en `:hov` cuando tenemos el foco del puntero del maus sobre un elemento Input
+
+```css
+    .outline{
+    color: white;
+    text-align: center;
+    outline-width: 5px;
+    outline-style: dashed;
+    outline-color: chartreuse;
+    outline: thick solid blue;
+    /*border-width:100px*/
+    /* outline-width:100px; */
+    outline-offset: 3rem; /*es la distancia que hay entre el Borde  al Outline*/
+   outline-offset: -3rem;
+    }
+```
+
+## Estilos del Fondo
+
+Usamos mucho `Backgraund-color` y no es la unica propiedad
+
+Hay varias propiedades de ``Background-`` esto lo podemos ver en CSSreference es el short-hands de 8 propiedades. 
+
+> _Te sugiero que lo evites_
+
+background-color: define el color de fondo del elemento
+background-image: define la imagen de fondo del elemento
+background-size: define el tamaño de la imagen de fondo, primer valor x, segundo y
+    - cover: cambia el tamaño de la imagen de fondo para asegurarse de que permanezca completamente visible
+    - contain: cambia el tamaño de la imagen de fondo para asegurarse de que el elemento esté completamente cubierto
+background-repeat: define cómo se repite la imagen de fondo en el elemento
+background-position:
+  define la posición de la imagen de fondo, primer valor x, segundo y, si no se especifica un segundo valor éste será center
+  aparte de valores numéricos podemos indicar el posicionamiento con las palabras: center, top, bottom, left and right
+background-clip: define cuánto debe extenderse el fondo dentro del elemento.
+background-origin: define el origen de la imagen de fondo.
+background-attachment: define cómo se comportará la imagen de fondo al desplazarse por la página.
+
+```css
+    .box{
+    margin: 2rem auto;
+    width: 300px;
+    height: 300px;
+    border: thick dashed red;
+}
+
+.bg-color{
+    background-color: black;
+}
+
+.bg-image{
+    background-image: url("../assets/Nissan_Skyline_GT-R_R34.jpg");
+}
+
+.bg-size{
+    background-image: url("../assets/Nissan_Skyline_GT-R_R34.jpg");
+    /* background-size: 300px 200px; */
+    background-size: 300px; /* la proporcion de mi imagen es la misma el ancho es de 300px pero el alto la está calculando automaticamente*/
+    background-size: cover; /*cubre con una sola imagen sin deformarla [cora la imagen]*/
+    background-size: contain;/*toda la imagen se visualiza en el contenedor*/
+}
+
+.bg-repeat{
+    background-image: url("../assets/Nissan_Skyline_GT-R_R34.jpg");
+    background-size: 100px;
+    background-repeat: repeat;
+    background-repeat: repeat-x;
+    background-repeat: repeat-y;
+    background-repeat: no-repeat;
+}
+
+.bg-position{
+    background-color: skyblue;
+    background-image: url("../assets/Nissan_Skyline_GT-R_R34.jpg");
+    background-size: 100px;
+    background-repeat: no-repeat;
+    background-position: 10px 20 px; /*puedes utilizar unidades de medida o palabras Recervadas si usas palabras evita usar unidades de medida*/
+    background-position: 1rem 2rem;
+  background-position: 10% 20%;
+  background-position: 10%;
+  background-position: 10% center;
+  background-position: top center;
+  background-position: top right;
+  background-position: top left;
+  background-position: bottom center;
+  background-position: bottom right;
+  background-position: bottom left;
+  background-position: bottom;
+}
+
+.bg-clip { /*Esta orientada hacia el fondo*/
+    background-color: skyblue;
+    background-image: url("../assets/Nissan_Skyline_GT-R_R34.jpg");
+    background-repeat: no-repeat;
+    background-size: 200px;
+    background-size: cover;
+    background-clip: border-box; /* default */
+    background-clip: padding-box;
+    background-clip: content-box;/**/
+    padding: 1rem;
+  }
+  
+  /*Para la imagen de fondo*/
+  .bg-origin {/*de dece la posicion desde donde deberia empezar la imagen de fondo*/
+    background-color: skyblue;
+    background-image: url("../assets/Nissan_Skyline_GT-R_R34.jpg");
+    background-repeat: no-repeat;
+    background-size: 200px;
+    background-size: cover;
+    background-origin: padding-box; /* default */
+    background-origin: border-box;
+    background-origin: content-box;
+    padding: 1rem;
+  }
+```
