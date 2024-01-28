@@ -1759,4 +1759,79 @@ Hay varias propiedades de ``Background-`` esto lo podemos ver en CSSreference es
 ¿Que diferencia hay entre usar Backgraunt y Backgraunt-Color? si solamente vas a trabajar con el color de fondo entonces usa backgrount-color por que te resetea toda las demas propiedades por eso en la medida de lo posible evita el Short hand [bacground: color, size...] por que yo prefiero estar utilizando las propiedades que voy a ir afectando que aprenderme el ORDER primero image color...
 
 Si vas a tener imagenes de fondo lo ideal es que tengas imagenes en formato png con transpariencia
-## 
+
+Arte.
+
+```css
+ .bg-attachment{
+    background-color: skyblue;
+    background-image: url("../assets/Nissan_Skyline_GT-R_R34.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 50vh;
+    background-attachment: scroll;/*default*/ 
+    /*Es como si fuera una ventana donde vemos de arriba hacia abajo, LA IMAGEN SE QUEDA FIJA EN EL VIEW PORT*/
+    background-attachment: fixed;
+  }
+/*la imagen que esté mas hacia el punto y coma, la ultima es la que va estár mas al fondo*/
+  .bg-multiple{
+    width: 50%;
+    background-image: 
+      url("../assets/png-transparent-rolex-gmt-master-ii-fashion-clothing-watch-rolex.png"),
+      url("../assets/Nissan_Skyline_GT-R_R34.jpg");
+    background-repeat: repeat-x, no-repeat; /*Respectivamente a las urls*/
+    background-size: 10%, cover;/*10% del contenedor || puedes tener efectos bastante interesantes*/
+    }
+
+  .bg-art{
+    width: 100%;
+    height: 700px;
+    background: url("../assets/arbol.png") no-repeat center bottom,
+    url("../assets/aves.png") no-repeat center bottom fixed,
+    url("../assets/cielo.png") no-repeat center top;
+  }
+```
+## Estilos de Imágenes.
+
+quisas me veas muy repetitivo, la mejor forma de aprender es la repeticion entonces que tu me veas hacer esto cosntantemente se va ir formando el habito.
+
+Una de las caracteristicas mas importantes es hacerlas responsivas es decir que las imagenes se vayan adaptando al contenedor. Entonces hacer una imagen que se adapte al tamaño de la pantalla.
+
+¿Cuando tu quieras lograr que una imagen sea responsiva? es buena practica que como estilo de reseteo a tus imagenes le apliques la propiedad ``max-width: 100%;`` 
+
+> _Recuerda! las Imagenes trabajan en linea._
+
+con **relleno-Fill** es esté comportamiento por defecto que está tratando de ajustar las dimenciones de la imagen al tamaño que le hemos especificado sin contar su proporcion
+
+
+
+Si tu necesitas que tu imagen se vaya adaptando al tamaño del contenedor con que le apliques esto es suficiente.
+
+```css
+    img{
+    max-width: 100%;/*hack*/
+    height: auto;
+}
+```
+
+el object fit y el object position lo vas a utilizar cuando necesites medidas concretas a tus imagenes ejemplo una targeta-card
+
+```css
+.card img{ /*busca el elemento img dentro de card*/
+    background-color: blanchedalmond;
+    height: 300px;
+    object-fit: fill;/*default*/
+    object-fit: cover; /*corta y lo centra Activa la otra propiedad  Object-Position*/
+    object-fit: contain; /*Asegura que toda la imagen se vea dentro del contenedor*/
+    object-fit: none; /*escala la imagen al tamaño real y como el valor por defecto de object position es 50 50  pues la está centrando agarra el centro de la imagen*/
+    object-fit: scale-down; /*toma el valor que sea menor de los valores CONTAIN y  none no es muy utilizado*/
+    /*object-position: 50% 50%;/*Default*/
+    object-position: right top;
+    object-position: right bottom;
+    object-position: left top;
+    object-position: -50px center;
+    object-position: 50% 50%;
+}
+```
+

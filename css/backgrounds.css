@@ -104,7 +104,7 @@ background-attachment: define cómo se comportará la imagen de fondo al desplaz
   .bg-multiple{
     width: 50%;
     background-image: 
-      url("../assets/png-transparent-rolex-gmt-master-ii-fashion-clothing-watch-rolex.png"),
+      url("../assets/alcaldia.png"),
       url("../assets/Nissan_Skyline_GT-R_R34.jpg");
     background-repeat: repeat-x, no-repeat; /*Respectivamente a las urls*/
     background-size: 10%, cover;/*10% del contenedor || puedes tener efectos bastante interesantes*/

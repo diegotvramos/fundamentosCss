@@ -1,0 +1,27 @@
+
+img{
+    max-width: 100%;/*hack*/
+    height: auto;
+}
+
+.card{
+    border:medium solid black;
+    width: 400px;
+    height: 400px;
+}
+
+.card img{ /*busca el elemento img dentro de card*/
+    background-color: blanchedalmond;
+    height: 300px;
+    object-fit: fill;/*default*/
+    object-fit: cover; /*corta y lo centra Activa la otra propiedad  Object-Position*/
+    object-fit: contain; /*Asegura que toda la imagen se vea dentro del contenedor*/
+    object-fit: none; /*escala la imagen al tamaño real y como el valor por defecto de object position es 50 50  pues la está centrando agarra el centro de la imagen*/
+    object-fit: scale-down; /*toma el valor que sea menor de los valores CONTAIN y  none no es muy utilizado*/
+    /*object-position: 50% 50%;/*Default*/
+    object-position: right top;
+    object-position: right bottom;
+    object-position: left top;
+    object-position: -50px center;
+    object-position: 50% 50%;
+}
