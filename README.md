@@ -1664,18 +1664,18 @@ Hay varias propiedades de ``Background-`` esto lo podemos ver en CSSreference es
 
 > _Te sugiero que lo evites_
 
-background-color: define el color de fondo del elemento
-background-image: define la imagen de fondo del elemento
-background-size: define el tamaño de la imagen de fondo, primer valor x, segundo y
+**background-color:** define el color de fondo del elemento
+**background-image:** define la imagen de fondo del elemento
+**background-size:** define el tamaño de la imagen de fondo, primer valor x, segundo y
     - cover: cambia el tamaño de la imagen de fondo para asegurarse de que permanezca completamente visible
     - contain: cambia el tamaño de la imagen de fondo para asegurarse de que el elemento esté completamente cubierto
-background-repeat: define cómo se repite la imagen de fondo en el elemento
-background-position:
+**background-repeat:** define cómo se repite la imagen de fondo en el elemento
+**background-position:**
   define la posición de la imagen de fondo, primer valor x, segundo y, si no se especifica un segundo valor éste será center
   aparte de valores numéricos podemos indicar el posicionamiento con las palabras: center, top, bottom, left and right
-background-clip: define cuánto debe extenderse el fondo dentro del elemento.
-background-origin: define el origen de la imagen de fondo.
-background-attachment: define cómo se comportará la imagen de fondo al desplazarse por la página.
+**background-clip:** define cuánto debe extenderse el fondo dentro del elemento.
+**background-origin:** define el origen de la imagen de fondo.
+**background-attachment:** define cómo se comportará la imagen de fondo al desplazarse por la página.
 
 ```css
     .box{
@@ -1754,3 +1754,9 @@ background-attachment: define cómo se comportará la imagen de fondo al desplaz
     padding: 1rem;
   }
 ```
+
+
+¿Que diferencia hay entre usar Backgraunt y Backgraunt-Color? si solamente vas a trabajar con el color de fondo entonces usa backgrount-color por que te resetea toda las demas propiedades por eso en la medida de lo posible evita el Short hand [bacground: color, size...] por que yo prefiero estar utilizando las propiedades que voy a ir afectando que aprenderme el ORDER primero image color...
+
+Si vas a tener imagenes de fondo lo ideal es que tengas imagenes en formato png con transpariencia
+## 

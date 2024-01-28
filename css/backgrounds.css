@@ -88,3 +88,32 @@ background-attachment: define cómo se comportará la imagen de fondo al desplaz
     background-origin: content-box;
     padding: 1rem;
   }
+
+  .bg-attachment{
+    background-color: skyblue;
+    background-image: url("../assets/Nissan_Skyline_GT-R_R34.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 50vh;
+    background-attachment: scroll;/*default*/ 
+    /*Es como si fuera una ventana donde vemos de arriba hacia abajo, LA IMAGEN SE QUEDA FIJA EN EL VIEW PORT*/
+    background-attachment: fixed;
+  }
+/*la imagen que esté mas hacia el punto y coma, la ultima es la que va estár mas al fondo*/
+  .bg-multiple{
+    width: 50%;
+    background-image: 
+      url("../assets/png-transparent-rolex-gmt-master-ii-fashion-clothing-watch-rolex.png"),
+      url("../assets/Nissan_Skyline_GT-R_R34.jpg");
+    background-repeat: repeat-x, no-repeat; /*Respectivamente a las urls*/
+    background-size: 10%, cover;/*10% del contenedor || puedes tener efectos bastante interesantes*/
+    }
+
+  .bg-art{
+    width: 100%;
+    height: 700px;
+    background: url("../assets/arbol.png") no-repeat center bottom,
+    url("../assets/aves.png") no-repeat center bottom fixed,
+    url("../assets/cielo.png") no-repeat center top;
+  }
