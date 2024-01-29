@@ -1835,3 +1835,208 @@ el object fit y el object position lo vas a utilizar cuando necesites medidas co
 }
 ```
 
+## Estilos de listas.
+
+ir a `cssreferens` o mejor a un a la documentacion de mozilla developmen network [MDN](https://developer.mozilla.org/es/docs/Web/CSS/list-style-type).
+
+al tenr fuera la viñeta se ve una composicion visual mas fluido, bien hecho
+
+``LIST-STYLE-POSITION: outside;`` por defecto 
+
+
+List-Style es un short-hand tienes que listar el tipo la imagen y la posicion
+
+**Texto en columna**
+
+>No confundas, para maquetacion vamos a usar el modulo de flexbox y el modulo de grid css esto es mas que nada para redacciones 
+
+¿Cuando podriamos usarlo? eje: cuando estemos simulando la maquetacion de un sitio de periodico
+
+hay 4 propiedades que controla esto.
+
+```css
+    .list{
+    list-style-type:disc; /*default*/
+    list-style-type: square;
+    list-style-type:circle;
+    list-style-type: lower-roman;
+    list-style-type: upper-roman;
+    list-style-type: decimal;
+    list-style-type: decimal-leading-zero;
+    list-style-type: lower-greek;
+    list-style-type: none;/*si tú le quieres quitar el tipo tambien le puedes poner el valor de none*/
+    list-style-type: lower-greek;
+    list-style-image: url("../assets/cielo.png"); /*Es muy retro*/
+    list-style-image: none; /*default*/
+}
+
+.list li{
+    list-style-type: none;
+}
+
+.list li::before{
+    content: "";
+    display: inline-block;
+    width: 2rem;
+    height: 1rem;
+    background-image: url("../assets/alcaldia.png"); /*el tamaño  no se visualiza aun*/
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/*LIST-STYLE-POSITION: outside;  bulet: la viñetita que se pone al lado de las listas*/
+
+.list-2 li{
+    background-color: coral;
+    list-style-position: outside; /*la viñeta está afuera*/
+    list-style-position: inside; /*la viñeta está adentro*/
+    list-style-position: outside;
+}
+
+
+.list-3 li{
+    background-color: cornsilk;
+    list-style: lower-latin inside;
+    list-style: lower-latin outside;
+    list-style: lower-latin url("../assets/cielo.png")outside;
+    list-style: lower-latin inside;
+}
+
+.text-column-4{
+    list-style-position: inside;
+    column-count: 4;
+    column-gap: 2rem; /*Separacion entre 2 columnas*/
+    column-rule: thin dotted red;
+    column-width: 100px;/*tamaño minimo de anchura de las columnas*/
+}
+
+.text-column-3{
+    column-count: 3;
+    column-gap: 1rem; /*Separacion entre 2 columnas*/
+    column-rule: thin solid gray;
+    column-width: 100px;
+}
+```
+
+## Estilos de Tablas.
+
+Las tablas hoy no sirven para tabular datos a principios de la web se utilizaba para hacer la maquetacion pero gracias a Flexbox es que ya podemos hacer la maquetacion mas profecionalmente pero cuando tengamos la necesidad de tabular datos las tablas siempre van a ser importantes y hay un par de estilos que podemos aplicar.
+
+> Atajo para hacer tablas. ``table.table>tr*3>td*3``
+
+aplicar borde directamente al alemento html ya está muy depreciado actualmente, para poder aplicar bordes lo debemos hacer a travez de CSS con la propiedad border.
+
+```css
+    .table{
+    font-size: 3rem;
+    border-collapse: separate;/* default || Propiedad exclusiva de la tabla*/
+    border-collapse: collapse;
+    border-collapse: separate;
+    empty-cells: show;/*Default*/
+    empty-cells: hide;
+    }
+
+    table,
+    td,
+    th{
+        border: medium solid rebeccapurple;
+        border-spacing: 1rem; /*es el espaciado que hay entre las celdas*/
+    }
+
+    /*tr no tiene sentido aplicar bordes por que son filas*/
+
+    /*Html es muy parecido a escribir en un procesador de texto*/
+```
+
+## Estilos de formularios
+
+> _Si tu tienes 2 o mas proyectos en vs code lo que te conviene  es abrir lo en una ventana independiente_
+
+vamos a utilizar: bordes anchos, tamaño de letra  no vamos a ver nuevos atributos de css.
+Que pasa para elementos de tipo radio-botones o checkbox o listas, los dichosos selects ese tipo de elementos de formulario son elementos que cuestan darles estilos si visitas [bootstrap](https://getbootstrap.com/docs/5.3/forms/overview/#overview)  verás que sus estilos son muy parecidos a los que hacemos nativamente (o los estilos propios que les da los navegadores) y las mejores animaciones la tiene [materializecss](https://materializecss.com/)
+
+## Formulario de Contacto con CSS
+
+Hay que entender que el formulario es un elemento que trabaja en caja.
+
+Los imputs de formulario trabajan en linea
+
+```css
+html{
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+*,
+*::after,
+*::before{
+    box-sizing: inherit;
+}
+
+
+.contact-form{
+
+    --form-text-color: #666;
+    --form-placeholder-color: #006999;
+    --form-success-color: #4caf50;
+    --form-error-color: #f44336;
+    --form-bg-color: #eee;
+    --form-border-color: #222;
+
+    background-color: var(--form-bg-color);
+    border: thin solid var(--form-border-color);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2rem;
+    width: 80%;
+}
+
+.contact-form > *{ /*Todo los elementos del html sin importar su naturaleza*/
+ display: block;
+ width: 100%;
+ margin-bottom: 2rem; /*si el paddin es de 2 rem pel margin-bottom tambien deberia ser de 2rems*/
+ font-family: sans-serif;
+ font-size: 1rem;
+ padding: .5rem;/*espaciado a los elementos de formulario*/
+ border-radius: .25rem;
+ color: var(--form-text-color);
+ caret-color: var(--form-placeholder-color); /*Color del cursor*/
+}
+
+/*Estilos a nivel de validaciones*/
+.contact-form > *::placeholder{
+    color: var(--form-placeholder-color)
+}
+
+.contact-form > *[required]:invalid{ /*que tengan un valor invalido (Seudoclase)*/
+    border:  thin solid var(--form-error-color);
+}
+
+.contact-form > *[required]:valid{ /*que tengan un valor invalido (Seudoclase)*/
+    border:  thin solid var(--form-success-color);
+}
+
+
+.contact-form input[type="submit"]{
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    background-color: var(--form-placeholder-color);
+    font-weight: bold;
+    color: #fff;
+}
+
+/*le estoy aplicando pointer en un estado hover*/
+.contact-form input[type="submit"]:hover{
+    cursor: pointer;
+    opacity: 0.75;
+}
+
+/*para que ya no se cambie el tamaño de la text area*/
+
+.contact-form textarea{
+    resize: none;
+}
+```

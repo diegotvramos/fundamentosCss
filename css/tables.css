@@ -1,0 +1,22 @@
+
+
+
+.table{
+    font-size: 3rem;
+    border-collapse: separate;/* default || Propiedad exclusiva de la tabla*/
+    border-collapse: collapse;
+    border-collapse: separate;
+    empty-cells: show;/*Default*/
+    empty-cells: hide;
+}
+
+table,
+td,
+th{
+    border: medium solid rebeccapurple;
+    border-spacing: 1rem; /*es el espaciado que hay entre las celdas*/
+}
+
+/*tr no tiene sentido aplicar bordes por que son filas*/
+
+/*Html es muy parecido a escribir en un procesador de texto*/
