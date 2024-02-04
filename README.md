@@ -2040,3 +2040,120 @@ html{
     resize: none;
 }
 ```
+
+## EFECTOS VISUALES Y MOVIMIENTOS EN CSS.
+
+ Si tu algun momento trabajaste con algun software de diseño llamesé photoshop ilustrator corel drow after efects figma xd, scketch sabes que dentro de los paneles de propiedades de estos softwares. a los elementos que arrastramos hacia el camvas hacia la mesa de trabajo podemos aplicarle un sin fin de efectos como mascaras transformaciones filtros modos de mescla sombras blurs degradados si analizamos todos estos softwares están programados internamente pues cada ves que los softwares se van actualizando van sacando nuevos efectos si lo analisas todo lo que podemos hacer fue programado por alguien y lo mas hermoso es que en el mundo del diseño web podemos hacer todo esos efectos con el código y el lenguaje en el que lo podemos hacer es justamente CSS 
+
+ Pagina recomendada:  https://cssreference.io/ 
+
+ ### Estilos iniciales para nuestro documento.
+
+ receteamos el html en css
+
+ ### Sombras a las cajas (Box-shadow)
+
+ Podemos aplicarle sombras a las cajas y a los textos
+
+ ### Sombras de Textos.
+
+ ### Sombras Multiples.
+
+ ```css
+ .shadows-multiple{
+    font-size: 2rem;
+    text-align: center;
+    box-shadow: 1rem 1rem 1rem 1rem #0005, 1rem 1rem 1rem 1rem #f00 inset, -0.5rem -0.5rem 0.5rem 2rem hotpink;
+    text-shadow: -1rem -1rem 0.5rem navy, 1rem 1rem 0.5rem greenyellow;
+    }
+```
+
+### Filtro de sombras.
+
+Todo estos filtros vienen vienen en photoshop, ilistrator incluso en figma, cada uno de sos filtros son funciones.
+
+Este filtro de ``drop-shadow`` va aplicar la sombra a imagenes con trasparencia alfa.
+
+``filter: drop-shadow(1rem 1rem 1rem red);`` aplica sombras el contorno de la imagen PNG(Alpha) no aplica las sombras multiples
+
+``box-shadow``  sombras a la caja. Para CSS las etiquetas html son cajas.
+
+```css
+    .drop-shadow{
+    width: 600px;
+    height: auto;
+    }
+
+    .drop-shadow img{
+        max-width: 100%;
+        height: auto;
+        /* filter: drop-shadow(mov-x mov-y blur-radius color); */
+        box-shadow: 1rem 1rem 1rem 1rem #f00;
+        filter: drop-shadow(1rem 1rem 1rem red); /*muy importante, no vayas a poner comas en la separacion, la coma se utiliza en los efectos múltiples.*/
+        filter: drop-shadow(1rem 1rem 1rem green); 
+    }
+```
+
+### Degradados Lineales.
+
+si quieres utilizar una herramienta para los gradientes puedes usar: [cssgradient](https://cssgradient.io/)
+
+¿Cual es la logica para entender los degradados?
+
+los gradientes trabajan en la propiedad background pero la buena práctica te sugiere que trabajes con ``background-image``
+
+En CSS y vayas a dar un ``grado de 0`` si le tienes que especificar el 0 con la palabra ``deg``
+
+La proporcion de colores es similar ¿que hacemos para que el color abarque un porcentaje determinado? 
+
+Podemos hacer degradados que parescan banderas.
+
+```css
+    .linear-gradient{
+    background-image: linear-gradient(red, green);
+    background-image: linear-gradient(red, green, blue);
+    background-image: linear-gradient( 0deg, red, green, blue);/*no es necesario que especifiques 0 vwp, 0px*/
+    background-image: linear-gradient( 20deg, red, green, blue);
+    background-image: linear-gradient(45deg, red, green, blue);
+    background-image: linear-gradient( 90deg, red, green, blue);
+    background-image: linear-gradient( 180deg, red, green, blue);
+    background-image: linear-gradient( 270deg, red, green, blue); 
+    background-image: linear-gradient( 180deg, red, green, blue); 
+    background-image: linear-gradient( to right, red, green, blue); /*Tambien lo podemos expresar en palabras*/
+    background-image: linear-gradient( to top, red, green, blue); /*el que se va aliniear con la palabra es el ultimo color que hayas definido*/
+    background-image: linear-gradient( to left, red, green, blue);
+    background-image: linear-gradient( to top left,red, green, blue); 
+    background-image: linear-gradient( to top right, red, green, blue);
+    background-image: linear-gradient( to bottom right, red, green, blue);
+    background-image: linear-gradient( to bottom left, red, green, blue); 
+    background-image: linear-gradient( 90deg, red 30%, green, blue);  /*puedes ver que la proporcion de colores es igual*/
+    background-image: linear-gradient( 90deg, green 33%, white 34% 67%, red 68%); /*Se sobreentiende que va del 0% al 30% & 68% al 100%*/
+}
+```
+
+### Degradados Radiales (Radial-gradient)
+
+```css
+    .radial-gradient{
+    background-image: radial-gradient(cyan, magenta);
+    background-image: radial-gradient(cyan, magenta, yellow);
+    background-image: radial-gradient(circle 4rem, cyan 30%, magenta 80%, yellow); /*el cuan va ir de 0 a 30 por ciento del radio del circulo*/
+    background-image: radial-gradient(circle 100px, cyan 30%, magenta 60%, yellow 90%);
+    background-image: radial-gradient(circle 100px at top, cyan 30%, magenta 80%, yellow);/*Tambien podemos especificar donde va ir el centro del radio*/
+    background-image: radial-gradient(circle 100px at bottom, cyan 30%, magenta 80%, yellow);
+    background-image: radial-gradient(circle 100px at left, cyan 30%, magenta 80%, yellow);
+    background-image: radial-gradient(circle 100px at center, cyan 30%, magenta 80%, yellow); /*Valor por defecto*/
+    background-image: radial-gradient(circle 100px at top left, cyan 30%, magenta 80%, yellow);
+    background-image: radial-gradient(circle 100px at top right, cyan 30%, magenta 80%, yellow);
+    background-image: radial-gradient(circle 100px at bottom left, cyan 30%, magenta 80%, yellow);
+    background-image: radial-gradient(circle 100px, cyan 30%, magenta 80%, yellow);
+    background-image: radial-gradient(ellipse 100px 50px, cyan 30%, magenta 80%, yellow); /*Para un radio eliptico debemos definir 2 valores*/
+    background-image: radial-gradient(circle 100px at top, cyan 30%, magenta 80%, yellow);
+    background-image: radial-gradient(circle 100px, red 50%, white 50%);/*Bandera de Japon*/
+}
+```
+
+### Degradados cónicos (conic-gradient)
+
+
+
