@@ -2155,5 +2155,138 @@ Podemos hacer degradados que parescan banderas.
 
 ### Degradados cónicos (conic-gradient)
 
+piensa en las manecillas del reloj, las 12 seria como el 0 %
+
+Lo podemos controlar con porcentajes, tambien lo podemos controlar por grados 
+
+```css
+    .conic-gradient{
+    background-image: conic-gradient(red, green);
+    background-image: conic-gradient(red, green, blue);
+    background-image: conic-gradient(red 0% 50%, green 60%, blue 80%);
+    background-image: conic-gradient(red 0deg 90deg, green 120deg 240deg, blue 270deg);
+    background-image: conic-gradient(from 90deg,
+    red 0deg 90deg,
+    green 120deg 240deg,
+    blue 270deg); /*Inicio de los grados va ser a los 90*/
+    }
+```
+
+### Patrones con degradados.
+
+Hay 3 funciones auxiliares al linear gradient, radial-gradient, & conic-gradient que nos permiten generar patrones visuales.
+
+```css
+    .repeat-gradient-linear{
+background-image: repeating-linear-gradient(red 0 10px, green 10px 20px, blue 20px 30px);
+background-image: repeating-linear-gradient(
+    45deg,
+    red 0 10px, 
+    green 10px 20px, 
+    blue 20px 30px);
+}
+
+.repeat-gradient-radial{
+    background-image: repeating-radial-gradient(circle 4rem, cyan 0 10px, magenta 10px 20px, yellow 20px 30px);
+}
+
+.repeat-gradient-conic{
+    background-image: repeating-conic-gradient(red 0 8%, yellow 8% 16%, black 16% 24% );
+}
+```
+
+### Gráficas con degradados.
+
+Ésta seccion es un poco más práctica, te voy a enseñar como con CSS construir un par de efectos 
+
+```css
+    .chart-gradient{
+    background-image: conic-gradient(cyan 0 50%, magenta 50% 80%, yellow 80%);
+    border-radius: 50%;
+}
+
+
+/*Es la union de 2 degradados*/
+.donut-gradient{
+    background-image: 
+    radial-gradient(white 30%, black 31%, transparent 33%),
+    conic-gradient(cyan 0 50%, magenta 50% 80%, yellow 80%);
+    border-radius: 50%;
+}
+```
+
+### Filtros (filter)
+
+Estos filtros podemos utilizarlos en softwares como photoshop, ilustrator, incluso softwares de interaccion como Figma,  XD, sketch, que se volvieron muy populares por que aplicaciones como Instagram nos permiten aplicar ciertos filtros
+
+hay una gran cantidad de filtros que podemos aplicar a nuestro CSS  los filtros se aprecian mejor cuando lo aplicamos a una imagen
+
+#### Filtros Múltiples
+
+```css
+    .filters-multiple{
+    filter: blur(0.10rem) hue-rotate(270deg) opacity(0.75) invert(1);
+}
+
+.relative{
+    position: relative;
+}
+
+```
+
+#### Filtros a fondos
+
+La intencion es poner la DIV en medio de la card(la Imagen) 
+
+> recuerda ver los cursos de flex-box y grid-css que son las tecnicas que te van a permitir dominar y maquetar y controlar todo los procesos de maquetacion.
+
+sobre el color de fondo con cierta opacidad un Blur. por que visualmente se ve muy bien
+
+La gente que tiene fundamento y teoria de diseño entendiendo la teoria del color le puede sacar mucho provecho.
+
+```css
+
+
+.backdrop-filter,
+.backdrop-filter-multiple{
+    position: absolute; /*Pierde sus propiedades asi que busca a su contenedor padre*/
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+.backdrop-filter h4{
+    border-radius: 1rem;
+    padding: 2rem;
+    font-size: 3rem;
+    color: #000;
+    background-color: rgba(255, 102, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: grayscale(1);
+    backdrop-filter: sepia(1);
+    backdrop-filter: opacity(0.25);
+    backdrop-filter: hue-rotate(180deg);
+    backdrop-filter: blur(0.5rem);
+}
+
+.backdrop-filter-multiple h4{
+    border-radius: 1rem;
+    padding: 2rem;
+    font-size: 3rem;
+    color: #fff;
+    background-color: rgba(255, 102, 255, 0.5);
+    backdrop-filter: blur(1rem) hue-rotate(240deg) opacity(0.75) invert(1);
+}
+```
+
+
+Te voy a enseñar una tecnica el cual podemos usar un filtro en particular para hacer el tema oscuro y tema claro
+
 
 
