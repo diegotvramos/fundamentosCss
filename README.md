@@ -2289,4 +2289,196 @@ La gente que tiene fundamento y teoria de diseño entendiendo la teoria del colo
 Te voy a enseñar una tecnica el cual podemos usar un filtro en particular para hacer el tema oscuro y tema claro
 
 
+### Modo Dark/Light
+
+
+```css
+    .dark-mode{
+    background-color: #fff;
+    color: #000; /*para que funcione debemos poner color de texto y color de fondo los colores que le pone el navegador no valen*/
+    filter: invert(1);
+}
+
+.dark-mode img{
+    filter: invert(1);
+}
+```
+
+La desventaja es que afecta a los elementos hijos, toda imagen que pongas se va ver afectada por la inversion de filtros, no es la mejor opcion.
+
+### Modos de mescla. (mix-blend-mode)
+
+El efecto de los bland-modes lo debemos a plicar directamente a las imagenes no a su contenedor padre CARD
+
+```css
+    .blend-modes img{
+    mix-blend-mode: normal;
+    mix-blend-mode: color;
+    mix-blend-mode: color-dodge;
+    mix-blend-mode: color-burn;
+    mix-blend-mode: screen;
+    mix-blend-mode: multiply;
+    mix-blend-mode: saturation;
+    mix-blend-mode: luminosity;
+    mix-blend-mode: hue;
+    mix-blend-mode: exclusion;
+    mix-blend-mode: difference;
+    mix-blend-mode: hard-light;
+    mix-blend-mode: soft-light;
+    mix-blend-mode: lighten;
+    mix-blend-mode: darken;
+    mix-blend-mode: overlay;
+}
+```
+es necesario comentar, ya que por cascada aplica todo los modos de mescla y puede que baje el rendimiento de la página.
+
+### Modos de Mezcla a Fondos (background-blend-mode)
+
+Esta propiedad se utiliza para controlar cómo se mezcla una imagen de fondo con el color de fondo de un elemento.
+
+se aprecia mejor en imágenes.
+
+>- ``**RECUERDA: la Propiedad background-blend-mode tiene varios operadores o Valores**``
+
+> EJ: cover es un valor utilizado para la propiedad background-size.
+
+ ```css
+   .bg-blend-modes{
+    background-image: url("../assets/planeta-tierra.jpg"), url("../assets/fuso-5t.jpg");
+    background-size: cover; /*ajusta el tamaño de las imagenes a al tamaño de la CARD*/
+    background-blend-mode: normal ;
+    background-blend-mode: color;
+    background-blend-mode: color-dodge;
+    background-blend-mode: color-burn;
+    background-blend-mode: screen;
+    background-blend-mode: multiply;
+    background-blend-mode: saturation;
+    background-blend-mode: luminosity;
+    background-blend-mode: hue;
+    background-blend-mode: exclusion;
+    background-blend-mode: difference;
+    background-blend-mode: hard-light;
+    background-blend-mode: soft-light;
+    background-blend-mode: lighten;
+    background-blend-mode: darken;
+    background-blend-mode: overlay;
+
+    /* background-blend-mode: multiply; */
+    
+} 
+ ```
+
+
+### Enmascaramiento
+
+Consiste en mostrar parte de la imagen
+
+hay heramientas para generar poligono [clip-path](https://bennettfeely.com/clippy/)
+
+```css
+    .clip-path{/*Puede hacer uso de 4 funciones.*/
+    clip-path: circle(); /*puede servirme para fotos de perfil*/
+    clip-path: circle(5rem);
+    clip-path: circle(100px);
+    clip-path: circle(100px at top);
+    clip-path: circle(100px at left);
+    clip-path: circle(100px at bottom);
+    clip-path: circle(100px at left bottom); /*podemos hacer combinaciones: izquierda a abajo*/
+    clip-path: circle(100px at right top);
+    clip-path: circle(100px at 0 0); /*moverlo por coordenadas*/
+    clip-path: circle(100px at 30%); /*lo coloca al 30% de la targeta*/
+    clip-path: circle(100px at 32% 26%);
+    clip-path: ellipse();
+    clip-path: ellipse(rem 1rem);
+    clip-path: ellipse(200px 100px at left);/*moverlo a:*/
+    clip-path: ellipse(200px 100px at right);
+    clip-path: ellipse(200px 100px at top);
+    clip-path: ellipse(200px 100px at bottom);
+    clip-path: ellipse(200px 100px at left bottom);
+    clip-path: ellipse(200px 100px at right bottom);
+    clip-path: ellipse(200px 100px at left top);
+    clip-path: ellipse(200px 100px at right top);
+    clip-path: ellipse(200px 100px at 0 1);
+    clip-path: ellipse(200px 100px at 300px 50px);
+    clip-path: ellipse(200px 100px at 32% 26%);
+    clip-path: inset(2rem); /*si o si hay que ponerle valores*/
+    clip-path: inset(2rem); /*es como si le colocara padings a todo los lados*/
+    clip-path: inset(2rem 1rem);
+    clip-path: inset(3rem 2rem 1rem);/*top rigth bottom lefth*/
+    clip-path: inset(1rem round 1rem);
+    clip-path: inset(1rem round 1rem 2rem);
+    clip-path: inset(1rem round 1rem 2rem 3rem); /*como la mancillas del reloj*/
+    clip-path: inset(1rem round 1rem 2rem 3rem 4rem);
+    clip-path: polygon(0 0, 100%.0, 50% 100%);  
+
+
+    clip-path: polygon(0% 15%, 15% 15%, 15% 0%, 85% 0%, 85% 15%, 100% 15%, 100% 85%, 85% 85%, 85% 100%, 15% 100%, 15% 85%, 0% 85%);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+```
+
+### Formas (Shape-outside)
+
+Para que las imágenes se vayan fucionando con los parrafos vamos hacer que las 3 imágenes floten.
+
+La flotacion nace para que podamos convivir entre los elementos con nuestro contenido.
+
+Gracias a las formas yo puedo hacer que el texto se adapte como al circulo de la imagen
+
+Ya que trabaja con porcentajes solo se preucupan por las dimenciones de las imágenes (Cuadradas o rectangulares)
+
+Estó te puede servir en una típica seccion informativa donde te cuentan la historia de la empresa, o una breve descripcion de los integrantes de la compañia así que el avatar de la fotografia de la persona y al costado sus datos
+
+```css
+
+    .shapes {
+    border: thick solid black;
+    padding: 1rem;
+    margin: 0 auto 5rem;
+    max-width: 800px;
+    /* font-size: 1.25rem; */
+}
+
+.shapes img{
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    object-position: 0 50%;
+}
+
+.float-left{
+    float:left;
+}
+
+.float-right{
+    float: right;
+}
+
+
+.shape-1{
+    margin: 4rem 2rem 4rem 0;
+shape-outside: circle();
+shape-outside: circle(5rem);
+shape-outside: circle(); /*Es mejor no poner valores por que el texto ya que el texto se sobrepone a la imagen*/
+shape-outside: ellipse();
+shape-outside: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+shape-outside: circle(); 
+}
+
+.shape-2{
+    margin: 4rem 0 4rem 2rem;
+    shape-outside: ellipse();
+}
+
+.shape-3{
+    margin: 2rem 8rem 0 0;
+    shape-outside: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); /*nos ayudamos de la herramienta: https://bennettfeely.com/clippy/*/
+}
+```
+
+
+
+
+
 
