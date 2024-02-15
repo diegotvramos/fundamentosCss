@@ -2477,8 +2477,86 @@ shape-outside: circle();
 }
 ```
 
+### Sitio One Page Scroll (scroll-margin & scroll-behaivor)
+
+maquetacion par un sitio de una sola página.
+
+El ``position: sticky;`` 
+
+Al hacer click al enlace la seccion comienza desde donde comienza la etiqueta Section. y lo pone a top 0 de la página, entonces ese es uno de los detalles cuando hacemos sitios de una sola página.
+
+hay 2 soluciones, ponerle mas padding o 
+
+> cuando estan haciendo sitios que van en una página y los enlaces son anclas internas (enlaces internos )
+
+la mejor solucion es con una propiedad llamada: `Scroll margin top` reduce el tamaño en lugar de poner ids  en top 0 de la página entonces lo pondria a la distancia que nosotros le indiquemos
+
+Podemos darle animacio al momento de cambiar las secciones: para eso hay que ir al documento html(es el que se está desplazando) nosotros le podemos dar  una propiedad `scroll-behavior: smooth;` (Comportamiento del Scroll) Smoot hace referencia a un desplazamiento mas suave estó antes se programaba en javascript
 
 
+```css
+    html{
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: sans-serif;
+    scroll-behavior: smooth;
+}
+
+*,
+*::after,
+*::before{
+    box-sizing: inherit;
+}
 
 
+body,h1,h2{
+    margin: 0;
+}
 
+
+img{
+    max-width: 50%;
+    height: auto;
+}
+
+/*a todo los elementos de esta página  aplica un scroll || el valor de un EX es la mitad de un rem o Em */
+
+[id]{
+    scroll-margin-top: 7.8ex; /*un EX es la midad de un Rem o Em*/
+}
+
+
+.header{
+    position: sticky;
+    top: 0;
+    padding: .25rem;
+    /* height: 4rem; */
+    text-align: center;
+    background-color: #000;
+    color: #fff;
+}
+
+/*estilo a los enlaces */
+.header a{
+    margin: 0 1rem;
+    color: #00c4d6;
+}
+
+.header a:hover{
+    margin: 0 1rem;
+    color: #e94bb4;
+}
+
+.slide{
+    width: 100%;
+    min-height: 100vh;
+    color: #d9e8f0;
+    background-color: #1e2345;
+    /* padding: 4rem; */
+    padding: 2em;/*Dos rems a los 4 lado se vé Mejor*/
+}
+
+.slide:nth-child(even){
+    background-color: #108eb4;
+}
+```
