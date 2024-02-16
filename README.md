@@ -2555,8 +2555,99 @@ img{
     /* padding: 4rem; */
     padding: 2em;/*Dos rems a los 4 lado se vé Mejor*/
 }
-
+/*impares*/
 .slide:nth-child(even){
     background-color: #108eb4;
 }
 ```
+
+### Ajustes del Scroll Efecto Slides Vectoriales (scroll-snap-type & scroll-snap-align)
+
+Para no hacer la tipicas aburidas presentaciones con PowerPoint. 😂😂 Sorprende a tus amigos
+
+Snap: es el ajuste del desplazamiento que podemos hacer, y eso te va permitir hacer presentaciones.
+
+en el proximo curso te voy a enseñar las buenas prácticas: como los nombres que debes poner a tus clases, como debes escribirlos, como ordenar si tu hoja de estílo se hace muy grande
+
+> Tiene que tener una altura al tamaño del viewport
+
+> El ajuste del scroll puede hacerlo en horizontal como en vertical.
+
+> La propiedad que hace el efecto de slide al solo precionar el raton se llama: **scroll-snap-type** recibe 2 valores:
+
+>- El primer valor: que eje quieres controlar, podemos poner el valor de X. el valor de Y, el valor de Inline, Block, y Both Si quieres controlar al desplazamiento en X pon X o el eje Inline. Pudes poner Y  o la palabra Block para controlar el Scroll Vertical y pones la palabra recerbada Both, quiere decir que quieres controlar tanto el eje X como el Y.
+
+>- El segundo valor: hay 2 subvalores que pudes poner: Mandatory(obligatoria) Proximity tiene que estár mas hacia la siguiente diapositiva
+
+>- `El contenedor debe cumplir con una altura definida`
+
+>- `Con la propiedad Overflow en el eje que quiero controlar con el valor Scroll`
+
+>- `Con la propiedad Scroll-Snap-type activada`
+
+
+```css
+    html{
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: sans-serif;
+    scroll-behavior: smooth;
+}
+
+*,
+*::after,
+*::before{
+    box-sizing: inherit;
+}
+
+body{
+    margin: 0;
+}
+
+
+/*Mandatory es mas sensible y Proximity es menos sensible */
+.slides{
+    width: 100%;
+    height: 100vh; /*si o si debe ser del tamaño del viewport*/
+    overflow-y: scroll;/*el eje donde querramos controlar el ajuste del scroll la propiedad over flow tiene que tener si o si el valor de Scroll*/
+    /* scroll-snap-type: [x|y|inline|block|both][mandatory|proximity]; Estes son los valores que toma esa propiedad */
+    scroll-snap-type: none;
+    scroll-snap-type: block mandatory;
+    scroll-snap-type: y mandatory;
+    scroll-snap-type: block mandatory;
+    scroll-snap-type: block proximity;
+    scroll-snap-type: block mandatory;
+    scroll-snap-type: both mandatory; /*controla tanto en X como en Y*/
+}
+
+
+.slide{
+    width: 100%;
+    height: inherit; /*heredamos al altura*/
+    background-color: #1e2345;
+
+    scroll-snap-align: none; /*tambien deben tenr esta propiedad la Slide.*/
+    scroll-snap-align: end;
+    scroll-snap-align: start;
+    scroll-snap-align: center;
+}
+
+.slide:nth-child(even){
+    background-color: #108eb4;
+}
+
+
+.slide-container{
+    width: 100%;
+    width: 80%;
+    height: inherit; /*hereda la altura, si queremos que se ajuste a la altura de su contenedor  cada una de las Slides tendria que heredar la altura de su contenedor*/
+    margin: 0 auto;
+    display: flex; /*Flexbox  por defecto su direccion empieza en fila*/
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vw; /*El tamaño de fuente es de 3% a la anchura de la pantalla*/
+    color: #d9e8f0;
+}
+```
+

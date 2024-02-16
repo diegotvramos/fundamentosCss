@@ -59,6 +59,7 @@ img{
     padding: 2em;/*Dos rems a los 4 lado se vé Mejor*/
 }
 
+/*impares*/
 .slide:nth-child(even){
     background-color: #108eb4;
 }

@@ -1,0 +1,62 @@
+html{
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: sans-serif;
+    scroll-behavior: smooth;
+}
+
+*,
+*::after,
+*::before{
+    box-sizing: inherit;
+}
+
+body{
+    margin: 0;
+}
+
+
+/*Mandatory es mas sensible y Proximity es menos sensible */
+.slides{
+    width: 100%;
+    height: 100vh; /*si o si debe ser del tamaño del viewport*/
+    overflow-y: scroll;/*el eje donde querramos controlar el ajuste del scroll la propiedad over flow tiene que tener si o si el valor de Scroll*/
+    /* scroll-snap-type: [x|y|inline|block|both][mandatory|proximity]; Estes son los valores que toma esa propiedad */
+    scroll-snap-type: none;
+    scroll-snap-type: block mandatory;
+    scroll-snap-type: y mandatory;
+    scroll-snap-type: block mandatory;
+    scroll-snap-type: block proximity;
+    scroll-snap-type: block mandatory;
+    scroll-snap-type: both mandatory; /*controla tanto en X como en Y*/
+}
+
+
+.slide{
+    width: 100%;
+    height: inherit; /*heredamos al altura*/
+    background-color: #1e2345;
+
+    scroll-snap-align: none; /*tambien deben tenr esta propiedad la Slide.*/
+    scroll-snap-align: end;
+    scroll-snap-align: start;
+    scroll-snap-align: center;
+}
+
+.slide:nth-child(even){
+    background-color: #108eb4;
+}
+
+
+.slide-container{
+    width: 100%;
+    width: 80%;
+    height: inherit; /*hereda la altura, si queremos que se ajuste a la altura de su contenedor  cada una de las Slides tendria que heredar la altura de su contenedor*/
+    margin: 0 auto;
+    display: flex; /*Flexbox  por defecto su direccion empieza en fila*/
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vw; /*El tamaño de fuente es de 3% a la anchura de la pantalla*/
+    color: #d9e8f0;
+}
