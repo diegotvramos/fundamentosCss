@@ -43,6 +43,7 @@ body{
     scroll-snap-align: center;
 }
 
+/*Slides impares*/
 .slide:nth-child(even){
     background-color: #108eb4;
 }
@@ -59,4 +60,54 @@ body{
     align-items: center;
     font-size: 3vw; /*El tamaño de fuente es de 3% a la anchura de la pantalla*/
     color: #d9e8f0;
+}
+
+/*estilos a nuestro selector carrusel para que oculte el desbordamiento*/
+
+.carousel{
+    border: thick solid #d938f0;
+    display: flex; /*es más, hace que herede la altura*/
+    width: 50%;
+    height: 50vh;
+    overflow-x: hidden;
+}
+
+.carousel-container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 100%);
+    overflow-x: scroll; 
+    overflow-y: hidden;/*para evitar barra de Scroll horizontal O PUEDEN PONER AUTO*/
+    scroll-snap-type: x mandatory; 
+    scroll-snap-type: x proximity;
+    scroll-snap-type: inline mandatory; /*inline o x son valores similares*/
+    scroll-snap-type: both mandatory; /*hace referencia a  X y Y*/
+    scroll-snap-type: both proximity;
+}   
+
+.carousel-slide{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #108eb4;
+    scroll-snap-align: none;
+    scroll-snap-align: start;
+    scroll-snap-align: end;
+    scroll-snap-align: center;
+}
+
+.carousel-slide:nth-child(even){
+    background-color: #1e2345;
+}
+
+.gradient-text{
+    background-image: linear-gradient(45deg, magenta,  yellow);
+    -ms-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-background-clip: text;
+    background-clip: text; /*este es el nuevo valor que no está soportado al 100%*/
+    -ms-text-fill-color:transparent; /*está es una nueva propiedad: cuando estén bien soportadas ya no vamos a tener la necesidad de aplicar estós prefijos*/
+    -moz-text-fill-color:transparent;
+    -webkit-text-fill-color:transparent;
 }

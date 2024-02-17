@@ -1,0 +1,90 @@
+/*Aplicamos el reseteo*/
+html{
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: sans-serif;
+    
+}
+
+*,
+*::after,
+*::before{
+    box-sizing: inherit;
+}
+
+.box{
+    border: thick solid black;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5rem;
+    width: 200px;
+    height: 200px;
+}
+
+.card{
+    border: thick solid black;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5rem;
+    width: 600px;
+    height: 400px;
+}
+
+.card img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 40% 50%;
+}
+
+
+/*Transiciones HAY varias propiedades:
+transition-property
+transition-duration
+transition-timing-function:none, linear, ease, ease-in, ease-out, ease-in-out steps
+transition-delay
+transition: property duration timing-function delay
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties
+*/
+.transitions .box{
+    background-color: magenta;
+    transition-property: background-color; /*propiedad que quiero modificar*/
+    transition-duration: 500ms;
+    transition-timing-function: ease;
+    transition-delay: 0.25s;
+    transition: border-color 2s linear 1s; /*El short hand reemplaza todo lo anterior definido.*/
+    transition: all 2s ease-in-out 250ms; 
+}
+
+/*Para ver las transiciones es importante definir un estado hover*/
+
+.transitions .box:hover{
+    background-color: cyan;
+    border-color: red;
+    border-radius: 2rem;
+    border-style: dashed; /*Esta propiedad no es animable*/
+}
+
+.transitions .card{
+    /* transition: all 2s ease; */ /*para evitar que la transicion sea súbita*/
+    transition: opacity 1s ease-out,
+        border-color 3s steps(3),/*Sigue 3 pasos*/
+        filter 2s ease-in 1s,/*delay un segundo*/
+        box-shadow 1.5s linear 2s; 
+}
+
+
+.transitions .card:hover{
+    opacity: 0.75;
+    border-color: orchid;
+    filter: blur(0.15rem);
+    box-shadow: 1rem 1rem 2rem 0.5rem #000;
+}
+
+.transitions .card img{
+    transition: object-position 2s ease-in-out 3s;
+}
+
+.transitions .card img:hover{
+    object-position: 100% 50%;
+}

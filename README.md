@@ -2650,4 +2650,167 @@ body{
     color: #d9e8f0;
 }
 ```
+### Ajustes del Scroll Efecto Carrusel Horizontal(scroll-snap-type & scroll-snap-align)
 
+Puede servir para hacer carruseles que no estén controlados con JS. el contenido puede ser textos o imágenes.
+
+para hacer el efecto de Scroll-snap hay que cumplir 3 reglas.
+
+>- El contenedor de las Slides debe tener una altura o anchura bien definida.
+
+>- Una propiedad overflow en el eje que quiero controlar Scroll
+
+>- La declaracion de la propiedad ``Scroll-Snap-type`` (las hijas del contenedor necesita tener la propiedad de ``Scroll-snap-align``)
+
+¿Por que necesito dos contenedores?
+
+el contenedor "carousel" va enmascarar el contenido si no lo enmascaro va generar un scroll una barra de scroll horizontal
+
+```css
+    /*estilos a nuestro selector carrusel para que oculte el desbordamiento*/
+
+.carousel{
+    border: thick solid #d938f0;
+    display: flex; /*es más, hace que herede la altura*/
+    width: 50%;
+    height: 50vh;
+    overflow-x: hidden;
+}
+
+.carousel-container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 100%);
+    overflow-x: scroll; 
+    overflow-y: hidden;/*para evitar barra de Scroll horizontal O PUEDEN PONER AUTO*/
+    scroll-snap-type: x mandatory; 
+    scroll-snap-type: x proximity;
+    scroll-snap-type: inline mandatory; /*inline o x son valores similares*/
+    scroll-snap-type: both mandatory; /*hace referencia a  X y Y*/
+    scroll-snap-type: both proximity;
+}   
+
+.carousel-slide{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #108eb4;
+    scroll-snap-align: none;
+    scroll-snap-align: start;
+    scroll-snap-align: end;
+    scroll-snap-align: center;
+}
+
+.carousel-slide:nth-child(even){
+    background-color: #1e2345;
+}
+```
+### Textos con Degradado.
+
+las propiedades que nos permiten hacer que el texto herede el degradado del fondo no están bien soportadas entonces debemos hacer los prefijos del navegador
+
+lo ideal es que crearas una clase y se la agregarás solamente a los parrafos que quieras pintar
+
+cuando lleguemos al curso de responsive CSS  en la parte de arquitectura CSS les voy a enseñar algunas herramientas cuando ya organizes y automatizes tus hojas en cascada va ver herramientas como autoprefixer.
+
+```css
+    .gradient-text{
+    background-image: linear-gradient(45deg, magenta,  yellow);
+    -ms-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-background-clip: text;
+    background-clip: text; /*este es el nuevo valor que no está soportado al 100%*/
+    -ms-text-fill-color:transparent; /*está es una nueva propiedad: cuando estén bien soportadas ya no vamos a tener la necesidad de aplicar estós prefijos*/
+    -moz-text-fill-color:transparent;
+    -webkit-text-fill-color:transparent;
+}
+```
+
+## Movimientos en CSS
+
+Se trata de como hacer tranciciones transformaciones y animaciones.
+
+Para el movimiento hay 3 temas principales que vamos a trabajar: tranciciones transformaciones y animaciones.
+
+### Transiciones.
+
+como voy a estar utilizando tanto en animaciones  transformacionescomo transiciones cajas y targetas estan en una seccion con la clase transition.
+
+Dependiendo de cuantas transiciones tenga, el navegador va tardar un poquito, usar ALL no es mala práctica, sino aplicar cambios a u mismo elemento. Nada con ecceso todo con responsabilidad "un gran poder conlleva una gran responsabilidad".
+
+Aplicar ALL tiene un pequeño detalle, imagínate que a cada una de las propiedades: background-color, border-radius yo quisiera que las transiciones para cada propiedad se dieran con diferentes funciones de aceleración y con diferentes tiempos entonces el ALL ya no me sirve por que estoy diciendo: todo los cambios los voy hacer uniformemente en dos segundos con la misma funcion de transicion EASE-IN-OUT 
+
+```css
+    /*Transiciones HAY varias propiedades:
+    transition-property
+    transition-duration
+    transition-timing-function:none, linear, ease, ease-in, ease-out, ease-in-out steps
+    transition-delay
+    transition: property duration timing-function delay
+    https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties
+    */
+    .transitions .box{
+        background-color: magenta;
+        transition-property: background-color; /*propiedad que quiero modificar*/
+        transition-duration: 500ms;
+        transition-timing-function: ease;
+        transition-delay: 0.25s;
+        transition: border-color 2s linear 1s; /*El short hand reemplaza todo lo anterior definido.*/
+        transition: all 2s ease-in-out 250ms; 
+    }
+
+    /*Para ver las transiciones es importante definir un estado hover*/
+
+    .transitions .box:hover{
+        background-color: cyan;
+        border-color: red;
+        border-radius: 2rem     ;
+    }
+```
+
+
+### Propiedades Animables
+
+segun la documentación de: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties toda las propiedades son animables ¿Contradicción.?
+
+
+ ```css
+ 
+    .transitions .box:hover{
+    background-color: cyan;
+    border-color: red;
+    border-radius: 2rem;
+    /*border-style: dashed; /*Esta propiedad no es animable*/
+}
+ ```
+
+ ### Transiciones Multiples
+
+ ¿Como es que tu puedes ir aplicando diferentes tiempos y diferentes funciones de transicion a cada una de las propiedades?
+ 
+ ```css
+    .transitions .card{
+    /* transition: all 2s ease; */ /*para evitar que la transicion sea súbita*/
+    transition: opacity 1s ease-out,
+        border-color 3s steps(3),/*Sigue 3 pasos*/
+        filter 2s ease-in 1s,/*delay un segundo*/
+        box-shadow 1.5s linear 2s; 
+}
+
+
+.transitions .card:hover{
+    opacity: 0.75;
+    border-color: orchid;
+    filter: blur(0.15rem);
+    box-shadow: 1rem 1rem 2rem 0.5rem #000;
+}
+
+.transitions .card img{
+    transition: object-position 2s ease-in-out 3s;
+}
+
+.transitions .card img:hover{
+    object-position: 100% 50%; /*hace el movimiento de la imagen hasta el final.*/
+}
+ ```
