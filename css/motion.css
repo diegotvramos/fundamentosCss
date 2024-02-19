@@ -13,7 +13,7 @@ html{
 }
 
 .box{
-    border: thick solid black;
+    border: thick solid black; /*short hands*/
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 5rem;
@@ -48,12 +48,16 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties
 */
 .transitions .box{
     background-color: magenta;
+    border-color: green;
     transition-property: background-color; /*propiedad que quiero modificar*/
     transition-duration: 500ms;
     transition-timing-function: ease;
-    transition-delay: 0.25s;
+    transition-delay: 0.5s;
     transition: border-color 2s linear 1s; /*El short hand reemplaza todo lo anterior definido.*/
-    transition: all 2s ease-in-out 250ms; 
+    transition: all 2s ease-in-out 250ms;
+    transition: background-color 2s ease-in-out 250ms, /*se activa al momento de recargar el navegador*/
+                border-color 2s ease-in-out 250ms,
+                border-radius 2s ease-in-out 250ms ;
 }
 
 /*Para ver las transiciones es importante definir un estado hover*/
@@ -88,3 +92,100 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties
 .transitions .card img:hover{
     object-position: 100% 50%;
 }
+
+
+/*Transfomacion en 2D*/
+.transform-2d img{
+    transition: transform 2s ease-in-out; /*voy aplicar una transicion a la propiedad transform que dure 2s y que sea con un efecto de aceleracion ease-in-out*/
+}
+
+.transform-2d img:hover{
+    transform: none;
+    transform: translateX(4rem);
+    transform: translateY(4rem);
+    transform: translateY(-4rem);
+    /* transform: translateY(-4rem); */
+    transform: translate(-4rem, 4rem); /*Short hands el primer valor es para X y el segundo valor es para Y*/
+    transform: translate(50%, 50%); /*tomaria como referencia el tamaño del objeto*/
+    transform: translate(50%, 100px);
+    /*Escala lo agranda a un lado*/
+    transform: scaleX(2);
+    transform: scaleY(.5);
+    transform: scaleZ(1.5); /*no se va ver por que Z es el eje de profundidad*/
+    transform: scale(1.5, 1.5);/*Short handed  X Y*/
+    transform: scale(-1, -1); /*invierte la imagen*/
+    /*Rotar una imagen*/
+    transform: rotateX(90deg); /*el valor tiene que ser en grados, radianes  la rotacion en X es una transformacion en 3 dimenciones para poderla a preciar correctamente*/
+    transform: rotateY(60deg);
+    transform: rotateY(90deg);/*hace que la imagen se desaparesca por que solo se ve su lado*/
+    transform: rotateZ(60deg);/*va en sentido de las manezillas del reloj*/
+    transform: rotateZ(-60deg);
+    transform: rotateZ(360deg);
+    transform: rotate(360);/*SHORT HANDED trabaja en función a Z*/
+    /*Sesgar*/
+    transform: skewX(20deg);
+    transform: skewY(20deg);
+    transform: skewY(20deg);
+    transform: skew(20deg, 20deg); /*El primer valor es para X y el segundo valor es para Y*/
+
+
+
+    /*matrix(scaleX(), skewY(), skewX(), scaleY(), traslateX(), traslateY())*/
+
+    transform: matrix(1,2,2,1,20,10); /*tiene que ver con cálculos matemáticos*/
+    transform: matrix(1, 2, -1, 1, 80, 80);
+
+    /*Transformaciones 2D Múltiples son separados por espacios en blanco y en el orden que quieres ejecutar las transformaciones*/
+    transform: translate(25%, -50%);
+    transform: translate(25%, -50%) rotate(240deg) skew(10deg, 20deg) scale(-0.5, -0.5);
+}
+
+
+/*TRANSFORMACIONES EN 3D*/
+.transform-3d{
+    perspective: 10rem;
+}
+
+.transform-3d img{
+    transition: transform 2s ease-in-out;
+}
+
+.transform-3d img:hover{
+    transform: translateZ(4rem);
+    transform: perspective(1000px) translateZ(4rem);
+    transform: perspective(100rem) translateZ(4rem);
+    transform: perspective(1rem) translateZ(4rem);
+    transform: translateZ(4rem);
+    transform: translateZ(-4rem);
+
+    transform: translate3d(2rem, 50%, -3rem);
+    transform: scaleZ(1.5); /*la imagen no tiene volumen asi que no se puede apreciar estos cambios*/
+    transform: scale3d(2, 0.5, 3);
+    transform: rotateX(60deg);
+    transform: rotateX(90deg);
+    transform: rotateY(60deg);
+    transform: rotateY(-90deg);
+    transform: rotate3d(1,1,1,45deg);/*hace referencia a nodos vectoriales en cada uno de los ejes de la perspectiva 3d*/
+    transform: rotate3d(1,0.5,0,-45deg);/*X, Y, Z y un angulo de inclinacion*/
+    transform: rotate3d(-1,2.5,-2,60deg);
+    /*matriz de 4*4*/
+    transform: matrix3d(1,0,0,0,0,1,6,0,0,0,1,0,50,100,0,1.1);
+
+    /*Transformaciones múltiples*/
+    transform: rotate3d(-1, 2.5, -2, 60deg);
+    transform: rotate3d(-1, 2.5, -2, 60deg) translate3d(2rem, 50%, -3rem) scale3d(2, -0.5, 3);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

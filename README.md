@@ -2814,3 +2814,260 @@ segun la documentación de: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS
     object-position: 100% 50%; /*hace el movimiento de la imagen hasta el final.*/
 }
  ```
+
+ ### Por que no usar la palabra all en tus transiciones.
+
+ es mentira que baja el rendimiento, por que tendrias que tener mas de 25 cambios de transiciones en un solo elemento ¿pero por que es una mala practica usar ALL? cuando le decimos transition all le estamos diciendo que haga transicion de toda las propiedades, si tu no tienes el contros al 100% de las propiedades que vas a animar entonces si es una mala práctica ALL por que no solamente está haciendo cambio en el estado hover sino tambien la está haciendo en la caja "box" por eso es una mala práctica usar el transition ALL porque cuando cargue tu interfaz web todo los elementos que tengan un transition all vas a ver como se animam.
+
+ las transiciones son una propiedad de CSS y al regirse por el algoritmo de CSS pues estas propiedades son afectadas por la cascada por la especificidad y por la herencia
+
+ ### El algoritmo de CSS y su efecto sobre las transiciones.
+
+ es un error frecuente cuando participo en proyectos que tiene transiciones y que las transiciones de la nada cuando cargas el navegador se empiezan a animar  y es por que la gente no entiende que cuando tu declaras una propiedad en la lista de transiciones que vas a ejecutar esa transicion no solamente se va dar en el cambio, en el estado  que tu le ayas definido como en este caso el hover, sino tambien va a acuar a la hora que cargas la propiedad en el navegador
+
+ transition al ser una propiedad de CSS trabaja bajo las reglas del algoritmo de CSS
+
+ >- `1. Cascada`
+
+ >- `2. Especificidad`
+
+ >- `3. Herencia`
+
+ esta recarga solo aplica para css que no está siendo ejecutada en un entorno de servidor. por que en mi caso solo se aplica la primera vez esa transicion y ahi se queda.
+
+
+ ```css
+    .box{
+    border: thick solid black; /*short hands*/
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5rem;
+    width: 200px;
+    height: 200px;
+}
+
+.card{
+    border: thick solid black;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5rem;
+    width: 600px;
+    height: 400px;
+}
+
+.card img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 40% 50%;
+}
+
+.transitions .box{
+    background-color: magenta;
+    border-color: green;
+    transition-property: background-color; /*propiedad que quiero modificar*/
+    transition-duration: 500ms;
+    transition-timing-function: ease;
+    transition-delay: 0.5s;
+    transition: border-color 2s linear 1s; /*El short hand reemplaza todo lo anterior definido.*/
+    transition: all 2s ease-in-out 250ms;
+    transition: background-color 2s ease-in-out 250ms, /*se activa al momento de recargar el navegador*/
+                border-color 2s ease-in-out 250ms,
+                border-radius 2s ease-in-out 250ms ;
+}
+
+/*Para ver las transiciones es importante definir un estado hover*/
+
+.transitions .box:hover{
+    background-color: cyan;
+    border-color: red;
+    border-radius: 2rem;
+    border-style: dashed; /*Esta propiedad no es animable*/
+}
+
+.transitions .card{
+    /* transition: all 2s ease; */ /*para evitar que la transicion sea súbita*/
+    transition: opacity 1s ease-out,
+        border-color 3s steps(3),/*Sigue 3 pasos*/
+        filter 2s ease-in 1s,/*delay un segundo*/
+        box-shadow 1.5s linear 2s; 
+}
+
+
+.transitions .card:hover{
+    opacity: 0.75;
+    border-color: orchid;
+    filter: blur(0.15rem);
+    box-shadow: 1rem 1rem 2rem 0.5rem #000;
+}
+
+.transitions .card img{
+    transition: object-position 2s ease-in-out 3s;
+}
+
+.transitions .card img:hover{
+    object-position: 100% 50%;
+}
+
+ ```
+
+
+### Transformaciones en 2D
+
+Tenemos dos tipos de transformaciones en 2D y en 3D, hay 4 transformaciones en dos dimenciones que son las mas conocidas y en cualquier software de interfaz de usuario como : Figma, AdobeXD, Sketch software de diseño commo photoshop e ilustrator los encuentras pero que en softwares de diseño de efectos visuales como After Efects o como Animate (antiguo Flash) que es una suit de Adobe.
+
+Los cuatro movimientos son:
+
+1. traslacion en X y Y
+2. Rotacion iz y der
+2. Escala (aumentar tamaño en X o Y o hacerlo proporcionalmente)
+4. Sesgar skiw
+
+para poder ver los estilos del hover lo debemos activar en el navegador así:
+
+![imagen de activacion del hover](/assets/activar-hover.JPG)
+
+```css
+    /*Transfomacion en 2D*/
+.transform-2d img{
+    transition: transform 2s ease-in-out; /*voy aplicar una transicion a la propiedad transform que dure 2s y que sea con un efecto de aceleracion ease-in-out*/
+}
+
+.transform-2d img:hover{
+    transform: none;
+    transform: translateX(4rem);
+    transform: translateY(4rem);
+    transform: translateY(-4rem);
+    /* transform: translateY(-4rem); */
+    transform: translate(-4rem, 4rem); /*Short hands el primer valor es para X y el segundo valor es para Y*/
+    transform: translate(50%, 50%); /*tomaria como referencia el tamaño del objeto*/
+    transform: translate(50%, 100px);
+    /*Escala lo agranda a un lado*/
+    transform: scaleX(2);
+    transform: scaleY(.5);
+    transform: scaleZ(1.5); /*no se va ver por que Z es el eje de profundidad*/
+    transform: scale(1.5, 1.5);/*Short handed  X Y*/
+    transform: scale(-1, -1); /*invierte la imagen*/
+    /*Rotar una imagen*/
+    transform: rotateX(90deg); /*el valor tiene que ser en grados, radianes  la rotacion en X es una transformacion en 3 dimenciones para poderla a preciar correctamente*/
+    transform: rotateY(60deg);
+    transform: rotateY(90deg);/*hace que la imagen se desaparesca por que solo se ve su lado*/
+    transform: rotateZ(60deg);/*va en sentido de las manezillas del reloj*/
+    transform: rotateZ(-60deg);
+    transform: rotateZ(360deg);
+    transform: rotate(360);/*SHORT HANDED trabaja en función a Z*/
+    /*Sesgar*/
+    transform: skewX(20deg);
+    transform: skewY(20deg);
+    transform: skewY(20deg);
+    transform: skew(20deg, 20deg); /*El primer valor es para X y el segundo valor es para Y*/
+
+}
+```
+
+
+### Transformación  Matrix 2D
+
+Tiene cierta complejidad por que hay ciertos calculos matemáticos detras de ella
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/matrix 
+
+
+```css
+.transform-2d img:hover{
+     /*matrix(scaleX(), skewY(), skewX(), scaleY(), traslateX(), traslateY())*/
+
+    transform: matrix(1,2,2,1,20,10); /*tiene que ver con cálculos matemáticos*/
+    transform: matrix(1, 2, -1, 1, 80, 80);
+}
+```
+
+### Transformaciones 2D Múltiples
+
+```css
+.transform-2d img:hover{
+    /*Transformaciones 2D Múltiples son separados por espacios en blanco y en el orden que quieres ejecutar las transformaciones*/
+    transform: translate(25%, -50%);
+    transform: translate(25%, -50%) rotate(240deg) skew(10deg, 20deg) scale(-0.5, -0.5);
+}
+```
+
+### Activando la Perspectiva 3D
+
+recuerdem que la web es un espacio bidimencional si podemos aplicar cierta perspectiva de mostrar las 3 dimenciones pero como tal es una ilucion visual.
+
+¿Cómo podemos aplicar la perspectiva?
+directamente ponemos perspective al lado del transform o directamente al elemento padre.
+
+si no activas las perspectivas no va funcionar las transformaciones en 3D
+
+```css
+    /*TRANSFORMACIONES EN 3D*/
+.transform-3d{
+    perspective: 10rem;
+}
+
+.transform-3d img{
+    transition: transform 2s ease-in-out;
+}
+
+.transform-3d img:hover{
+    transform: translateZ(4rem);
+    transform: perspective(1000px) translateZ(4rem);
+    transform: perspective(100rem) translateZ(4rem);
+    transform: perspective(1rem) translateZ(4rem);
+    transform: translateZ(4rem);
+    transform: translateZ(-4rem);
+}
+```
+
+### Transformaciones en 3D
+
+la documentación: https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translate3d
+
+>- recuerda la barra de Scroll sempre va abajo y hacia la derecha entonces las imágenes con rotacion z a 90deg se va a perder pero si funciona al lado de la derecha
+
+el sesgo no hay en 3 dimenciones.
+
+### Transformacion Matrix 3D 
+
+la documentacion https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/matrix3d
+
+la web es un cambas es un lienzo de 2 dimenciones
+
+### transformaciones 3D múltiples
+
+```css
+    /*TRANSFORMACIONES EN 3D*/
+.transform-3d{
+    perspective: 10rem;
+}
+
+.transform-3d img{
+    transition: transform 2s ease-in-out;
+}
+
+.transform-3d img:hover{
+    transform: translate3d(2rem, 50%, -3rem);
+    transform: scaleZ(1.5); /*la imagen no tiene volumen asi que no se puede apreciar estos cambios*/
+    transform: scale3d(2, 0.5, 3);
+    transform: rotateX(60deg);
+    transform: rotateX(90deg);
+    transform: rotateY(60deg);
+    transform: rotateY(-90deg);
+    transform: rotate3d(1,1,1,45deg);/*hace referencia a nodos vectoriales en cada uno de los ejes de la perspectiva 3d*/
+    transform: rotate3d(1,0.5,0,-45deg);/*X, Y, Z y un angulo de inclinacion*/
+    transform: rotate3d(-1,2.5,-2,60deg);
+    /*matriz de 4*4*/
+    transform: matrix3d(1,0,0,0,0,1,6,0,0,0,1,0,50,100,0,1.1);
+
+    /*Transformaciones múltiples*/
+    transform: rotate3d(-1, 2.5, -2, 60deg);
+    transform: rotate3d(-1, 2.5, -2, 60deg) translate3d(2rem, 50%, -3rem) scale3d(2, -0.5, 3);
+}
+```
+
+### Origen de Transformación (Transform-origin)
+
+
+
