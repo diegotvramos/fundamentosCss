@@ -3069,5 +3069,134 @@ la web es un cambas es un lienzo de 2 dimenciones
 
 ### Origen de Transformación (Transform-origin)
 
+Hay una propiedad que dentro de las transformaciones define el **punto de origen** desde donde va partir la transformacion ya sea un skew un sesgo una rotacion una escala una traslacion. El origen es el centro.
+
+Es como en cualquier software de animacion. aplica sobre cualquiera transformacion ` Traslacion, sesgo, rotacion, escala y las 3d` 
+
+```css
+
+    /*Punto de Origen*/
+.transform-origin img{
+    transition: transform 2s ease-in-out;
+    /*transform-origin:x y z; /*Puede recibir hasta 3 valores*/
+    transform-origin: 50% 50% 0;
+    transform-origin: 0 0;
+    transform-origin: 0;/*si solo das un valor aplica para X y Y*/
+    transform-origin: top left;
+    transform-origin: top right;
+    transform-origin: top center;
+    transform-origin: bottom center;
+    transform-origin: bottom left;
+    transform-origin: bottom right;
+    transform-origin: center right;
+    transform-origin: center left; /*Recuerda! el primer valor es para el eje X y el segundo valor es para el eje Y*/
+    transform-origin: center center;
+    transform-origin: -2rem -3rem;/*Tambien prodiamos darle valores como: rems, px, %*/
+    transform-origin: 2rem 3rem;
+    transform-origin: 25% 75%;
+    transform-origin: -5% -5%;
+    transform-origin: 30%; /*Y sigue girando en su mismo centro*/
+    transform-origin: 30% 90%;
+}
+
+.transform-origin img:hover{
+    transform: rotate(360deg);
+}
+```
+
+###  Flip Cards con transiciones y transformaciones
+
+Este es una targetita que tiene 2 caras.
+
+vamos a dar estilos muy similar a las targetas anteriores.
+
+back face visibility determina la visualizacion de las caras. cuando tu tienes un elemento de interfaz que va tener como dos lados.
+
+> Recuerda, la propiedad transform-style:; cuando sea padre y que los hijos preserven esa perspectiva debemos de activarlo.
+
+```css
+    /*Flip cards*/
+
+.flip-card-1,
+.flip-card-2{
+    border: thick solid black;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5rem;
+    width: 600px;
+    height: 400px;
+
+
+    position: relative;
+    cursor: pointer;
+    transition: transform 1s ease-in-out;
+    perspective: 10rem;
+     /*  si lo hijos de un elemento tienen perspectiva en tres dimenciones, 
+     establece el comportamiento en el espacio 3d,
+      el valor por defecto es FLAT
+      es decir que sobre el mismo plano trabaje los elementos hijos pero si nosotros queremos que los hijos
+      de manera independiente tengan su propia perspectiva adicional a la del padre entonces debemos activar 
+      una propieda que se llama: preserve-3d*/
+      transform-style:flat ;
+      transform-style: preserve-3d ; /*Hace que los elementos hijos tengan su perspectiva independiente eso significa que a las Flip face ya ahorita puedo darles una transformacion en 3d entonces ya se acoplarian*/
+}
+
+
+.flip-card-2{
+    transform-origin: center right;
+}
+
+
+.flip-card-1:hover{
+    transform: rotateY(180deg);
+}
+
+.flip-card-2:hover{
+    transform: translateX(-100%) rotateY(-180deg);
+}
+
+
+.flip-card-1 img,
+.flip-card-2 img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 55% 45%;
+}
+
+
+.flip-face{
+    position: absolute; /*Como no encuentra un contenedor padre relativo se va posicionar respecto del body le agregamos la propiedad relative al padre*/
+    width: 100%;
+    height: 100%;
+    backface-visibility: visible;/*Este es el valor por defecto*/
+    backface-visibility: hidden; /*Esta propiedad no tiene efectos sobre transformaciones en dos dimenciones eso significa que necesitamos al prespectiva activada*/
+}
+
+.flip-front{
+    transform: rotateY(0deg);
+}
+
+.flip-back{
+    transform: rotateY(180deg);
+}
+```
+
+### Animaciones.
+
+no tiene sentido pausar una animacion desde CSS 
+
+**`play-state`**
+su utilida practica sirve para pausar una animacion.
+¿Cuando te conviene pausar una animacion? con javaScript.
+
+si te gusta esto de la animacion podrias complementarlo viendo y probando el software Animete de adobe premier (antes se llamaba Flash) y exportarlo a html, y js.
+
+El lenguaje de programacion que entiende el software Animate es ActionScript que es muy parecido a Js
+
+
+
+
+
 
 
