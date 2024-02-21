@@ -272,7 +272,7 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties
     transform: rotateY(180deg);
 }
 /*Animaciones*/
-@keyframes myAwesomeAnimation {
+@keyframes myAwesomeAnimation { /*seria la linea de tiempo*/
     /*debemos poner el fotograma inicial
     Y podemos meter tantas propiedades como querramos pero hay un link donde nos muestra las 
     propiedades que no son animables
@@ -290,13 +290,253 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties
     /*animation: name duration timing-function delay iteration-count direction fill-mode play-state; /*estas son toda las propiedades que existen de la animacion*/
     /*de estas 8 propiedades las mas importantes son NAME y animacion. las otras son opcionales*/
 
+    /*OBLIGATORIAS*/
     animation-name: myAwesomeAnimation;
     animation-duration: 3s;
+    animation-duration: 2s;
+    /*Aceleracion*/
+    animation-timing-function: cubic-bezier(1,0,0,1);
+    animation-timing-function: cubic-bezier(.73,0,.95,.29);
+    animation-timing-function: ease-in-out;
+    /*Retraso que va tener tu animacion*/
+    animation-delay: 1500ms;
+    animation-delay: 0ms;
+    /* número de veces que se hará la animación*/
+    
+    animation-iteration-count: 3;
+    animation-iteration-count: infinite;
+    animation-iteration-count: 1;
+    /*direccion*/
+    animation-direction: normal;
+    animation-direction: reverse;
+    animation-direction: alternate; /*hace la animacion del punto inicial al punto final y regresa del punto final al punto inicial*/
+    animation-direction: alternate-reverse;
+    animation-direction: normal;
+    /*Al final de la animacion se queda con los estílos finales de la animacion
+        Cuando tengan la necesidad de que un elemento se quede con los estilos que definieron en el último fotograma de la animacion    
+    */
+    animation-fill-mode: none; /*por defecto*/
+    animation-fill-mode: forwards;
+    /* Al inicio de la animacion se queda con los estilos iniciales de la animacion */
+    animation-fill-mode: backwards; /*evita los saltos viusales*/
+
+    /*si quieres tener las ventajas del forwards y del backwards
+    
+    both aplica al mismo tiempo el valor de fowards y backwards
+    */ 
+    animation-fill-mode: both; /*conserva los estilos de inicio y de final de la animacion*/
+    animation-play-state: running ;/*por defecto*/
+    animation-play-state: paused;/*no tiene sentido en css pero si tiene sentido en javaScript*/
+    animation-play-state: running;
+
+    /*En el shorthand animation podria utilizar toda las propiedades*/
+    animation: myAwesomeAnimation 1.5s ease 250ms 7 alternate both running;
+    animation: myAwesomeAnimation 1s;
+}
+
+
+/*En caso de que tengas fotogramas claves intermedios, la linea de tiempo lo debes ver como porcentajes de 0  a 100(el fotograma final)*/
+@keyframes myAwesomeAnimation2 {
+    /* from{
+
+    }
+    to{
+
+    } */
+
+    /*SUMADOS harian 101 fotogramas clave*/
+    0%{
+        opacity: 0;
+        
+    }
+    50%{
+        opacity: 0.5;
+        transform: translateX(-50%);
+    }
+
+    75%{
+        transform: translateX(-75%);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(100%);
+    }
+}
+
+.my-animation-2{
+    animation: myAwesomeAnimation2 2s;
+    animation: myAwesomeAnimation2 5s;
+    animation: myAwesomeAnimation2 1s;
+    animation: myAwesomeAnimation2 6s; /*a mayor tiempo tenga tu animacion mas lenta se pondrá*/
+}
+
+
+@keyframes multipleAnimation1 {
+    0%{
+        opacity: 1;
+        
+    }
+    50%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+
+@keyframes multipleAnimation2 {
+    0%{
+        transform: translateY(0);
+        
+    }
+    50%{
+        transform: translateY(-100%);
+    }
+
+    100%{
+        transform: translateY(0);
+    }
 }
 
 
 
+.animation-multiple{
+    animation: multipleAnimation1 2s infinite;
+    animation: multipleAnimation2 2s infinite;
+    /*Por cascada está reemplazando las animaciones.  Cuando querramos multiples animaciones  es hacer lo siguiente*/
+    animation: multipleAnimation1 2s infinite,
+                multipleAnimation2 1s 3 ease-in-out;
 
+}
+
+
+.motion-examples{
+    text-align: center;
+
+}
+
+@keyframes fadeIn {
+    0%{
+        opacity: 0;
+        
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.fade-in{
+    font-size: 5vw;
+    animation: fadeIn 2s linear 2s infinite alternate both; /*el nombre de la animacion es "fadeIn" que dure 2 segundos que sea con una aceleracion lineal */
+}
+
+@keyframes fadeOut {
+    0%{
+        opacity: 1;
+        
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
+.fade-out{
+    font-size: 5vw;
+    animation: fadeOut 2s linear 2s infinite alternate both; /*el nombre de la animacion es "fadeIn" que dure 2 segundos que sea con una aceleracion lineal */
+}
+
+
+@keyframes shake{
+    10%, 90%{
+        transform: translate(-1px, 0);
+    }
+
+
+    20%, 80%{
+        transform: translate(2px, 0);
+    }
+    
+    30%,
+    50%,
+    70%{
+        transform: translate(-4px, 0);
+    }
+
+    40%,
+    60%{
+        transform: translate(4px, 0);
+    }
+}
+
+
+.shake{
+    font-size: 5vw;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.shake:hover{
+    animation: shake 1s cubic-bezier(.36 , 0.07, 0.19, 0.97) both;
+    transform: translate(0,0);
+}
+
+
+@keyframes pulse{
+    0%{
+        transform: scale(1.1);
+    }
+    50%{
+        transform: scale(0.8);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+.pulse{
+    font-size: 5vw;
+    animation: pulse 1s linear infinite;
+}
+
+/*♥*/
+
+@keyframes heartColor {
+    10%{
+        background-color: #d00;
+    }
+}
+.heart{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 10vw;
+    height: 10vw; /*quiero un cuadrado por eso uso las unidades del VW*/
+    /* background-color: #888 ; */
+    animation: pulse 1s infinite;
+}
+
+.heart::after, /*Usamos los pseudoelementos*/
+.heart::before{
+    position: absolute;
+    content: "";
+    left: 5vw;
+    top: 0;
+    width: 5vw;
+    height: 8vw;
+    background-color: #a00;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+    border-radius: 5vw 5vw 0 0;
+    animation: heartColor 1s infinite;
+}
+
+.heart::after{
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
 
 
 

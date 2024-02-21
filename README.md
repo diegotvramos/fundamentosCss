@@ -3192,11 +3192,274 @@ su utilida practica sirve para pausar una animacion.
 
 si te gusta esto de la animacion podrias complementarlo viendo y probando el software Animete de adobe premier (antes se llamaba Flash) y exportarlo a html, y js.
 
-El lenguaje de programacion que entiende el software Animate es ActionScript que es muy parecido a Js
+El lenguaje de programacion que entiende el software Animate es ActionScript que es muy parecido a Js.
+
+```css
+    @keyframes myAwesomeAnimation {
+    /*debemos poner el fotograma inicial
+    Y podemos meter tantas propiedades como querramos pero hay un link donde nos muestra las 
+    propiedades que no son animables
+    */
+    from {
+        opacity: 0;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(100%);
+    }
+}
+.my-animation{
+    /*animation: name duration timing-function delay iteration-count direction fill-mode play-state; /*estas son toda las propiedades que existen de la animacion*/
+    /*de estas 8 propiedades las mas importantes son NAME y animacion. las otras son opcionales*/
+
+    animation-name: myAwesomeAnimation;
+    animation-duration: 3s;
+}
+```
+
+### Propiedades de Animación en CSS
+
+`animation: name duration timing-function delay iteration-count direction fill-mode play-state;`
+
+[cubic-bezier(1,0,0,1)](https://cubic-bezier.com/) representa una linea de aceleracion en la animacion
+
+```CSS
+    .my-animation{
+    /*OBLIGATORIAS*/
+    animation-name: myAwesomeAnimation;
+    animation-duration: 3s;
+    animation-duration: 2s;
+    /*Aceleracion*/
+    animation-timing-function: cubic-bezier(1,0,0,1);
+    animation-timing-function: cubic-bezier(.73,0,.95,.29);
+    animation-timing-function: ease-in-out;
+    /*Retraso que va tener tu animacion*/
+    animation-delay: 1500ms;
+    animation-delay: 0ms;
+    /* número de veces que se hará la animación*/
+    
+    animation-iteration-count: 3;
+    animation-iteration-count: infinite;
+    animation-iteration-count: 1;
+    /*direccion*/
+    animation-direction: normal;
+    animation-direction: reverse;
+    animation-direction: alternate; /*hace la animacion del punto inicial al punto final y regresa del punto final al punto inicial*/
+    animation-direction: alternate-reverse;
+    animation-direction: normal;
+    /*Al final de la animacion se queda con los estílos finales de la animacion
+        Cuando tengan la necesidad de que un elemento se quede con los estilos que definieron en el último fotograma de la animacion    
+    */
+    animation-fill-mode: none; /*por defecto*/
+    animation-fill-mode: forwards;
+    /* Al inicio de la animacion se queda con los estilos iniciales de la animacion */
+    animation-fill-mode: backwards; /*evita los saltos viusales*/
+
+    /*si quieres tener las ventajas del forwards y del backwards
+    
+    both aplica al mismo tiempo el valor de fowards y backwards
+    */ 
+    animation-fill-mode: both; /*conserva los estilos de inicio y de final de la animacion*/
+    animation-play-state: running ;/*por defecto*/
+    animation-play-state: paused;/*no tiene sentido en css pero si tiene sentido en javaScript*/
+    animation-play-state: running;
+
+    /*En el shorthand animation podria utilizar toda las propiedades*/
+    animation: myAwesomeAnimation 1.5s ease 250ms 7 alternate both running;
+    animation: myAwesomeAnimation 1s;
 
 
+}
+```
 
+### Linea de tiempo y fotogramas claves en CSS
 
+¿Que pasa si yo necesito meter fotogramas intermedios?
+
+en css la linea de tiempo va funcionar por porcentajes
+
+css va adaptar la proporcion de fotogramas por segundo en base al tiempo que tu le des de animación.
+
+```css
+    /*En caso de que tengas fotogramas claves intermedios, la linea de tiempo lo debes ver como porcentajes de 0  a 100(el fotograma final)*/
+@keyframes myAwesomeAnimation2 {
+    /* from{
+
+    }
+    to{
+
+    } */
+
+    /*SUMADOS harian 101 fotogramas clave*/
+    0%{
+        opacity: 0;
+        
+    }
+    50%{
+        opacity: 0.5;
+        transform: translateX(-50%);
+    }
+
+    75%{
+        transform: translateX(-75%);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(100%);
+    }
+}
+.my-animation-2{
+    animation: myAwesomeAnimation2 2s;
+    animation: myAwesomeAnimation2 5s;
+    animation: myAwesomeAnimation2 1s;
+    animation: myAwesomeAnimation2 6s; /*a mayor tiempo tenga tu animacion mas lenta se pondrá*/
+
+}
+```
+
+imagen de toyota https://www.toyota.com.gt/caracteristicas/caracteristicas-de-toyota-land-cruiser-pickup 
+
+### Animaciones Multiples
+
+lo importante es separarlos por comas
+
+```css
+    @keyframes multipleAnimation1 {
+    0%{
+        opacity: 1;
+        
+    }
+    50%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes multipleAnimation2 {
+    0%{
+        transform: translateY(0);
+        
+    }
+    50%{
+        transform: translateY(-100%);
+    }
+
+    100%{
+        transform: translateY(0);
+    }
+}
+
+.animation-multiple{
+    animation: multipleAnimation1 2s infinite;
+    animation: multipleAnimation2 2s infinite;
+    /*Por cascada está reemplazando las animaciones.  Cuando querramos multiples animaciones  es hacer lo siguiente*/
+    animation: multipleAnimation1 2s infinite,
+                multipleAnimation2 1s 3 ease-in-out;
+
+}
+```
+
+### Efectos Fadein & fadeout
+```css
+    @keyframes fadeIn {
+    0%{
+        opacity: 0;
+        
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.fade-in{
+    font-size: 5vw;
+    animation: fadeIn 2s linear 2s infinite alternate both; /*el nombre de la animacion es "fadeIn" que dure 2 segundos que sea con una aceleracion lineal */
+}
+
+@keyframes fadeOut {
+    0%{
+        opacity: 1;
+        
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
+.fade-out{
+    font-size: 5vw;
+    animation: fadeOut 2s linear 2s infinite alternate both; /*el nombre de la animacion es "fadeIn" que dure 2 segundos que sea con una aceleracion lineal */
+}
+```
+
+### Efecto shake (Sacudida)
+
+para que la cajita solo aplique para que el efecto del hover solo sobre la tasita
+
+```css
+    @keyframes pulse{
+    0%{
+        transform: scale(1.1);
+    }
+    50%{
+        transform: scale(0.8);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+.pulse{
+    font-size: 5vw;
+    animation: pulse 1s linear infinite;
+}
+```
+
+### Eres el CSS de mi HTML ♥
+
+Mucho del dibujo que se hace en CSS nos ayudamos de los seudoelementos before y after para dibujar ciertas cosas.
+
+```css
+    @keyframes heartColor {
+    10%{
+        background-color: #d00;
+    }
+}
+.heart{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 10vw;
+    height: 10vw; /*quiero un cuadrado por eso uso las unidades del VW*/
+    /* background-color: #888 ; */
+    animation: pulse 1s infinite;
+}
+
+.heart::after, /*Usamos los pseudoelementos*/
+.heart::before{
+    position: absolute;
+    content: "";
+    left: 5vw;
+    top: 0;
+    width: 5vw;
+    height: 8vw;
+    background-color: #a00;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+    border-radius: 5vw 5vw 0 0;
+    animation: heartColor 1s infinite;
+}
+
+.heart::after{
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+```
 
 
 
