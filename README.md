@@ -3461,5 +3461,103 @@ Mucho del dibujo que se hace en CSS nos ayudamos de los seudoelementos before y 
 }
 ```
 
+### Spinner / Loader animado
+
+```css
+    /*loader.
+    Puedes trabajar en la unidad de medida que se te de la gana.
+*/
+
+
+@keyframes spinner {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+
+.spinner{
+    /* background-color: purple; */
+    width: 5vw;
+    height: 5vw;
+    margin-left: auto;
+    margin-right: auto;
+    /* border-radius: 50%; */
+    border: 0.5vw solid rgba(0, 0, 0, 0.1);
+    border-left-color: #09f;
+    animation: spinner 1s ease-out infinite;
+}
+```
+
+### Botones Animados (maquetación)
+
+En esta seccion aprenderemos algunos efectos para botones animados en le mundo de IUX y IAI (iux y iuai) se conoce como micro-interracciones por que no es que aplique efectos como muy vistosos sinó son algunos pequeños cambios de algunas propiedades en nuestros botones.
+
+En está seccion vamos a enfocarnos en hacer los estilos de los botones y en la otra seccion ya aplicamos las animaciones
+
+Ve la importancia de ir aplicando (utilitie ferst) que cada clase haga una **utilidad en particular** 
+
+### Botones Animados (micro interacciones)
+
+¿Que propiedades vamos a animar?
+
+> Recuerda! no es buena práctica utilizar el valor ``ALL`` 
+
+```css
+    /*Animaicon a Botones*/
+
+/*estilos del boton*/
+.btn{
+    position: relative; /*las animaciones las voy a generar con elementos After y Before*/
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.2rem;
+    width: 15rem;
+    height: 2.5rem;
+    font-size: 1.25rem;
+    font-weight: bold;
+    cursor: pointer;
+    overflow: hidden; /*En caso de que el texto del boton desborde es mejor que lo oculte*/
+    box-shadow: 0.25rem 0.25rem 0.5rem 0.25rem rgba(0, 0, 0, 0.15);
+}
+
+/*es una cajita que mide de altura 0.25 rem, en este caso lo que vamos hacer es una transicion sobre esa propiedad Width
+    por eso esa propiedad debe empesar en 0 por ciento, por que lo que vamos hacer es jugar con el posicionamiento en x 
+    con left y right respectivamente dependiendo del boton y simplemente vamos hacer una transicion sobre la propiedad width
+    y sobre la propiedad left o right  dependiendo del boton para que se anime y entonces se vea el desplazamieto
+*/
+.anim-bottom::after{ /*despues del boton*/
+    content: "";
+    position: absolute; /*se posiciona respecto de su elemento padre en este caso el RELATIVE*/
+    bottom: 0;
+    width: 0%;
+    height: 0.25rem; /*es un diez por ciento menos de la altura original 2.5rem*/
+    background-color: #d00;
+    transition: width 0.5s ease, left 0.5s ease, right 0.5s ease;
+}
+
+.anim-bottom:hover::after{
+    width: 100%;
+}
+
+.to-left::after{
+    left: 0;
+}
+.to-center::after{
+    left: 50%;
+}
+
+.to-center:hover::after{
+    left: 0;
+}
+
+.to-right::after{
+    right: 0;
+}
+```
+
 
 
