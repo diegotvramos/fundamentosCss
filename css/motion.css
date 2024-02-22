@@ -3,7 +3,7 @@ html{
     box-sizing: border-box;
     font-size: 16px;
     font-family: sans-serif;
-    
+    overflow-x: hidden;
 }
 
 *,
@@ -615,6 +615,99 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties
 .to-right::after{
     right: 0;
 }
+
+/*Botones con Gradientes Animados
+    Lo que vamos a hacer es extender la posicion del fondo, para que nada mas nos muestre los primeros colores el 
+    rosa y el violeta, esté oculto la parte del anaranjado el naranja y el naranja rojo y con el efecto del 
+    hover podamos modificar eso. siempre y cuando conozcas a fondo CSS puedes lograr este tipo de efectos
+
+*/
+.anim-bg-gradient{
+    background-image: linear-gradient(to right, pink, violet, orange, orangered);
+    background-size: 300% 100% ; /*ancho y un alto de 100%*/
+    transition: background-position 0.5s ease-in-out; /*para que el cambio no  se vea muy súbito hacemos esta transicion*/
+}
+
+/*a esta clase en el estado hover.
+recuerda: que los gradientes al definirse en la propieda Image son fondos!
+*/
+
+.anim-bg-gradient:hover{
+    background-position:100% 0 ; /*vete al final de los gradientes (recuerda el primer valor es X y el segundo es Y)*/
+
+}
+
+/*menú de pestañas tabs*/
+
+.tabs-menu{
+    position: relative; /*Muy importante esta propiedad*/
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem;
+    border-radius: 1rem;
+    width: 70%;
+    height: 3rem;
+
+    display: flex;
+    justify-content: space-between; /*el espacio que resta lo dividimos entre sus elementos*/
+    align-items: center;
+    
+    background-color: #ddd;
+}
+
+/*Los inpus radio de esos elementos van a estár ocultos
+    Gracias a la vinculación de su etiqueta vamos a aprovechar solamente su pseudoclase cheked para 
+    poderlo animarlo
+    como tal esos imputs no nos van a servir visualmente tenerlos ahi.
+*/
+
+.tabs-menu input[type="radio"]{
+    display: none;
+}
+
+.tabs-menu label{
+    position: relative;
+    z-index: 1;
+    width: calc(100% / 4 - 0.5rem); /*restamos el padding*/
+    text-align: center;
+    cursor: pointer;
+}
+
+.tabs-menu label:hover{
+    color: #fff;
+}
+
+
+/*Cuando un input esté en su estado checked realmente a quien yo quiero afectar es a la etiqueta Label que tiene como hermana
+    cuando lo seleccionamos el color se pasa al texto 
+*/
+.tabs-menu input[type="radio"]:checked + label{
+    color: #fff;
+}
+
+.tab-bg-hover{
+    position: absolute;
+    width: calc(100% / 4 - 0.5rem);
+    height: 2rem;
+    border-radius: 0.5rem;
+    background-image: linear-gradient(90deg, #a00, #d00);
+    transition: transform 300ms ease-in-out; /*vamos a trasladarnos en X*/
+}
+
+#tab-1:checked ~ .tab-bg-hover{ /*cuando este chekeada, [~ selector de hermanos en general] */
+    transform: translateX(0);
+}
+#tab-2:checked ~ .tab-bg-hover{
+    transform: translateX(100%);
+}
+#tab-3:checked ~ .tab-bg-hover{
+    transform: translateX(200%);
+}
+#tab-4:checked ~ .tab-bg-hover{
+    transform: translateX(300%);
+}
+
+
 
 
 

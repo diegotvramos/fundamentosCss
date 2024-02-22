@@ -3558,6 +3558,94 @@ Ve la importancia de ir aplicando (utilitie ferst) que cada clase haga una **uti
     right: 0;
 }
 ```
+### Botones con Gradientes Animados
 
+```css
+    /*Botones con Gradientes Animados
+    Lo que vamos a hacer es extender la posicion del fondo, para que nada mas nos muestre los primeros colores el 
+    rosa y el violeta, esté oculto la parte del anaranjado el naranja y el naranja rojo y con el efecto del 
+    hover podamos modificar eso. siempre y cuando conozcas a fondo CSS puedes lograr este tipo de efectos
+
+*/
+.anim-bg-gradient{
+    background-image: linear-gradient(to right, pink, violet, orange, orangered);
+    background-size: 300% 100% ; /*ancho y un alto de 100%*/
+    transition: background-position 0.5s ease-in-out; /*para que el cambio no  se vea muy súbito hacemos esta transicion*/
+}
+
+/*a esta clase en el estado hover.
+recuerda: que los gradientes al definirse en la propieda Image son fondos!
+*/
+
+.anim-bg-gradient:hover{
+    background-position:100% 0 ; /*vete al final de los gradientes (recuerda el primer valor es X y el segundo es Y)*/
+    
+}
+```
+### Menú de Pestañas Tabs (Maquetación)
+
+### Menú de Pestañas Tabs (animación)
+
+Ya dijimos que es un antipatron maquetar con IDs pero cuando querremos este tipo de comportamientos que tengan que ver con la pseudo clase target como para sacar un menú de navegación movil,estos que tambien tenemos un menú de pestañas pues aqui si es util utilizar los ids en base al id es que podemos sacar este tipo de efectos y sin la necesidad de JS
+
+```css
+    /*Cuando un input esté en su estado checked realmente a quien yo quiero afectar es a la etiqueta Label que tiene como hermana
+    cuando lo seleccionamos el color se pasa al texto 
+*/
+.tabs-menu input[type="radio"]:checked + label{
+    color: #fff;
+}
+
+.tab-bg-hover{
+    position: absolute;
+    width: calc(100% / 4 - 0.5rem);
+    height: 2rem;
+    border-radius: 0.5rem;
+    background-image: linear-gradient(90deg, #a00, #d00);
+    transition: transform 300ms ease-in-out; /*vamos a trasladarnos en X*/
+}
+
+#tab-1:checked ~ .tab-bg-hover{ /*cuando este chekeada, [~ selector de hermanos en general] */
+    transform: translateX(0);
+}
+#tab-2:checked ~ .tab-bg-hover{
+    transform: translateX(100%);
+}
+#tab-3:checked ~ .tab-bg-hover{
+    transform: translateX(200%);
+}
+#tab-4:checked ~ .tab-bg-hover{
+    transform: translateX(300%);
+}
+```
+
+### Menú Off Canvas (marcado HTML)
+
+¿Por que Off Canvas? por que se encuentra fuera del lienzo del documento.
+para ocultar la barra de desplazamiento horizontal.
+
+```css
+    html{
+    overflow-x: hidden;
+}
+
+
+```
+
+vamos hacer un menú de amburguesa sin la necesidad de programar en JS entonces vamos hacer uso algunos elementos que tanto en la estructura como en la eleccion de etiquetas debemos respetar el siguiente orden.
+
+para evitar programar el boton, el boton lo vamos a generar con input de tipo Check 
+
+> los inputs de tipo Check o de tipo radio nos dan esta capacidad de aplicar al estado Checked entonces cuando esté checked vamos a sacar el menú cambas y cuando no esté cliqueado lo vamos a ocultar
+
+**todo los nombres de clase hacen alucion a lo que hacen respectivamente** 
+
+> tanto el input,  como la amburguesa, como el menú de navegacion tienen que ser hermanos si no son hermanos no nos va servir aqui vamos a usar el selector de hermano adyasente(+) selector de hermanos en general que es la (~) 
+
+1. checkbox
+2. label
+3.  y al final la etiqueta nav
+
+### Botón de Hamburguesa Animado
 
 
