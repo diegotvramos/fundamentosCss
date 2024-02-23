@@ -3648,4 +3648,282 @@ para evitar programar el boton, el boton lo vamos a generar con input de tipo Ch
 
 ### Botón de Hamburguesa Animado
 
+¿Como voy a lograr la X? La vamos a lograr dandole diferentes transformaciones a la clase before y after cuando el boton esté checkeado.
+
+```CSS
+    /*BOTON CANVAS*/
+
+.off-canvas-btn{
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 999;
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+    opacity: 0.25; /*Engaño visual*/
+}
+
+.off-canvas-burger{
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 998;
+    width: 3rem;
+    height: 0.6rem; /* 3/5 */
+    background-color: #d00;
+    border-radius: 0.3rem;
+    transform: rotate(0deg) translate(0,-1.2rem);
+    transform-origin: top left;
+    transition: transform 500ms ease, background-color 500ms ease;
+}
+
+.off-canvas-burger::before,
+.off-canvas-burger::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 0.6rem;
+    background-color: #d00;
+    border-radius: 0.3rem;
+    transition: transform 0.5s ease;
+}
+
+.off-canvas-burger::before{
+    transform: rotate(0deg) translate(0, -0.9rem);
+    /* background-color: blue ; */
+}
+
+.off-canvas-burger::after{
+    transform: rotate(0deg) translate(0, 0.3rem);
+    /* background-color: green; */
+}
+
+.off-canvas-btn:checked + .off-canvas-burger{
+    background-color: transparent;
+}
+
+/*rotacion de el elemento*/
+.off-canvas-btn:checked + .off-canvas-burger::before{
+    transform: rotate(45deg) translate(0,0);
+}
+
+
+.off-canvas-btn:checked + .off-canvas-burger::after{
+    transform: rotate(-45deg) translate(0.4rem, -0.5rem);
+}
+```
+
+### Menú Off Canvas (maquetación y animación)
+
+Un menú Off Canvas es un elemento un menú que está colocado en alguna parte y sale de la derecha o sale de arriba o de la izquieda o de abajo.
+
+vamos a maquetar nuestro menú para que ocupe toda la pantalla(opcional)
+
+Hay quien les gusta poner el menú dentro de una Ul Li LINK (es complicarse un poco) 
+
+Hay un truco para poder estirar un elemento a pantalla completa con posicionamiento Fijo(fixed) ya sabes que cuando tu le das posicionamiento fijo a un elemento perde sus propiedades de ancho y alto, pierde la disposicion del documento html.
+
+> Recuerda: ``Top y Left`` tiene mayor preferencia que ``Bottom y right``
+
+> Recuerda: la clave de todo esto es que el input se activa con la propiedad checked del checkbox si yo quisiera poner un boton entonces ahi ya se pierde esta pseudoclase checked y entonces tendria que usar javaScript para andar quitando una clase que sea la que anime el elemento en css tienen que ser hermanos directos tanto el input y label
+
+```css
+    /*Maquetando nuestro menú off canvas*/
+
+.off-canvas-menu{
+    position: fixed;
+    /*Con esto estiramos el contenedor*/
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 997; /**/
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #0008; /*el 8 reprecenta el 80 por ciento de opacidad*/
+    transition: transform 500ms ease-in-out ;/*¿Como lo animo: pues con una linda y hermosa transicion?*/
+    transform: translate(0, -100%);
+    transform: translate(0, 100%);/*para que el menú salga de abajo*/
+    transform: translate(100%, 0%);/*para que salga de la derecha*/
+    transform: translate(-100%, 0%);/*para que salga de la izquierda*/
+    
+}
+
+.off-canvas-btn:checked ~ .off-canvas-menu{
+    transform: translate(0,0);
+}
+
+/*Estilos al contenedor*/
+.off-canvas-menu-container{
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* background-color: slateblue; */
+}
+
+/*estilo a los enlaces*/
+.off-canvas-link{
+    border-bottom: thin solid #d00;
+    padding: 2rem;
+    font-size: 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    transition: background-color 300ms ease;
+}
+
+.off-canvas-link:first-child{
+    border-top: thin solid #d00;
+}
+
+.off-canvas-link:hover{
+    background-color: #d005;
+}
+```
+### Ventana Modal
+
+Necesitamos un enlace que abra la ventana, así como para el menú utilizamos la pseudoclase checked de los inputs acá vamos a utilizar la pseudoclase Target esto lo tienen todo los elementos que tengan atributo ID eje: cuando el temario tiene el target en la url, se ilumina de color verde. como este Id del temario tiene el temario-css mediante la pseudoclase target es que le di ese color verde entonces es algo así que vamos a utilizar para la ventana modal
+
+> Recuerda: 3rem = 48px si tu revisas cualquier guia de estilos de interacciones en moviles mas o menos un dedo promedio el toque a una pantalla de lo que representaria el area de un dedo es mas menos 40px
+
+La clave de hacer funcionar sin javaScript. La ventana modal la voy animar de la opacidad: 0;
+
+> Recuerda! cuando un elemento es interactivo y nosotros le quitamos la opacidad el elemento sigue existiendo [los enlaces son interactivos] entonces sigue habiendo interaccion con los enlaces lo puedes ver cuando el cursor:pointer; se activa
+
+Cuando tu tienes una ventana modal así aparte de quitar la opacidad debes quitar una propiedad que se llama pointer-events:none; esta propiedad le da interactividad a los elementos de CSS 
+
+
+al hacer click en "Abrir enlace" el target de la url está en ese id="modal-1"
+
+> Recuerda la X es un enlace no un boton y al precionarlo nos hace referencia a un id "close" cerrar el hash cambia y hace que el modal se cierre
+
+
+```css
+    /*Ventana Modal*/
+
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 997;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0008;
+    opacity: 0;
+    pointer-events: none; /*Con esto los enlaces ya no son interactivos*/
+    transition: opacity 500ms ease-in-out;
+}
+
+    /*Para abrir el modal*/
+
+.modal:target{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+.modal-container{
+    position: relative; /*la X lo voy a posicionar absolutamente respecto del contenedor por eso le doy el posicionamiento relativo*/
+    border: thick double #d00;
+    border-radius: 1rem;
+    padding: 2rem;
+    width: 70%;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    overflow: hidden; /*En caso de que haya desbordamiento se oculta*/
+    background-color: #fff;
+}
+
+/*boton cerrar*/
+
+.modal-close{
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;/*lo centro en horizontal*/
+    line-height: 3rem;/*lo alineo verticalmente*/
+    text-decoration: none;
+    color: #fff;
+    background-color: #d00;
+    transition: background-color 300ms linear, transform 300ms ease-in-out;
+}
+
+.modal-close:hover{
+    background-color: #a00;
+    transform: scale(1.2);
+}
+```
+### Intro Películas Star Wars
+
+```css
+    @keyframes introStarWars {
+    0%{
+        transform: perspective(100vh) rotateX(15deg) translateY(100%);
+    }
+    
+    100%{
+        transform: perspective(100vh) rotateX(25deg) translateY(-200%);
+    }
+}
+
+.star-wars{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden; /*cuando desbode las letra lo oculta*/
+    color: #ffb13a;
+    background-image: url("../assets/starss.gif");
+}
+
+
+.star-wars-container{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    text-align: justify; /*el texto está justificado*/
+    letter-spacing: 0.1rem;
+    animation: introStarWars 20s linear infinite;
+}
+
+
+.star-wars h2,
+.star-wars h3{
+    font-size: 3rem;
+    font-size: 5vw;
+    text-align: center;
+}
+
+.star-wars p{
+    font-size: 2rem;
+    font-size: 3vw;
+    line-height: 4rem;
+}
+```
+
+SIGUIENTE CURSO: Responsive y Arquitectura CSS (5/5)
+
+Responsive: es la capacidad que deben tener nuestros sitios web para que se adapten al ancho de cualquier pantalla
+Arquitectura-css: tiene que ver con buenas prácticas con el uso de herramientas adicionales que puedan mejorar nuestro flujo de trabajo.
+
+
+
+
 
