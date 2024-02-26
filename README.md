@@ -3923,6 +3923,50 @@ SIGUIENTE CURSO: Responsive y Arquitectura CSS (5/5)
 Responsive: es la capacidad que deben tener nuestros sitios web para que se adapten al ancho de cualquier pantalla
 Arquitectura-css: tiene que ver con buenas prácticas con el uso de herramientas adicionales que puedan mejorar nuestro flujo de trabajo.
 
+## RESPONSIVE DESIGN Y ARQUITECTURA CSS 5/5.
+
+ [link para leer](https://jonmircha.com/responsive)
+
+**Responsive Design** es el paradigma actual.
+
+Cuando comienzes abordar un proyecto para la web, para cualquier interfaz sea para un sitio web informativo  de un blog, de una aplicación  el Responsive Design es el paradigma con el cual tu debez comenzar a desarrollar y diseñar y a planificar tu sitio o aplicacíon la interfaz que vayas a desarrollar
+
+**Arquitectura CSS** es el conjunto de buenas prácticas.
+
+Si nuestro proyecto comienza a crecer exponencialmente hace que nuestro codigo no se vuelva un desastre y el codigo CSS pueda escalar de una forma eficiente vamos a ver: Metodologias, frameworks procesadores que nos van a ayudar mucho en este proceso de mantener lo mas legible estandarizado y coherente nuestro código CSS, Te recomiendo ir al curso de FLEXBOX (es un sistema de maquetacion que nos ofrece CSS para moldear las interfaces de nuestros sitios web) y por el otro lado GRIDCSS es el módulo que lo complementa.
+
+> __FLEXBOX:__ Está mas pensado a alinear elementos de nuestros componentes internos imagina una card (imagen, texto, la descripcion y el boton).
+
+> __GRIDCSS:__ Nos va permitir defir un sistema de retícula es decír filas y columnas donde podamos decir: aca va la cabecera  aca ba el pie de página,  aca va el contenido lateral
+
+### Descarga de archivos para trabajar
+
+
+### Introducción al Responsive Design
+
+EEthan Marcotte en 2010 lo que hizo con su artículo y su libro fue sentar las bases.
+
+3 principios del Responsive Design.
+
+1. Grids Flexibles. (la reticula en la cual nuestros sitios se adaptaban tenia que fluir y debia adaptarse al dispositivo que lo consumiera)
+
+2. Imagenes Flexibles. (aunque fisicamente tu imagen sea mas grande, se tiene que adaptar  a la pantalla del dispositivo para evitar el Scroll horizontal) para cualquier elemento multimedia [Audios, videos. Iframes,post de alguna red social, un mapa de google un video de youtube todos esos elementos tendrian que ser flexibles ]
+
+3. Media Queries. la pregunta al nevegador: ¿Estas en modo horizontal? ¿Estas en modo vertical? ¿estas a un tamaño minimo de 600px? mediante esas preguntas podemos definir estilos.
+
+
+Resposive Design no solo es adaptar el contenido al tamaño de la pantall tambien es considerar:
+
+...También es considerar:
+
+* Conexión de Red ( Wifi, 2G, 3G, 4G, 5G, etc ).
+* Hardware y Software de los dispositivos ( S.O., Versiones, Memoria, Procesador, Sensores, etc ).
+* Interacciones ( con teclado y ratón, táctiles, por voz ).
+* Accesibilidad web ( soporte a discapacidades ).
+
+Cuando ya estes desarrollando aplicaciones mas funcionales que tengan que tener programación frontend y programacion backend en tonces los puntos anteriores van a ser vitales para que tu aplicacion funcione correctamente en cualquier ecenario
+
+### Contenedores flexibles
 
 
 
