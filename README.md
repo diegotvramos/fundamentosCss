@@ -4062,3 +4062,12 @@ cualquier elemento multimedia debe ser capaz de fluir al tamaño de su contenedo
 ### Multimedia Flexible
 
 
+la etiqueta map ya no se usa. 
+
+```css
+     img, audio, video, iframe, canvas, svg, picture {
+    max-width:100%;
+    height: auto;
+  }
+     
+```

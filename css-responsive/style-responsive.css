@@ -59,3 +59,10 @@ con unidades absolutas) sino con unidades relativas*/
     width: 50%; /*tiene major jerarquia sobre maximo y minimos*/
     height: 20vh; /*tiene major jerarquia sobre maximo y minimos*/
 }
+
+/*la tecnica mas sencilla para trabajar elementos multimedia*/
+
+img{
+    max-width: 100%;
+    height: auto;
+}
