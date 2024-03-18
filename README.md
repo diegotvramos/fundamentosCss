@@ -4071,3 +4071,39 @@ la etiqueta map ya no se usa.
   }
      
 ```
+
+### Atributo srcset y sizes
+
+estos atributos nos van a permitir mejorar el rendimiento al colocar la imagen más adecuada, el navegador es quien decide colocar la imágen mas adecuada debpende de lo que definamos en el atributo SRCSET podemos definir las imagenes ya sea por: aspect ratio(resolucion de pantalla o por el ancho de la pantalla)
+
+> una forma de probar es aumentando el zoom de 100% -> 150% -> 200%
+
+> El atributo SRCSET nos permite cambiar diferentes imágenes por tamaño real pues esto va optimizar el rendimiento. por que no va ser lo mismo consultar desde el mobil y el escritorio, ya que podemos poner una imagen con menos resolución para el mobil
+
+> El atributo Size va definiendo un tamaño especifico que mi imagen pueda ocupar.
+
+```html
+    <!-- 1.5x = 150%  de 600px en adelante pole esto... (la W significa ancho)-->
+      <img src="img-responsive/html5-3d-600.png"
+      srcset="img-responsive/html5-3d-600.png 1x, img-responsive/html5-3d-900.png 1.5x, img-responsive/html5-3d-1200.png 2.0x" alt="HTML-5">
+      
+      <img src="img-responsive/html5-3d-600.png"
+      srcset="img-responsive/html5-3d-600.png 600w, img-responsive/html5-3d-900.png 900w, img-responsive/html5-3d-1200.png 1200w" alt="HTML-5">
+      <!-- cuando la maxima anchura sea 768px  quiero que la imagen se veaa 600px -->
+      <img src="img-responsive/html5-3d-600.png"
+      srcset="img-responsive/html5-3d-600.png 600w, img-responsive/html5-3d-900.png 900w, img-responsive/html5-3d-1200.png 1200w" 
+      sizes="(max-width: 480px)300px, (max-width: 600px)480px, (max-width: 768px)600px,
+      (max-width: 1024px)900px, (min-width: 1200px)1200px"
+      alt="HTML-5">
+```
+
+> pongan atencion a los sitios hechos con wordpress, por que desde hace varios años algunas de sus plantillas que están creadas con las buenas prácticas de wordpress lo que hace internamente wordpress es cambiar la imagen mas adecuada mediante estos atributos  `srcset y size` 
+
+Si ustedes han trabajado con wordpress saben que cuando ustedes suben a la bibliteca de imagenes una imagen no es que nada mas se suba la imagen wordpress internamente genera varios tamaños de la misma imagen y¿por que crea esos tamaños? pues dependiendo desde que dispositivo estes accediendo al sitio wordpres utiliza estos atributos
+
+### Etiqueta picture
+
+algunos sitios hacen esto cuando tienen una version mimificada del logotipo, eje: hay sitios que en la version mobil solamente se ve el logo y que cuando estamos en la version descktop se ve el logo y aparte el nombre de la empresa que forma parte del logo
+
+> las mediaquerys son como condicionales, preguntas que le hacemos al navegador ¿cuando la maxima anchura de la pantalla  sean 600px? si es de 600px para abajo, que la imagen se vea a 480 entonces esa es una media query
+

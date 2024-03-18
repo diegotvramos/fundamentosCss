@@ -118,6 +118,19 @@
         tamaños y pesos,
         dependiendo del tamaño o la resolución de la pantalla.
       </p>
+      <!-- 1.5x = 150%  de 600px en adelante pole esto... (la W significa ancho)-->
+      <img src="img-responsive/html5-3d-600.png"
+      srcset="img-responsive/html5-3d-600.png 1x, img-responsive/html5-3d-900.png 1.5x, img-responsive/html5-3d-1200.png 2.0x" alt="HTML-5">
+      
+      <img src="img-responsive/html5-3d-600.png"
+      srcset="img-responsive/html5-3d-600.png 600w, img-responsive/html5-3d-900.png 900w, img-responsive/html5-3d-1200.png 1200w" alt="HTML-5">
+      <!-- cuando la maxima anchura sea 768px  quiero que la imagen se veaa 600px -->
+      <img src="img-responsive/html5-3d-600.png"
+      srcset="img-responsive/html5-3d-600.png 600w, img-responsive/html5-3d-900.png 900w, img-responsive/html5-3d-1200.png 1200w" 
+      sizes="(max-width: 480px)300px, (max-width: 600px)480px, (max-width: 768px)600px,
+      (max-width: 1024px)900px, (min-width: 1200px)1200px"
+      alt="HTML-5">
+      
       <h4>Etiqueta <i>picture</i></h4>
       <p>
         El objetivo de esta etiqueta, no es sólo mostrar diferentes tamaños de la misma imagen,
@@ -125,6 +138,9 @@
         la
         pantalla y las diferencias en el diseño. Esto se conoce como "dirección de arte".
       </p>
+      <picture>
+        
+      </picture>
       <h3>Videos Responsivos</h3>
       <h3>Iframes Responsivos </h3>
     </article>
