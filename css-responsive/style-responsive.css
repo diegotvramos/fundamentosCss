@@ -1,0 +1,61 @@
+
+
+
+/*Todo los elementos que empiezen en su nombre de clase
+con la palabra Box y algo más aplica estos estilos*/
+
+[class^="box"]{
+    margin: 3rem auto; /*y... automático a los lados*/ 
+    background-color: orangered;
+}
+
+/*como no se visualiza vamos a darle una anchura y una altura fija*/
+.box{
+width: 300px;
+height: 300px;
+}
+
+/*si yo hago mas pequeña la pantalla,  por debajo de 300px pues crea 
+un scroll horizontal. pero no haci en version para mobil
+*/
+
+/*¿Que seria una caja flexible?*/
+/*es aquella donde las dimenciones de ancho y alto las vamos a definir (no
+con unidades absolutas) sino con unidades relativas*/
+
+.box-flexible{
+    width: 50%; /*hace referencia al contenedor padre, en este caso el Article*/
+    height: 20vh; /*si voy a dar dar altura en porcentajes el contenedor padre tiene que 
+    tener perfectamente definida el tamaño de la altura expresado en una unidad de medida absoluta, por que sino los
+    porcentajes no van a servir*/
+}
+
+/*en lugar de definir una anchura  y una altura base podriamos definir puntos máximos
+ y puntos mínimos*/
+.box-flexible-2{
+    max-width: 960px;
+    min-width: 280px;
+    max-height: 480px; /*la altura siempre va depender del contenido*/
+    min-height: 280px;
+}
+
+
+.box-flexible-3{
+    max-width: 960px;
+    min-width: 280px;
+    max-height: 480px;
+    min-height: 280px;
+    width: 300px; /*tiene major jerarquia sobre maximo y minimos*/
+    height: 300px; /*tiene major jerarquia sobre maximo y minimos*/
+}
+
+/*que  pasa si lo hago en unidades relativas*/
+
+.box-flexible-4{
+    max-width: 960px;
+    min-width: 280px;
+    max-height: 480px;
+    min-height: 280px;
+    width: 50%; /*tiene major jerarquia sobre maximo y minimos*/
+    height: 20vh; /*tiene major jerarquia sobre maximo y minimos*/
+}
