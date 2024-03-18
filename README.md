@@ -3968,6 +3968,97 @@ Cuando ya estes desarrollando aplicaciones mas funcionales que tengan que tener 
 
 ### Contenedores flexibles
 
+es todo elemento en nuestra interfaz web, cualquier etiqueta html, cualquier sistema de columnas y tienen que ser flexibles y responsivos
 
+> ¿Como puedes volver un contenedor flexible? antes la mayoria de las unidades de medidas eran pixeles y porcentajes, teniamos la resolucion de pantalla 1024 x 768 el diseño se entregaba en un photoshop que estaba maquetado a 1024 el diseño web se hacia pixel-perfect, pero aparecieron los dispositivos mobiles, en lugar de pensar en pixeles ya se tenia que pensar en proporciones.
+
+```css
+    /*Todo los elementos que empiezen en su nombre de clase
+con la palabra Box y algo más aplica estos estilos*/
+
+[class^="box"]{
+    margin: 3rem auto; /*y... automático a los lados*/ 
+    background-color: orangered;
+}
+
+/*como no se visualiza vamos a darle una anchura y una altura fija*/
+.box{
+width: 300px;
+height: 300px;
+}
+
+/*si yo hago mas pequeña la pantalla,  por debajo de 300px pues crea 
+un scroll horizontal. pero no haci en version para mobil
+*/
+
+/*¿Que seria una caja flexible?*/
+/*es aquella donde las dimenciones de ancho y alto las vamos a definir (no
+con unidades absolutas) sino con unidades relativas*/
+
+.box-flexible{
+    width: 50%; /*hace referencia al contenedor padre, en este caso el Article*/
+    height: 20vh; /*si voy a dar dar altura en porcentajes el contenedor padre tiene que 
+    tener perfectamente definida el tamaño de la altura expresado en una unidad de medida absoluta, por que sino los
+    porcentajes no van a servir*/
+}
+```
+
+
+Hay otra manera de controlar está flexibilidad y para ello vamos a utilizar 4 propiedades de CSS que tienen que ver con el ancho y alto pero para cuando tengamos que definir  maximos o minimos tamaños, podriamos utilizar pixeles que son unidades absolutas
+
+### Propiedades max-width, min-width, max-height y min-height
+
+```css
+    /*en lugar de definir una anchura  y una altura base podriamos definir puntos máximos
+ y puntos mínimos*/
+.box-flexible-2{
+    max-width: 960px;
+    min-width: 280px;
+    max-height: 480px; /*la altura siempre va depender del contenido*/
+    min-height: 280px;
+}
+```
+
+
+Vean como ya existe el desbordamiento por que llegó a su máxima altura
+
+![desbordamiento](/assets-responsive/desbordamiento.JPG)
+
+> _CUIDADO: en utilizar maximos y minimos y despues definir una anchura y una altura base por que ahi dependiendo de la unidad de medida que utilizemos podemos tener ciertos problemas_
+
+### Tamaños Fijos VS Tamaños Maximos y Minimos
+
+
+```css
+    .box-flexible-3{
+    max-width: 960px;
+    min-width: 280px;
+    max-height: 480px;
+    min-height: 280px;
+    width: 300px; /*tiene major jerarquia sobre maximo y minimos*/
+    height: 300px; /*tiene major jerarquia sobre maximo y minimos*/
+}
+
+/*que  pasa si lo hago en unidades relativas*/
+
+.box-flexible-4{
+    max-width: 960px;
+    min-width: 280px;
+    max-height: 480px;
+    min-height: 280px;
+    width: 50%; /*tiene major jerarquia sobre maximo y minimos*/
+    height: 20vh; /*tiene major jerarquia sobre maximo y minimos*/
+}
+```
+
+> Cuando tu tienes contenedores flexibles y haz definido maximos y minimos, pero que pasa cuando aparte defines anchura (width) y altura(height) si estas propiedades lo defines en unidades absolutas como los pixeles pues esa fluides que nos da los máximos y minimos no las vamos a tener por que ``widht y height`` tienen mayor jerarquia sobre max y min, 
+
+> Pero ojo que pasa cuando tiene maximos y minimos pero haz definido la anchura y la altura con unidades relativas, ve que va tener mayor jerarquia `width y height`  pero cuando ya llega a un minimo o un máximo digamos que si obedecen  
+
+> Cuando no se tiene un conocimiento de los prefijos y de la jerarquia que tiene sobre los prefijos las propiedades iniciales que son `width y height` empesamos a tener ciertas frustraciones
+
+cualquier elemento multimedia debe ser capaz de fluir al tamaño de su contenedor no solo las imágenes sino cualquier elemento multimedia (cualquier cosa que no sea texto)
+
+### Multimedia Flexible
 
 
