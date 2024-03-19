@@ -62,7 +62,58 @@ con unidades absolutas) sino con unidades relativas*/
 
 /*la tecnica mas sencilla para trabajar elementos multimedia*/
 
-img{
+img,
+video,
+iframe{
     max-width: 100%;
     height: auto;
 }
+
+
+/*esta es una tecnica vieja*/
+.responsive-media{
+    position: relative;
+    max-width: 100%;
+    height: 0;
+    /*
+        Formato widescreen 16:9
+        16 ------> 100%
+        9 -------> 56.25%
+    */
+    padding-bottom: 56.25%;
+}
+
+.responsive-media > *{
+    position: absolute; /*su elemento padre es un position:relative, se posiciona respecto de
+    su contenedor padre*/
+    width: 100%;
+    height: 100%;
+}
+
+/*la nueva forma de hacer responsivo*/
+
+.aspect-ratio-16-9{
+    aspect-ratio: 16 / 9;
+    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 9; /*es como definir el ancho y alto en proporcion
+    */
+}
+
+
+/*es una forma mas apropiada de aplicar responsividad 
+a nuestros videos y documentos multimedia
+*/
+.aspect-ratio-16-9{
+background-color: rebeccapurple;
+aspect-ratio: 16 / 9;
+aspect-ratio: 1 / 1;
+aspect-ratio: 16 / 9;
+}
+
+.aspect-ratio-1-1{
+    aspect-ratio: 1/1;
+}
+
+
+
+

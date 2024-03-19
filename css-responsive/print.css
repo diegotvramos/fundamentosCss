@@ -1,0 +1,18 @@
+
+
+
+/*primero debemos especificar el tamaño del papel*/
+@page{
+    size: A4;
+}
+
+body{
+    font-size: 12pt; /*el software que utilizamos para redactar 
+    es word y ese software trabaja con puntos, entonces como estos 
+    estilos van a aplicar solamente para cuando yo mande a imprimir
+    pues se me hace correcto pues usar las mismas unidades de medida
+    que utilizaria un procesador de texto*/
+    font-family: serif;
+    background-color: #000;
+    color: #fff;
+}

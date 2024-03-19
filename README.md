@@ -4107,3 +4107,123 @@ algunos sitios hacen esto cuando tienen una version mimificada del logotipo, eje
 
 > las mediaquerys son como condicionales, preguntas que le hacemos al navegador ¿cuando la maxima anchura de la pantalla  sean 600px? si es de 600px para abajo, que la imagen se vea a 480 entonces esa es una media query
 
+
+> este es el principal objetivo de la etiqueta picture, cambiar imágenes
+
+> **webp** es un nuevo tipo de formato de imagen propuesto por google que trata de ser una mejor solucion de imagen para los jpg y para los gifs animados con un mayor peso
+
+> ¿como saber el tipo de imagen? pues al inspeccionar el código ve a la pestaña de network
+
+
+### Videos Responsivos 
+
+> ¿Como hacemos un elemento multimedia responsivo? `max-width: 100%, height:auto` 
+
+```css
+    img,
+video{
+    max-width: 100%;
+    height: auto;
+}
+
+
+/*esta es una tecnica vieja*/
+.responsive-media{
+    position: relative;
+    max-width: 100%;
+    height: 0;
+    /*
+        Formato widescreen 16:9
+        16 ------> 100%
+        9 -------> 56.25%
+    */
+    padding-bottom: 56.25%;
+}
+
+.responsive-media > *{
+    position: absolute; /*su elemento padre es un position:relative, se posiciona respecto de
+    su contenedor padre*/
+    width: 100%;
+    height: 100%;
+}
+
+/*la nueva forma de hacer responsivo*/
+
+.aspect-ratio-16-9{
+    aspect-ratio: 16 / 9;
+    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 9; /*es como definir el ancho y alto en proporcion
+    */
+}
+
+
+/*es una forma mas apropiada de aplicar responsabilidad 
+a nuestros videos y documentos multimedia
+*/
+.aspect-ratio-16-9{
+background-color: rebeccapurple;
+aspect-ratio: 16 / 9;
+aspect-ratio: 1 / 1;
+aspect-ratio: 16 / 9;
+}
+```
+
+### Iframes responsivos
+
+> al darle máxima altura del 100% y altura automática
+
+quisá lo que nos convenga utilizar las 2 tecnicas (tecnica vieja o usar el aspect-radio: 16:9)
+
+gracias al booton-pading mágico se conserva rectangular
+
+cuando llega al tamaño real del iframe de Youtube pues deja de hacer esta responsividad.
+
+quisa un mapa lo queremos a un aspect-ratio: 1:1
+
+```css
+    /*es una forma mas apropiada de aplicar responsividad 
+a nuestros videos y documentos multimedia
+*/
+.aspect-ratio-16-9{
+background-color: rebeccapurple;
+aspect-ratio: 16 / 9;
+aspect-ratio: 1 / 1;
+aspect-ratio: 16 / 9;
+}
+
+.aspect-ratio-1-1{
+    aspect-ratio: 1/1;
+}
+```
+
+### Media Queries Versión 2.1
+
+medios de consultas son preguntas que le hacemos al navegador y dependiendo de estas preguntas pues el navegador va a aplicar ciertos estilos eje: la orientaion del dispositivo sea horizontal cuando el aspect-ratio sea el doble cuando el tamaño de pantalla la minima anchura a 300px cuando la maxima anchura sea a 500px cuando el usuario prefiera la reduccion de animaciones o cuando prefiera efectos animados o cuando el usuario prefiera el modo dark
+
+> las media querys se definian desde la etiquet link
+
+```html
+    <link rel="stylesheet" media="print" href="print.css" >
+```
+esta hoja de estilos va haplicar cuando el usuario mande a imprimir el atributo ``media`` debe ir despues del atributo `rel`
+
+> _Ctrl + p_ cuando mandes a imprimir tienes que asegurarte de haber scrolleado toda la página para que tome los estilos
+
+```css
+    /*primero debemos especificar el tamaño del papel*/
+@page{
+    size: A4;
+}
+
+body{
+    font-size: 12pt; /*el software que utilizamos para redactar 
+    es word y ese software trabaja con puntos, entonces como estos 
+    estilos van a aplicar solamente para cuando yo mande a imprimir
+    pues se me hace correcto pues usar las mismas unidades de medida
+    que utilizaria un procesador de texto*/
+    font-family: serif;
+    background-color: #000;
+    color: #fff;
+}
+```
+

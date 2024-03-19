@@ -7,6 +7,8 @@
   <title>Curso Responsive Design y Arquitectura CSS</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css">
   <link rel="stylesheet" href="css-responsive/init.css">
+  <!-- esta hoja de estilos va aplicar solo cuando el usuario mande a imprimir -->
+  <link rel="stylesheet" media="print" href="css-responsive/print.css">
   <link rel="stylesheet" href="css-responsive/style-responsive.css">
 </head>
 
@@ -139,10 +141,41 @@
         pantalla y las diferencias en el diseño. Esto se conoce como "dirección de arte".
       </p>
       <picture>
-        
+        <source srcset="img-responsive/kitten-large.png" media="(min-width:1024px)">
+        <!-- cuando la minima anchura sea de 600px -->
+        <source srcset="img-responsive/kitten-medium.png" media="(min-width:600px)">
+        <!-- para los navegadores que no soportan el atributo srcset -->
+        <img src="img-responsive/kitten-small.png" alt="kitten">
+      </picture>
+      <br>
+      <picture>
+        <!-- mi Media no va evaluar en tamño de pantalla sino el soporte de un tipo de imagen
+          en lugar de usar el atributo media vamos a usar el atributo type.
+        -->
+        <source srcset="img-responsive/butterfly.webp" type="image/webp">
+        <img src="img-responsive/butterfly.jpg" alt="Mariposa">
+
       </picture>
       <h3>Videos Responsivos</h3>
+      <video src="assets-responsive/kenai.mp4" controls></video>
+      <div class="responsive-media">
+        <video src="assets-responsive/kenai.mp4" controls></video>
+      </div>
+      <video class="aspect-ratio-16-9" src="assets-responsive/kenai.mp4" controls></video>
+      <div class="aspect-ratio-16-9">
+
+      </div>
       <h3>Iframes Responsivos </h3>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/F55LNTW3GE0?si=3MkijzxTvF5sG8e6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <br>
+      <div class="responsive-media">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/F55LNTW3GE0?si=3MkijzxTvF5sG8e6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <iframe class="aspect-ratio-16-9" width="560" height="315" src="https://www.youtube.com/embed/F55LNTW3GE0?si=3MkijzxTvF5sG8e6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <br>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3824.946063813196!2d-68.1634769250347!3d-16.528820384219355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915edf6de880ea2d%3A0x463bc8c3df878dd1!2sAv.%20C%C3%ADvica%2C%20El%20Alto!5e0!3m2!1ses!2sbo!4v1710825153279!5m2!1ses!2sbo" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <br>
+      <iframe class="aspect-ratio-1-1" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3824.946063813196!2d-68.1634769250347!3d-16.528820384219355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915edf6de880ea2d%3A0x463bc8c3df878dd1!2sAv.%20C%C3%ADvica%2C%20El%20Alto!5e0!3m2!1ses!2sbo!4v1710825153279!5m2!1ses!2sbo" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </article>
 
     <hr>
