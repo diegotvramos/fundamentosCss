@@ -4342,3 +4342,39 @@ para cuando nostros estamos haciendo un diseño pensando primero en el mobil*/
 
 Siguiente: ¿Cuando necesito ir aplicar una media query?
 
+### Breakpoints
+
+El breakpoint es el punto de interrupcion es decir es esa medida en la cual decido aplicarle estilos css
+
+Analizen los sitios que ustedes visiten se van a dar cuenta que la mayoria no utiliza los 1920px, porque imaginense en un blog estar leyendo un parrafo de blog a 1920px seria muy cansado, por lo general el contenedor de los textos esto tambien tiene que ver con la usabilidad y la ergonomia los tamaños que definio Ettan marckote siguen siendo validos, vaver ocaciones donde querramos aplicar herro-image el 100% de la pantalla
+
+el contendido de varias paginas web se centra no son al 100%
+
+hay sitios que usan el 100% de la pantalla por que les comviene, eje: paginas de documentacion como bootstrap Vue.js
+
+Actualmente los contenedores por muy grandes que sean llegan a ser de 1400 a 1440px
+
+
+> **En la medida de lo posible combierte tus pixeles en  EMS**
+
+¿Por que?
+
+> los pixeles son unidades absolutas y tiene que ver con la resolucion de la pantalla entonces si tu dejas tus media  querys en pixeles corres riesgo de que dispositivos de gama alta o dispositivos que tengan mayor densidad de pixeles fisica en sus pantallas pues por ahi esos pixeles, como tu dejaste tus mediaquerys expresada en pixeles pues esos pixeles no se visualizen correctamente por la dencidad adicional que tengan en la pantalla de estos dispositivos de alta gama, 
+
+> los EMS son unidades de medida en css QUE SE ADAPTAN al tamaño de la tipografia del contenedor entonces se a utilizado la unidad de medida EM por que esta se puedea adaptar en pantallas que tengan mayor densidad de pixeles. Cuando tu cargas un sitio en una pantalla que tiene mejor calidad(mejor densidad de pixeles)  al utilizar ems en lugar de pixeles pues todo se va volver relativo al contenedor en el que esté.
+
+> estas recomendaciones lo dan profecionales del diseño web
+
+eje: 800/16=50
+
+### Viewport
+
+una de sus 4 propiedades puedes definirle hasta que medida un usuario pede darle zoom a tu página
+
+> antes que tu ego profecional está ¿para quienen estas diseñando? incluso sobre tu cliente, usuarios finales con problemas visuales.
+
+> hay paginas que bloquean el click derecho ¿Como te sentirias? mal por que la experiencia agradable no la tiene siempre trata de pensar que lo mas importante no es tu ego profecional. sino ponerte en los zatapos del usuario final
+
+yo uso el viwport tal cual nos da el atajo del EMET.
+
+### 
