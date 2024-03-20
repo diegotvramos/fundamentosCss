@@ -4227,3 +4227,118 @@ body{
 }
 ```
 
+debes scrollear todo el contenido para que la previsualizacion del comando imprimir lo detecte
+
+### Media queries version 3
+
+Esta es la foma más utilizada
+
+> prefers-reduced-motion busquen en la documentacion de mozilla development network
+
+> Recomendacion: _Cuando empiezen un sitio web, si ya comenzaron con la tecnica de Descktop first, no paren (la media query) y acaben con esa tecnica es decir no mesclen min-width y max-width_
+
+
+```css
+    /*media query para bajar animación*/
+
+
+
+@media screen and (prefers-reduced-motion: reduce){
+
+    /*REDUCE en mis configuraciones no tengo el valor de REDUCE */
+    html{
+        scroll-behavior: auto;
+        scroll-behavior: smooth;
+    }
+}
+
+
+
+@media screen and (prefers-reduced-motion: no-preference){
+
+    /*REDUCE en mis configuraciones no tengo el valor de REDUCE */
+    html{
+        scroll-behavior: auto;
+        scroll-behavior: smooth;
+    }
+}
+
+
+/*como mi sistema operativo lo tengo en modo dark
+esta media query toma eso como referencia y aplica los 
+estilos
+
+cuado al sistema operativo le das a entender que prefieres el 
+modo dark(oscuro) esté configura las aplicaciones en modo oscuro por defecto
+
+*/
+@media screen and (prefers-color-scheme:dark){
+    html{
+        background-color: black;
+        color: cyan;
+    }
+}
+
+
+@media screen and (prefers-color-scheme:light){
+    html{
+        background-color: white;
+        color: darkblue;
+    }
+}
+
+
+/*Como mi sistema operativo tiene seleccionado el modo oscuro
+pues obiamente estas preferencias de color  anque estan definidas despues del
+DARK pues simplemente no están obedeciendo por que predomina
+el */
+@media screen and (prefers-color-scheme:no-preference){
+    html{
+        background-color: white;
+        color: darkred;
+    }
+
+}
+
+/*¿Como reestablesco los colores?*/
+@media screen and (prefers-color-scheme:dark){
+    html{
+        background-color: white;
+        color: black;
+    }
+}
+
+
+/*Media querys que afectan el tamaño de la pantalla*/
+/*generalmente las media querys con la que vamos a trabajar  en min width aplica
+para cuando nostros estamos haciendo un diseño pensando primero en el mobil*/
+
+/* En MOBILE FIRST se usa min-width que significa lo mínimo, del valor que des
+ hacia arriba*/
+@media screen and (min-width:480px){
+    html{
+        background-color: lightpink;
+    }
+}
+
+/* En DESKTOP FIRST se usa max-width que significa lo máximo, del valor que des
+ hacia abajo*/
+
+ /*predomina esta media query por cascada*/
+ @media screen and (max-width:1024px){
+    html{
+        background-color: lightgreen;
+    }
+}
+
+/*Regresamos a los colores principales*/
+@media screen and (min-width:1200px){
+    html{
+        background-color: white;
+    }
+}
+```
+
+
+Siguiente: ¿Cuando necesito ir aplicar una media query?
+
