@@ -4377,4 +4377,12 @@ una de sus 4 propiedades puedes definirle hasta que medida un usuario pede darle
 
 yo uso el viwport tal cual nos da el atajo del EMET.
 
-### 
+### Grid Responsiva Artesanal con Flexbox
+
+¿Por qué los frameworks como Bootstrap, fundation usan una grid de 12 columnas?
+
+> https://960.gs/ este era el abuelito de bootstrap estaba maquetado a 960px
+
+> nos daba una grid de 12 y 16 columnas por que son números muy divisibles
+
+en esta seccion aprenderemos como hacer tu propia grid sin frameworks y flexbox css
