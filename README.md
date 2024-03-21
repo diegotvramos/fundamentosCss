@@ -4386,3 +4386,482 @@ yo uso el viwport tal cual nos da el atajo del EMET.
 > nos daba una grid de 12 y 16 columnas por que son números muy divisibles
 
 en esta seccion aprenderemos como hacer tu propia grid sin frameworks y flexbox css
+
+> nos guste o no, bootstrap es el framework mas utilizado hoy en día
+
+> si les parece muchas mediaQuerys simplemente reduscanlas a sus necesidades
+
+```css
+    
+
+
+/*
+    es muy utilizado el sistema de 12 columnas
+    por que tiene muchas diviciones que podriamos tener de elementos 
+    que ocupen el mismo espacio a 12 columnas
+
+    12 / 1= 12  elmento al 100%
+    12 / 2= 6  elmento al 50%
+    12 / 3= 4
+    12 / 4= 3
+    12 / 6=  2
+    12 / 12= 1
+
+    La clave es que la sumatoria de todo los elementos que quieras que esten
+    en una misma fila de contenido pues tiene que dar como resultado 12, por que
+    si te pasas el elemento pasa a la fila de abajo
+
+
+    5 + 7 = 12
+    2 + 5 + 5 = 12
+    4 + 2 + 3 + 3 = 12
+
+    12 -------> 100%
+    ?col -----> ???%
+
+    GRID SYSTEM ARTESANAL CON FLEXBOX A 12 COLUMNAS
+
+    Tamaños (Mediaqueries)
+  xs    -   extrasmall      - 0                 -  479px        -480res
+  sm    -   small           - 480px (30em)      -  767px        -800res
+  md    -   medium          - 768px (48em)      -  991px        -1024res
+  lg    -   large           - 992px (62em)      -  1199px       -1280res
+  xl    -   extralarge      -+1200px (75em)                     ->1281res
+
+*/
+
+html{
+    box-sizing: border-box; /*si tu das espaciados y bordes ya estén incluidos dentro del modelo de caja*/
+    font-size: 16px;   
+}
+
+*,
+*::after, 
+*::before{
+    box-sizing: inherit;
+}
+
+.row{
+    display: flex; /*flexbox es unidimencional*/
+    flex-wrap: wrap;
+}
+
+/*si quieres ver el acomodo de las filas y columnas*/
+.row > [class^="col"] { /*aplica estilos a los elementos que emepiezen con la palabra COL*/
+ border: thin solid gray;
+ padding: 1rem;
+}
+
+/*cuando estes maquetando  no necesitarias poner esta grid*/
+
+/*defino sistema de columnas con cierto ancho*/
+
+/*grid responsiva mobile first
+ Los estilos antes de las media querys estan pensadas para el mobil
+*/
+.col-1{
+width: 8.333333333333333%;
+}
+
+.col-2{
+    width: 16.6666667%;
+}
+
+.col-3{
+    width: 25%;
+}
+
+.col-4{
+    width: 33.33333333%;
+}
+
+.col-5{
+    width: 41.66666667%;
+}
+
+.col-6{
+    width: 50%;
+}
+
+.col-7{
+    width:58.33333333%;
+}
+
+.col-8{
+    width: 66.66666667%;
+}
+
+.col-9{
+    width:75%;
+}
+
+.col-10{
+    width: 83.33333333%;
+}
+
+.col-11{
+    width: 91.66666667%;
+}
+
+.col-12{
+    width: 100%;
+}
+
+/*lo siguiente a determinar es nuestro grid sistem establecer
+el tamaño de las media querys*/
+
+/*Aca abajo debemos crear nuestras media queris, como vamos a hacer una grid mobileFirst
+    las media querys tienen que ir de la menor a la mayor
+*/
+
+@media screen and (min-width: 30em){ /*hay una separacion entre AND's*/
+        .col-sm-1{
+            width: 8.333333333333333%;
+        }
+        
+        .col-sm-2{
+            width: 16.6666667%;
+        }
+        
+        .col-sm-3{
+            width: 25%;
+        }
+        
+        .col-sm-4{
+            width: 33.33333333%;
+        }
+        
+        .col-sm-5{
+            width: 41.66666667%;
+        }
+        
+        .col-sm-6{
+            width: 50%;
+        }
+        
+        .col-sm-7{
+            width:58.33333333%;
+        }
+        
+        .col-sm-8{
+            width: 66.66666667%;
+        }
+        
+        .col-sm-9{
+            width:75%;
+        }
+        
+        .col-sm-10{
+            width: 83.33333333%;
+        }
+        
+        .col-sm-11{
+            width: 91.66666667%;
+        }
+        
+        .col-sm-12{
+            width: 100%;
+        }
+  }
+
+@media screen and (min-width: 48em) {
+    .col-md-1 {
+      width: 8.333333333333333%;
+    }
+  
+    .col-md-2 {
+      width: 16.66666666666667%;
+    }
+  
+    .col-md-3 {
+      width: 25%;
+    }
+  
+    .col-md-4 {
+      width: 33.33333333333333%;
+    }
+  
+    .col-md-5 {
+      width: 41.66666666666667%;
+    }
+  
+    .col-md-6 {
+      width: 50%;
+    }
+  
+    .col-md-7 {
+      width: 58.33333333333333%;
+    }
+  
+    .col-md-8 {
+      width: 66.66666666666667%;
+    }
+  
+    .col-md-9 {
+      width: 75%;
+    }
+  
+    .col-md-10 {
+      width: 83.33333333333333%;
+    }
+  
+    .col-md-11 {
+      width: 91.66666666666667%;
+    }
+  
+    .col-md-12 {
+      width: 100%;
+    }
+  }
+  
+@media screen and (min-width: 62em) {
+    .col-lg-1 {
+      width: 8.333333333333333%;
+    }
+  
+    .col-lg-2 {
+      width: 16.66666666666667%;
+    }
+  
+    .col-lg-3 {
+      width: 25%;
+    }
+  
+    .col-lg-4 {
+      width: 33.33333333333333%;
+    }
+  
+    .col-lg-5 {
+      width: 41.66666666666667%;
+    }
+  
+    .col-lg-6 {
+      width: 50%;
+    }
+  
+    .col-lg-7 {
+      width: 58.33333333333333%;
+    }
+  
+    .col-lg-8 {
+      width: 66.66666666666667%;
+    }
+  
+    .col-lg-9 {
+      width: 75%;
+    }
+  
+    .col-lg-10 {
+      width: 83.33333333333333%;
+    }
+  
+    .col-lg-11 {
+      width: 91.66666666666667%;
+    }
+  
+    .col-lg-12 {
+      width: 100%;
+    }
+  }
+  
+@media screen and (min-width: 75em) {
+    .col-xl-1 {
+      width: 8.333333333333333%;
+    }
+  
+    .col-xl-2 {
+      width: 16.66666666666667%;
+    }
+  
+    .col-xl-3 {
+      width: 25%;
+    }
+  
+    .col-xl-4 {
+      width: 33.33333333333333%;
+    }
+  
+    .col-xl-5 {
+      width: 41.66666666666667%;
+    }
+  
+    .col-xl-6 {
+      width: 50%;
+    }
+  
+    .col-xl-7 {
+      width: 58.33333333333333%;
+    }
+  
+    .col-xl-8 {
+      width: 66.66666666666667%;
+    }
+  
+    .col-xl-9 {
+      width: 75%;
+    }
+  
+    .col-xl-10 {
+      width: 83.33333333333333%;
+    }
+  
+    .col-xl-11 {
+      width: 91.66666666666667%;
+    }
+  
+    .col-xl-12 {
+      width: 100%;
+    }
+  }
+```
+
+### Feature Queries
+
+las media querys son consultas de medios
+
+las `Feature Queries` son consultas de las caracteristicas son reglas css que le van a preguntar al navegador si soportan ciertar caracterirsticas
+
+¿Para que nos sirve preguntarle al navegador si soporta ciertas caracterirsticas? cuando sale algo nuevo que no está bien soportado en todo los navegadores, una buena practica es dar cierta retrocompatibilidad
+
+las `Feature Queries` nos permitia preguntarle al navegador y cuando el navegador no soportaba la media query entonces tu podrias aplicar otra estrategia de css para poder simular ese comportamiento
+
+> Cuando css y html saquen una nueva caracteristica en lugar de validar con librerias como modernizer y empesar a descargar mas cosas a tu aplicacion, ve que puedes hacerlo de manera muy simple con las reglas @suport, asi te evitas estar agregando librerias adicionales
+
+> `¿Como te puedes entrar de los cambios?` https://caniuse.com/ 
+
+
+```css
+
+    /*Feature queries*/
+
+@supports (grid-template-columns: subgrid){
+    html{
+        background-color: black;
+        color: greenyellow;    
+    }
+}
+
+/*Las media querys y las Feacture Queries nos permiten trabajar 
+    con los operadores lógicos(and, or, not)
+*/
+
+@supports not (grid-template-columns: subgrid){
+    html{
+        background-color: darkgoldenrod;
+        color: white;    
+    }
+}
+
+/*Antes se utilizaba librerias como Modernicer librerias de javascript
+para dar esta retrocompatibilidad a ciertar propiedades de CSS*/
+
+/*Las 2 condiciones debes ser verdaderas*/
+
+@supports (display: grid) and (grid-template-columns: subgrid){
+    html{
+        background-color: darkslateblue;
+        color: lightseagreen;
+    }
+}
+
+
+/*Condicional OR, por lo menos una debe ser verdadero*/
+@supports (display: grid) or (grid-template-columns: subgrid){
+    html{
+        background-color: white;
+        color: black;
+    }
+}
+```
+
+### Container Queries
+
+
+Es otra opcion más
+Asi como las Media queries nos permiten hacer cambios dependiendo del tamaño de la pantalla. y asi como las feature queries nos permiten aplicar ciertas reglas css dependiendo del soporte de algunos atributos y propiedades los ``Container queries`` nos va permitir redimencionar un contenido en particular
+
+> COMPONENETE: los framework reactivos orientado a componenetes como anguar, vue.js, reakt  ya tenemos el concepto de programacion orientada a componenetes(¿paradigme new?) 
+
+> Esto de los _Container Queries_  en lugar de que un elemento de tu interfaz dependa del tamaño de la pantalla dependa mas bien de sus necesidades
+
+Imagina una targeta necesita estar en vertical hasta que el tamaño de su imagen sea de 300px y depues de ahi quisas esa imagen cambia a aun formato horizontal para mostrar su contenido pero que no va depender como tal del tamaño de la resolucion o de las caracteristicas del dispositivo, sino que va depender de sus propias necesidades
+
+> para activar la bandera : ``chrome://flags/ ``pegalo en el navegador y buca en la caja de busquedas: **container queries.**  todo esto para experimentar, acualmete ya está soportado 2024
+
+
+> los Container Queries trabajan sobre las necesidades de las propiedades de CSS  pero de cada componente
+
+
+> solucion: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries pdata, no queria ponerse en linea los elementos.
+
+```css
+    .card{
+    border: thin solid #000;
+    margin-left: auto; /*para que se centre*/
+    margin-right: auto;
+    max-width: 800px;
+    /*container: layout style; /*acvivamos las caracteristicas de conteiner queries*/
+     container-type: inline-size;
+    container-name: sidebar;
+    /* contain: layout; */
+    /* contain: size; */
+    /* contain: inline-size; */
+     /* contain: layout; */
+    /* contain: style; */
+}
+
+.card-image{
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: 0 50%; /*para que empieze en el eje horizontal,  y al mitad en el eje vertical*/
+
+}
+
+.card-content{
+    padding: 1rem;
+}
+
+/*lo que yo quiero es que a cierto tamaño del componenete se vuelva en horizontal*/
+
+/* que la parte de texto vaya en una sola fila con la imagen de la card*/
+
+/*para activar lo de container queries al componente padre .card  hay que 
+    activarle la propiedad contain: layout...
+*/
+
+/*chrome://flags/ */
+
+@container (min-width: 600px){ /*cuando la targeta tenga de 600px en adelante*/
+    .card-container{
+        display: flex;
+    }
+}
+
+@container (min-width: 600px) {
+    .card-container {
+        display: flex;
+        /* Otros estilos que desees aplicar */
+    }
+}
+
+
+/* .card {
+    /* Especifica valores válidos para la propiedad "contain" */
+   /* contain: layout style;
+  } */
+  
+  @container sidebar (min-width: 600px) {
+    .card-container {
+      display: flex;
+    }
+    .card-container > *{
+        width: 50%;
+        flex-basis: 50%;
+    }
+  }
+```
+
+> cuando algo es nuevo, mucha paciencia
+
+### 

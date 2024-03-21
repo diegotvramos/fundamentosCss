@@ -52,6 +52,14 @@ html{
     flex-wrap: wrap;
 }
 
+/*si quieres ver el acomodo de las filas y columnas*/
+.row > [class^="col"] { /*aplica estilos a los elementos que emepiezen con la palabra COL*/
+ border: thin solid gray;
+ padding: 1rem;
+}
+
+/*cuando estes maquetando  no necesitarias poner esta grid*/
+
 /*defino sistema de columnas con cierto ancho*/
 
 /*grid responsiva mobile first
@@ -112,7 +120,7 @@ el tamaño de las media querys*/
     las media querys tienen que ir de la menor a la mayor
 */
 
-@media screen and(min-width: 30em){
+@media screen and (min-width: 30em){ /*hay una separacion entre AND's*/
         .col-sm-1{
             width: 8.333333333333333%;
         }

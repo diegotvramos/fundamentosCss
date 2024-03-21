@@ -229,3 +229,111 @@ para cuando nostros estamos haciendo un diseño pensando primero en el mobil*/
         background-color: white;
     }
 }
+
+/*Feature queries*/
+
+@supports (grid-template-columns: subgrid){
+    html{
+        background-color: black;
+        color: greenyellow;    
+    }
+}
+
+/*Las media querys y las Feacture Queries nos permiten trabajar 
+    con los operadores lógicos(and, or, not)
+*/
+
+@supports not (grid-template-columns: subgrid){
+    html{
+        background-color: darkgoldenrod;
+        color: white;    
+    }
+}
+
+/*Antes se utilizaba librerias como Modernicer librerias de javascript
+para dar esta retrocompatibilidad a ciertar propiedades de CSS*/
+
+/*Las 2 condiciones debes ser verdaderas*/
+
+@supports (display: grid) and (grid-template-columns: subgrid){
+    html{
+        background-color: darkslateblue;
+        color: lightseagreen;
+    }
+}
+
+
+/*Condicional OR, por lo menos una debe ser verdadero*/
+@supports (display: grid) or (grid-template-columns: subgrid){
+    html{
+        background-color: white;
+        color: black;
+    }
+}
+
+.card{
+    border: thin solid #000;
+    margin-left: auto; /*para que se centre*/
+    margin-right: auto;
+    max-width: 800px;
+    /*container: layout style; /*acvivamos las caracteristicas de conteiner queries*/
+     container-type: inline-size;
+    container-name: sidebar;
+    /* contain: layout; */
+    /* contain: size; */
+    /* contain: inline-size; */
+     /* contain: layout; */
+    /* contain: style; */
+}
+
+.card-image{
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: 0 50%; /*para que empieze en el eje horizontal,  y al mitad en el eje vertical*/
+
+}
+
+.card-content{
+    padding: 1rem;
+}
+
+/*lo que yo quiero es que a cierto tamaño del componenete se vuelva en horizontal*/
+
+/* que la parte de texto vaya en una sola fila con la imagen de la card*/
+
+/*para activar lo de container queries al componente padre .card  hay que 
+    activarle la propiedad contain: layout...
+*/
+
+/*chrome://flags/ */
+
+@container (min-width: 600px){ /*cuando la targeta tenga de 600px en adelante*/
+    .card-container{
+        display: flex;
+    }
+}
+
+@container (min-width: 600px) {
+    .card-container {
+        display: flex;
+        /* Otros estilos que desees aplicar */
+    }
+}
+
+
+/* .card {
+    /* Especifica valores válidos para la propiedad "contain" */
+   /* contain: layout style;
+  } */
+  
+  @container sidebar (min-width: 600px) {
+    .card-container {
+      display: flex;
+    }
+    .card-container > *{
+        width: 50%;
+        flex-basis: 50%;
+    }
+  }
+  
