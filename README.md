@@ -4864,4 +4864,104 @@ Imagina una targeta necesita estar en vertical hasta que el tamaño de su imagen
 
 > cuando algo es nuevo, mucha paciencia
 
-### 
+### SEO
+
+OPTIMIZACIN EN MOTORES DE BUSQUEDA (search engine Optimization)
+
+Recuerda que hay ciertas practicas a nivel de codigo de html que podemos aplicar para que de forma orgánica nuestros sitios, sobre todo si son sitios noticiosos o que generes contenido del dia a dia se pueda ir posicionando respecto de la temática de la que es tu sitio.
+
+> hacerte conciente que el que tu hagas un sitio una interfaz o una aplicacion web, pues estás ayudando a nivel de código al posicionamiento orgánico en los motores de busqueda
+
+> no te opseciones con sacar calificacion verdes o llegar al 100 a partir de 70pts ya es un buen puntaje
+
+mas que responsive desigin y pensar en adaptar el contenido al tamaño de la pantalla, tendriamos que pensar en diferentes estrategias de diseño multidispositivo y por  ahi te ablaba del responsive design del adaptive design, responsive design + server site componenets, responsive responsive design y del fluid design 
+
+https://pagespeed.web.dev/?utm_source=psi&utm_medium=redirect
+
+### Desktop First VS Mobile First
+
+hay 2 estrategias para hacer diseño responsivo
+
+> Desktop first (usas max-width y de mayor a menor)
+
+> Mobile First
+
+siempre va ser mas facil ir agregando elementos  que irlos quitando y adaptando lo que quede
+
+> no puedes omitir el responsive design si o si tus interfaces o sitios tienen que ser responsivas
+
+> Te recomiendo siempre empesar por MOBILE FIRST
+
+> muchos frameworks empiezan por MOBILE FIRST(es un paradigma de que todos  nuestros sitios e interfases tienen que adaptarse a cualquier dispositivo)  pues nos combiene empesar por lo mas pequeño, siempre va ser mas facil ir adaptando como a nivel de diseño como a nivel de programacion entonces hoy en dia MOBILE FIRST es la tecnica con la que deberias empesar todo tus proyectos
+
+![descktop-first](/assets/desktop-first.webp)
+
+![mobile-first](/assets/mobile-first.webp)
+
+### Adaptive Design
+
+todas en su conjunto son lo mismo es ofrecernos herramientas para que nuestro diseño sea optimo  adaptable en cuestion de tamaño en cualquier dispositivo
+
+No solo es pensar en adaptar el contenido al tamaño de la pantalla Tambien es considerar:
+
+* conexion de red
+
+* hardware, software
+
+* Interacciones (teclado, raton, tactiles por voz)
+
+* Accesibilidad web (soporte a discapacidades)
+
+no tengo instalado fb ni twiter por mi paz mental.
+
+si quiero entrar a fb voy a un navegador del celular y entro desde ahi, me da como resultado una version simplificada de facebook incluso el dominio cambió, dice m.facebook.com, cuando nosotros abrimos facebook en la computadora del escritorio pues ve como la interfaz va a variar no son lo mismo
+
+lo que nos propone Aaron Gustafson es tener diferentes fronts y dependiendo del tipo de dispositivo (pc-descktop,  mobil o tableta) pues aprovechando estos dominios como m.facebook.com o mobile.facebook, etc podamos redirigir al usuario al frontend que mas se adecue a las caracterirsticas del dispositivo del que nos está consumiendo y eso de detectar el dispositivo ve al video 92 de javascript
+
+El adptive Design en sitios web normalitos informativos, blogs hechas con wordpress, gadsby,  o con estas herramientas tipo cms te voy a ser sincero, el Adaptive Design no te combiene, al adaptive design te va comvenir en aplicaciones interactivas que ciertas aplicaciones o módulos dependiendo del dispositivo en el que se encuentre tu usuario puedan estar funcionando o no como lo son las redes sociales
+
+### Responsive Design + Server Side Components (RESS)
+
+dependiendo de las capacidades y caracteristicas de cada dispositivo hablando de hardware y software es que tendriamos que pensar en las adaptaciones para las interfaces y de ser necesrio mandar varios fronts
+
+> adptive design: habla de redirigir al subdominio mas adecuado donde la interfaz ya esté adaptada para ese dispositivo
+
+> RESS: dependiendo de la tecnologia que ocupemos en el lado del backend(servidor) nosotros si tenemos por ejemplo algun sistema con laravel laravel tiene un sistema de plantilla llamada blade, y el blade es como el html  pero dentro de larabel entonces quizas ya a lado del servidor dependiendo del dispositivo que consumas estar mandando ese frontend pero un front dinámico sin la necesidad de tener subdominios no no sé si fb lo hace  desde el frontend o desde el backend entonces todos estos ejemplos twiter, facebook, youtube
+
+> todas van oriendadas a lo mismo a tratar de darle una mejor experiencia al usuario, a la hora de consumir e interactuar un usuario y una interfaz sea un sitio o una aplicacion
+
+en la página de reforma.com no hay responsive design pero cuando detecta un USERAGENT adecuado con JAVASCRIP la interfaz cambia esa estrategia que tiene es eperiodico
+
+> Adaptive design:  toda las adaptaciones lo hace con js
+
+> RESS: lo hace desde las tecnologias del lado del servidor laravel(BLADE), puede volverse mas amplio dependiendo del lenguaje de programacion del lado del servidor, los sistemas de plantilla o el framework que utilises
+
+> _la diferencia entre al adaptive y el Ress es la perspectiva de la programacion que modifica las interfaces mientras que en adptive desing es el frontend en el ress es el backend_
+
+### Responsible Responsive Design
+
+es hacer un responsive design "Responsable" esto del responsive design es estas buenas prácticas de css son buenas pero va ver momentos donde nosotros a parte de adaptar el contenido tengamos que meter programacion JS  para adaptar el contenido al dispositivo que lo esté consumiendo
+
+
+Responsible Responsive Design es una evolucion del responsive design de Ettan markote 
+
+Scott jels no propone diferentes fronts sino aplicar esa programacion a un mismo front que se va adaptando dependiendo del tamaño de la pantalla.
+
+Scott Jehl se ha especializado mucho en el performance (mejora de las interfaces a partir del web permormace) video 90 de js 
+
+si con programacion JS detectamos el tamaño de la pantalla para dispositivos mobiles en lugar de embeber directamente el codigo html que nos formaria el mapa o el vido de youbube ponemos un link hacia el mapa o hacia el video entonces ahi el usuario tiene la desicion si lo consulta en ese momento o si lo hace posteriormente entonces ahi ya estamos aciendo que ese ahoro de las cosas que tiene que descargarel sitio para formar el video de Youtube o el mapa de google pues ya se lo estamos ahorando en cuestion de datos al usaurio entonces con programamcion js hacemos esta deteccion. Y si es tamaño de computadoras de escritorio ahi si embebemos el iframe del video y el iframe del mapa es un ejercicio que te permite entender
+
+`display none ` para que se oculte es una mala practica mejor es adaptar el contenido  dependiendo del dispositivo en el que nos encontremos
+
+### Fluid Design.
+
+se habla del 2020 
+es una tecnica es un poco ya harta 
+sin la necesidad de usar o usar en la menor medida mediaquerys
+
+mi sitio web lo trabajo con un static site generator llamada `Sergey` que trabaja con puros html y documentos makdown es muy minimalista si haz trabajado con herramientas como next o como view press o como gadsby es algo así pero con con puro html plano "MENOS ES MAS" "mas que mas menos es mejor"
+
+
+para muchas de las soluciones quenos propone Trys  hay que utilizar funciones y caracteristicas y unidades de medida de css que hasta cierto punto son relativamente nuevas es decir que no tiene no mas de 5 años soportandose en los navegadores, todas estas caracteristicas ya las hemos visto en los cursos de unidades y estilos css
+
+la filosofia de Trys es muy buena
