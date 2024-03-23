@@ -1392,6 +1392,8 @@ Son funciones a las que podemos dar diferentes valores separados por comas y sie
 
 ### Funcion Clamp()
 
+La función CSS fija un valor medio dentro de un rango de valores entre un límite mínimo definido y un límite máximo. La función toma tres parámetros: un valor mínimo, un valor preferido y un valor máximo permitido.clamp()
+
 ¿donde lo podemos aplicar espectacularmente?
 
 en los titulos de tamaño dinamico.
@@ -4965,3 +4967,151 @@ mi sitio web lo trabajo con un static site generator llamada `Sergey` que trabaj
 para muchas de las soluciones quenos propone Trys  hay que utilizar funciones y caracteristicas y unidades de medida de css que hasta cierto punto son relativamente nuevas es decir que no tiene no mas de 5 años soportandose en los navegadores, todas estas caracteristicas ya las hemos visto en los cursos de unidades y estilos css
 
 la filosofia de Trys es muy buena
+
+funcion clamp()
+
+### Grid Fluida
+
+```css
+      /*Grid Fluida*/
+
+  .fluid-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    /*¿Por que no estoy especificando filas por que las filas se van a generar dinamicamente?*/
+    }
+.fluid-item{
+    border: thin solid gray;
+    padding: 1rem;
+    }
+```
+
+### Textos Fluidos
+
+hay dos estrategias
+
+> La primera seria tener en consideracion varios tamaños de texto que yo pueda ir fluyendo
+
+vamos a está  pagina: https://utopia.fyi/type/calculator/  y copiamos el código 
+
+* nos declara 8 variables
+
+* tendrian que modificar el tamaño del view port
+
+```css
+    /* @link https://utopia.fyi/type/calculator?c=320,18,1.2,1240,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+
+:root {
+  --step--2: clamp(0.7813rem, 0.7747rem + 0.0326vi, 0.8rem);
+  --step--1: clamp(0.9375rem, 0.9158rem + 0.1087vi, 1rem);
+  --step-0: clamp(1.125rem, 1.0815rem + 0.2174vi, 1.25rem);
+  --step-1: clamp(1.35rem, 1.2761rem + 0.3696vi, 1.5625rem);
+  --step-2: clamp(1.62rem, 1.5041rem + 0.5793vi, 1.9531rem);
+  --step-3: clamp(1.944rem, 1.771rem + 0.8651vi, 2.4414rem);
+  --step-4: clamp(2.3328rem, 2.0827rem + 1.2504vi, 3.0518rem);
+  --step-5: clamp(2.7994rem, 2.4462rem + 1.7658vi, 3.8147rem);
+}
+
+.step--2 {
+    font-size: var(--step--2);
+}
+
+.step--1 {
+    font-size: var(--step--1);
+}
+
+/* podria ser para h6*/
+.step-0 {
+    font-size: var(--step-0);
+}
+/* podria ser para h5*/
+.step-1 {
+    font-size: var(--step-1);
+}
+.step-2 {
+    font-size: var(--step-2);
+}
+.step-3 {
+    font-size: var(--step-3);
+}
+.step-4 {
+    font-size: var(--step-4);
+}
+/* podria ser para h1*/
+.step-5 {
+    font-size: var(--step-5);
+}
+```
+
+* Cuando conocí el sitio de https://www.trysmudford.com/ dije: esto es buen responsive elegante, minimalista estético 
+
+
+de hecho si se acercan a 1200 que tiene de tamaño el contenedor quiero que vena que al final ya no cambia mas el texto ¿por que pasa esto? recuerda que el contenedor tiene una maxima anchura definida de 1200px entonces nosotros aumentamos el valor a 1200px con esto podemos crear una nueva variable(si, necesitan más tamaños).
+
+
+![texto-fluido](/assets/texto-fluido.JPG)
+
+* estos textos son responsivos, y la página jonmircha sigue estos principios de los textos fluidos que nos propuso Trysmudford 
+
+* esta tecnica de los textos fluidos no solo aplica para el ``Font-size`` tambien aplica a valores de espaciado interno `margin y paddings` podrias aplicar estos valores guardados en las variables para que esas distancias tambien vayan siendo fluidas y no estáticas
+
+
+**Hack para no generar varias clases** es de Ettan marcotte
+
+```css
+    body{
+/*
+    14 = tamaño de letra mas pequeño
+    18 = tamaño de letra mas grande
+    1400 = tamaño de viewport más grande
+    300 = tamaño de viewport más pequeño (al tamaño de pantalla que tu texto ya va dejar de fluir)  
+*/
+font-size: calc(14px + (18 - 14) * ((100vw - 300px)/(1400 - 300)));
+/* font-size: calc(12px + (24-12)*((100vw - 300px)/(1600 - 200))); */
+}
+```
+
+> **tu eliges que te combiene,  si ir generando tus clases de tamaños e irselar agregando.step-2 a cada uno de tus elementos textuales o contenedores o que de buenas a primeras definas en el BODY los tamaños maximos y mínimos tanto de tamaños de letra como tamaño de viewport y veas ahi como las etiquetas van fluyendo dependiendo de tipo de etiqueta no va ser lo mismo un h1 que un parrafo**
+
+>  ! "bastante cool"
+
+> así es como podemos hacer textos fluidos y dejar de sufrir  con estar generando media querys para ir aumentando el tamaño de la letra de nuestros sitios.
+
+Siguiente: cajas de elementos eje: una targeta que vaya fluyendo su tamaño dependiendo de la responsividad que vayamos teniendo del tamaño de la pantalla pero sin la necesidad de aplicar media querys sino con estás tecnicas del fluid design
+
+
+### Contenedores Fluidos (cajas)
+
+```css
+    .box-fluid{
+    width: 300px;
+    height: 300px;
+}
+```
+
+mira que la caja es estática y no fluida(responsiva) si le hubieramos puesto porcentajes seria responsiva
+
+¿Como podria volver un contenedor en ancho y alto fluido? 
+
+Pues nos vamos ayudar de la funcion Clamp(valor minimo, valor ideal,  el valor maximo) que es muy util en las tematicas de Fluid
+
+* Esto se modifica solo en anchura pero para que haga efecto en altura lo redusco el viewpor en altura
+
+* El tamaño va depender de lo que ese contenedor tenga [párrafo, targeta con sus elementos, su img, su titulo, su enlace, su descripcion, capas es un carrusel con sus imágenes]
+
+
+```css
+    /* .box-fluid{
+    width: 300px;
+    height: 300px;
+} */
+
+.box-fluid{
+    width: clamp(400px, 60vw, 600px);
+    height: clamp(200px, 30vh, 300px);
+}
+```
+
+Vean que con estos 3 principios aprender a hacer grid responsiva, aprender a trabajar espaciados y tamaños de letra fluidos,  y aprender a trabajar los tamaños de cajas de manera fluida, practicamente estos son los 3 principios básicos del fluid design propuestos por trys mutford
+
+
