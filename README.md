@@ -5114,4 +5114,137 @@ Pues nos vamos ayudar de la funcion Clamp(valor minimo, valor ideal,  el valor m
 
 Vean que con estos 3 principios aprender a hacer grid responsiva, aprender a trabajar espaciados y tamaños de letra fluidos,  y aprender a trabajar los tamaños de cajas de manera fluida, practicamente estos son los 3 principios básicos del fluid design propuestos por trys mutford
 
+### INTRODUCCION A LA ARQUITECTURA CSS
 
+Te voy a enseñar las directrices para ordenar tu codigo CSS para que sea escalable y no se vuelva un caos a la hora de implementar nuevas cosas
+
+* **Escribir CSS es facil, escalarlo y mantenerlo no tanto**
+
+para mentener nuestro codigo organizado necesitamos un plan:
+
+* **La arquitectura CSS** Que es el arte y tecnica de siseñar, proyectar y construir edificios y espacios públicos
+
+* **Tecnicas que nos ayudan  a organizar y mantener nuestro código ordenado, óptimo y escalable** por que no sabes cuando un proyecto que tu hayas iniciado muy sencillo derepente tenga exito y derepente tenga que escalar exponencialmente, si tu desde un unicio comienzas trabajando con buenas prácticas teniendo una arquitectura de CSS  un "PLAN" no tienes que tener un problema de que tu código se vuelva un caos
+
+**Una buena arquitectura de css debe ser:**
+
+1. Predecible (frameworks como bootstrap o tawlin llamados "utilities first" nos ofrecen muchas clases utilitarias de estas que afectan a un valor en particular en css) esperar que haga lo que dice que hace y lo haga
+
+2. Reutilizable (que se pueda usar en distintas secciones sin estar afectando a otros elementos)
+
+3. Estable (deberias poderlo modificar sin afectar otras reglas)
+
+4. Escalable (tu codigo debe ser facil de mantener) la hoja de estilos de cada uno de sus proyectos es como si fuera un diccionario en el cual ustedes van a ir definiendo clases, yo les sugiero que vayan definiendo clases untilitarias{tipos de clases que solo hacen una sola cosa en particular} el html se vuelve muy textoso segun puristas, pero está bien, por que finalmente eso se espera de una ariquitectura de css, de hecho lo que puedes ir haciendo sobre todo si no te gusta trabajar con frameworks como bootstrap fundation tailwind y te gusta crear tu propio codigo css no pierda tu tiempo, si tu empiezas creando una arquitectura css escalable reutilizable... imaginate que en tu primer proyecto generaste 100 clases utilitarias como esas clases utilitarias pueden ser reutilizables en otro proyecto cuando tu crees un segundo proyecto pues que crees esas 100 clases te las puedes copiar al siguiente proyecto y utilizar las que te sirva seguramente vas a crear más entonces para el 3re proyecto quizas ya tienes 120  con forme tu vayas generando proyectos vas a ir haciedote de una base de clases utilitarias que tu haz creado y con el tiempo se puede volver un mini framework propio que tengas para porder maquetar proyectos
+
+**Debemos pensar siempre: en diseñar SISTEMAS, no PÁGINAS**
+
+Si tu sueles diseñar tus páginas pensando solamente pensando en las necesidades del proyecto entonces dejame decirte que estas haciendo "malas practicas" en el sentido de que inviertes mucho tiempo cada vez que empiezas un proyecto por que cuando empiezas un proyecto empiezas como a maquetar las caracteristicas que el cliente o la propuesta visual que te hayan dado:
+
+ejemplo de malos selectores:
+
+.cabecera. , .contenido-principal, targeta-principal
+
+.menú-principal.
+
+y empiezas a definir todo los estilos, estás pensando solo en el diseño que en ese momento tienes que bien podira ser la interfaz de un curiculum personal, de una empresa que vende productos, de una empresa que ofrece servicios, de una persona influencer entonces lo que tienes que entender es que **"NO diseñes desde lo particular diseña de lo general"** obiamente que cada proyecto tiene sus particularidades pero vas a partir de una base genérica donde sabemos que todo los sitios tiene menú de navegacion que toda las interfaces tienen cabecera que toda las interfaces se pueden acomodar en sistemas de columnas que dependiendo del tamaño de la pantalla puede ser que vayas a una columana a 2 columnas a 3 columanas.
+
+Desde ahora trata de tener una vision más genérica. por que vas a poder usar frameworks como bootstrap taiwlin por que ya te ofrecen una base preexistente y probada 
+
+Si eres muy purista y te gusta maquetar  tu codigo CSS propio pues sé inteligente y en  el primer proyecto trata de ir creando esa base de un pequeño miniframework que tu tengas y conforme vayas pasando de un proyecto a otro ese framework lo vayas enriqueciendo y vaya siendo escalable y reutilizable...
+
+> cada vez que abordes un nuevo proyecto de maquetacion no pienses en ese proyecto en particular piensa en diseñar sistemas
+
+> independientemente del proyecto que estés trabajando en turno pues todo los proyectos a nivel de maquetacion tienen los mismos elementos: "layout,  manejan módulos,componentes, estádos, hover, focus, disable, podemos manejar temas tema oscuro, tema claro, ciertas areas de maquetacion: (cabecera, menú, contenido lateral, contenido principal, columnas)"
+
+por que si estás pensando en páginas y proyectos particulares estas perdiendo mucho tiempo a la hora de maquetar
+
+
+**COMPONENTES**
+
+es un patron visual que se repite, que puede ser abstracto, es independiente, tiene parte de html, css y posible js
+
+de las estrategias de maquetacion multidispositivo, te hablaba de que con el devenir de las tecnologias como react angular vue.js se dio todo esto de la programacion orientada a los componentes, los web-components es un estandar de JS  no está bien estandarizado estamos a nada de hacer componentes web con puro vanilla JS 
+
+bootstrap y tawlin nos frecen una gama de componentes dentro de su documentacion: targetas, carruceles, acordeones, botones, tamaños de textos.
+
+**DIVIDE Y VENCERAS**
+
+"don't Repeat Yourself"
+
+como un componente es un patros visual repetitivo: de un home de un blog, cada targetita representa la entrada hacia un artículo de un blog 
+
+- cumple una sola funcion:  por que si ya comienza a cumplir mas de una entonces es ahi donde literalmente todo se vuelve un relajo, que solo haga una cosa pero que la haga muy bien.
+
+- Son independientes: 
+
+- Son autocontenidos: no permiten que elementos externos afecten su estructura interna, y sus componenetes internos no afectan  los elementos de afuera
+
+- Son reutilizables
+
+> la ventaja de empezar a diseñar pensando desde lo general y poco a poco irte hacia  las partes específicas de cada proyecto
+
+el bloque seria la cabezera un elemento seria el logotipo, el formulario de autenticacion
+
+**HERRAMIENTAS CSS PARA CREAR SISTEMAS**
+
+1. Metodologias
+2. Frameworks
+3. Procesadores
+4. Guias de estilos
+
+
+### Metodologias CSS
+
+Son buenas prácticas, es una manera de la organizacion del código y nombrar el código
+
+la mayoria empesaron como articulos y terminaron siendo libros
+
+son propuestas que otros colegas profecionales han planteado han tenido buena aceptacion. cada una de ellas al final  todas tratan de tener un codigo css mas legible, mas organizado y entendible escalable
+
+- **BEM bloque**  (es muy verboso) yo lo que hago es un nombre de clase al componente principal y apartir de ahi con la ayuda del selector desendiente espacio en blanco empiezo a a plicar los estilos, "TOMA LO QUE TE SIRVA" no me gusta.
+
+- **SMACSS modulos** una regla de estado podria ser: habilitado, desabilitado, con el foco de la página, theme Rules (modo oscuro, modo claro)
+
+![desmenusado](/assets/desmenusado.JPG)
+
+- **OOCSS objeto** piensa que todo en css es un objeto que es el mismo concepto de componente
+
+- **ITCSS** si trabajas en equipos de desarrollo  ya tendran cierta metodologia a la que tendras que adaptarte y puede que sea una metodologia que ellos fueron creando
+
+- **AMCSS** tienes que mandar a llamar una libreria JS usa data-attribute
+
+- **SUITCSS lo llama componente** {bloque, componente, elemento} es lo mismo no? usa clases "utilitarias" 
+
+- **atomic design** es una de las metodologias que mas me ha gustado  tiene un stared en php y ademas ya tiene un estarter en NODE por que puedes instalar via node NPM  https://demo.patternlab.io/ 
+
+![atomic](/assets/atomic-web-design.JPG)
+
+Yo ninguna de estas metodologias las sigo al pie de la letra sino que trato de tomar lo mejor de cada una
+
+**van hacia lo mismo dividir y mejorar el código mas organizado, con nombres alucivos a lo que aplica**
+
+### Frameworks CSS 
+
+Son **marcos de trabajo** (traducido al español) que nos ofrecen componentes y utilidades de UI. "no vamos a empesar desde 0" generalmente ya nos ofrecen sus hojas de estilos y su archivo de programacion js. 
+
+- **960Grid System** mantenido por twiter
+
+- **Skeleton** kit de inicio reticula a 12 columnas
+
+- **PureCss** librerias o kit de inicio
+
+- **INK** la mayoria de estos frameworks  tanto en codigo css y como en código SASS. tiene la metodologia como de smaks, yo no soy fan de modificar con SASS estos frameworks por que cuando se actualizan esos cambios que tu ya pusiste ya no van a tener efecto. yo prefiero trabajar con lo que me dá el framework a nivel de CSS y despues yo ir modificando con código css puro las caracteristicas que yo considere que pueda modificar de un framework
+
+- **MUI** Está basado como materialcss en el leguaje visual de google si tu trabajas con angular con react con vue.js puedes implementarlo de una manera muy amigable a tu stack de trabajo, estos frameworks ya se pueden adaptar a un stack de flujo de trabajo frontend.
+
+- **Semantic UI** bootstrap y fundation aunque son los mas populares todavia siguen usando div div div...  para todo elementos = Componentes
+
+- **Bulma** es un framework CSS moderno usa solo css
+
+- **UIkit** se ha vuelto muy popular entre programadores de REACKT,  no tiene nombres genéricos, la mayoria de sus clases empieza con `UK` está escrito con 2 preprocesadores, less y Sass no te recomiento tocar las tripas de uikit
+
+- **Materialize** 2004 solo tiene 2 versiones dejó de usar jquery. es para proyectos muy pequeños, por que no lo actualizaron hace años
+
+- **foundation** las primeras grids fueron hechas con floats el codigo html para email marketing es muy diferente al que tenemos para navegadores el html para los clientes de correo no ha avanzado usa mucho la metodologia SMACSS le falta a nivel de componenetes.
+
+_ **Tailwind**
