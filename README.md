@@ -5247,4 +5247,190 @@ Son **marcos de trabajo** (traducido al español) que nos ofrecen componentes y 
 
 - **foundation** las primeras grids fueron hechas con floats el codigo html para email marketing es muy diferente al que tenemos para navegadores el html para los clientes de correo no ha avanzado usa mucho la metodologia SMACSS le falta a nivel de componenetes.
 
-_ **Tailwind**
+- **Tailwind** es facil de implementar en cualquier flujo de trabajo independientementes si estas trabajando con la libreria Reack, angular quizá con alguna otra tecnologia laravel, en las vistas que te genera laravel, php, .net cada vez que escriban su código CSS haganlo lo mas semántico posible. para muchos puristas esto es mala práctica, yo no lo veo de esa manera, si tu tienes un exelente dominio de css te vas adaptar facilmente, estos frameworks se llaman utilities first por que su funcionamiento se están basando en clases utilitarias(aquella clase que solo aplica un valor en particular). lo puedes instalar via npm, tiene una configuracion muy parecida a webpack(un flujo de trabajo) tailwind tiene su propia CLI su propia interfaz de linea de comando, no te recomienda usar Tailwind via CDN. cuando tengas mas experiencia en JS, en ejecutar entornos de programacion con webpack o utilizando (framework)angular o (libreria)reack no te preucupes despues vas a poder instalar el framework de Tailwind _Tailwind se volvió muy popular por que está muy orientado a los flujos de trabajo que los front developers trabajamos con este tipo de herramientas (reack, angular, vue, webpack)_ está mas orientado a este tipo de flujo de trabajo que al tipico manda a llamar la hoja de estilos.
+
+> vue.js está orientado a componenetes.
+
+> next.js es un framework de react para hacer react a lado del servidor
+
+
+- **Bootstrapt** fue creada por gente de twiter, sigue siendo mantenido, es muy popular por que muchas plantillas de wordpress, si tu te vas a sitios donde puedas comprarte plantillas html plantillas de wordpress plantillas de drupal plantillas de jumla, de estos CMSs la mayoria de esas personas que se dedican hacer plantillas para estos cmss pues han usado mucho bootstrapt se ha mantenido a lo largo de más de una década, en la version 4 bootstrap usaba jquery hoy en dia ya dejó las dependencias de jquery, ya trae su propia libreria de iconos, lo puedo descargar en fomato SVG para llamarlo dentro de SRC de una imágen, lo puedes usar como Icon-fonts hay que llamar la tipografia de los iconos de bootstrap, lo mejor es que lo puedes copiar nativamente la etiqueta SVG y pegarla en tu codigo html, ademas de que tienen iconos de las tipicas redes sociales: fb ig, youtube ... para usar bootstrap simplemente hay que mandar a llamar la hoja de estilos y el archivo de JS, adicionalmente utilizan una libreria popper para algunos efectos que tiene que ver con tooltips o elmentos superpuestos, te da la opcion de llamarlo, Trae un flujo para que tu puedas instalarlo y configurarlo a tu gusto tanto con: Webpack y Parcel que son herramientas de automatizacion, entonces ve como podrias importar bootstrap desde incorporarlo a un flujo de trabajo que tengas con webpack, actualmente el código fuente de bootstrap está escrito en SASS entonces podrias meterte a las tripas y cambiar la configuracíon, y están separados en capas, si tu revisas las hojas de estilos de bootstrap ya trae un buen de custop propertis variables css ya definidas, en la opcion de Sass está dividido en capas, si tu quisieras para un proyecto tu color primario fuera un verde pues cambias el código en el SASS compilas y listo tendrias funcionando de manera personalizada la hoja de bootstrap o podrias modificar con simplemente con puro código css, una de las ventajas es que la grid de bootstrap funciona con flexbox, tiene una gran cantidad de componentes(formularios) en la parte de Helpers(clasees auxiliares) fixed-top, fixed-bottom, Sticky-top, Bootstrap y Tailwind premian a las personas que saben css a fondo con las utilidades(Components) y helpers por que eje: eso del 
+
+>> Helpers: Stiky position que es un tema avanzado no lo va saber un novato que nada más sabe copiar y pegar el código html de los componentes de bootstrap modificar el texto domi, la imagen https://getbootstrap.com/docs/5.3/helpers/position/ ahora ve la parte de las...
+
+>> utilidades: tiene utilidades de flexbox "en todo los tamaños", pero si tu no sabes flexbox dificilmente le vas a sacar provecho a estas clases utilitarias que ya nos ofrece bootstrap, ve que están mapeadas toda las propiedades a lado derecho como en un indicé.
+
+>> entonces si tu haces una interfaz de usuario con bootstrap y necesitas aplicar flexbox pues ya nada mas es cuestion de que te aprendas los nombres y no es la gran cosa: `align-items-sm-center`(align_items-tamaño_de_la_mediaquery-valor) 
+
+>> `https://getbootstrap.com/docs/5.3/utilities/spacing/` este es el espaciado el valor auto no lo podemos aplicar para el padding.
+
+>> cuando hablamos de margin y padding hablamos del modelo de cajas 
+
+Por eso cre que bootstrap es y seguirá siendo el rey de los framewoks en Css por que no solo nos da el codigo html de los componentes ya preestablecidos como: una barra de navegacion, o una targeta o un carrusel, porque tambien maneja buenas prácticas a nivel de accesibilidad(para personas con discapacidades diferentes). 
+
+Una de las cosas que adolece es que la mayoria de los componentes usa mucho la div como los demas frameworks que yá está cambiando. por ejemplo la barra de navegacon nav ya es más semantico, las mediaquerys sigue trabajando con pixeles. 🤔🤔🤔 
+
+### Concluciones de frameworks
+
+tu tienes que comparar: quieres agilidad y velocidad a la hora de desarrollar interfaces o quiers clavarte en tu ego y decir yo todo lo voy hacer artesanalmente, talvez aya proyectos donde si valga la pena y hasta sea formativo para tí  hacer todo el código CSS eje: piensa en tu sitio personal, pero cuando ya estoy trabajando en proyectos de clientes donde sé que tal herramienta tal libreria tal framework me van agilizar el tiempo de desarrollo pues adelante utiliza estas herramientas pero ***"ANTES DE USAR ESTOS FRAMEWORKS CONOSCAN LAS BASES DEL LENGUAJE"*** es decir conoscan las bases de html y de CSS hasta cierto punto es incuerente utilizar este tipo de herramientas pues cuando no tenemos los fundamentos base.
+El framework que uses va depender en el proyecto que tu estes desarrollando, entonces dependiendo de las necesidades y caracteristicas de los proyectos que afrontes entonces decide utilizar uno u otro, no necesitas casarte con un framework, trata de ir identificando dependiendo de las necesidades. Mi intencion es que aprendas a dicernir que dependiendo de las necesidades del proyecto será el framework con el que decidas trabajar y para sacar el provecho a estos frameworks tienes que si o si **dominar los fundamentos de css y los modelos de maquetacion(flexbox y grid)**
+
+### ¿Como elegir un Framework CSS?
+
+depende de las necesidades del proyecto, puedes usar materialcss para formularios, o para un proyecto que no necesita responsividad usa botstrap, php, react, api.
+
+Y de igual manera,  si trabajas para una empresa para un equipo de desarrollo pues seguramente te tendras que adaptar al stack de tecnologias y herramientas que en ese equipo esten trabajando.
+
+### Procesadores CSS
+
+- `Preprocesadores`
+
+> Son herramientas que toman un lenguaje y lo transforman en CSS, son metalenguajes
+
+> nos permiten tener mejor organizado el código css
+
+> si tu revisas la parte de Sass de Bootstrap hay un archivo para cada uno de los componentes y cuando ya compilamos este código del preprocesador eje: sass al final nos queda una hoja de estilos mimificada, _todo esto lo puedes ver en el github de bootstrap_ Nesting es una de las cosas que solo los preprocesadores me permitian tener, pero W3E ya lo incluyó a css y actualmente ya está soportada por el 99% de los navegadores.
+
+> nos permite la creacion de funciones(Mixins) 
+
+> todos estos Preprocesadores nos permiten dividir en archivos https://github.com/twbs/bootstrap/blob/main/scss/bootstrap.scss 
+
+> Si estas desarrollando un framework un preprocesador te va permitir una mejor estructura una mejor organizacion un archivo por cada uno de los componentes. y al final cuando el preprocesador compila, nos va generar una sola hoja de estilos que es la que vemos en el CDN que nos comparten cada uno de los frameworks
+> la mayoria son paquetes de Node.js y tenemos que instalarlas via npm
+
+> Estas herramientas hace que yo pueda generar código dinámico. sin repetir codigo css
+
+> todo lo que te permite escribir estos preprocesadores al final tu lo puedes escribir con código puro por eso no soy fan de estas herramientas.    
+
+> lee la documentacíon, y domina los conceptos de CSS
+
+* Sass. es una gema(paquete de Ruby) descargas el lenguaje de programacion de Ruby y luego via terminal instalar Sass, tanbien hay un clon para npm de Node.js su sintaxis scss es mas parecida a css
+
+* Less.
+
+* Stylus. usa un lenguaje muy declarativo como phyton, es un meta lenguaje que los navegadores no entienden y cuando compila genera css que si entiende el navegador
+
+- `Post procesadores`
+
+> Son herramientas que procesas en css y lo optimizan y automatizan.
+
+> un ejemplo es la mimificacion de la hoja de estilos
+
+> autoprefixer fue el que inicio todo esto del post procesamiento https://autoprefixer.github.io/ 
+
+> es un paso adicional que no te va optimizar muchas cosas
+
+* `Post CSS` una herramienta que transforma css con JS.
+
+* `CSS Next` muchas de las caracteristicas ya se soportan en css
+
+* `CSS in JS` esto se está popularizando mucho ya que es la forma en la que muchos frameworks como vue.js, react estan escribiendo css dentro de JS.
+
+>> si tu haces sitios web normalitos con html, css y js no vas a tener la necesidad de hacer esto pero si eres mas un frontend developer y usas los frameworks como vue.js, angular, react, esta va ser una forma de crear los estilos de tus aplicacines
+
+>> para el manejo de estas herramientas necesitas conocimientos de javaScript de la manipulacion de la terminal.
+
+### Herramientas de Automatizacion.
+
+Es para utilizar estos Preprocesadores  y post procesadores
+
+**Build Tools**
+
+* `Node.js` Es un entorno de programacion de Js nos permite ejecutar JS en el lado del servidor y tambien nos sirve para la gestion de dependencias en el front como Sass less... 
+
+* `Grunt` me permite crear una rutina para escuchar el archivo que estoy compilando y despues me genere un codigo sass
+
+* `Gulp`
+
+* `Webpack` es una herramienta del ecosistema de la libreria javaScript llamada React, Webpack es el software que se necesita para configurar y leventar un entorno de programacion en react, prodria compilar toda la programacion de mi aplicacion javaScript en un solo archivo JS sirve tanto para Sass, .png...
+>> te permite levantar un servidor de pruebas, te permite optimizar imágenes, 
+
+> para todas estas herramientas necesitas el uso de la terminal "no te agovies" va llegar su tiempo para cuando tu decidas aprender este tipo de cosas lo importante es aprender las bases de las 3 tecnologias: **HTML, CSS, JAVASCRIPT** enfocate 🎯 en aprender las bases 
+
+**Online Tools**
+
+> no te estreses, el codigo lo pasan a autoprefixer, despues lo mimifican (buenas practicas?)
+
+* **``CODEPEN.IO``** es un sitio donde puedes generar pequeños proyectos que tengan html, css y javaScript. es como un editor en linea y aparte puede compartir tu código. https://codepen.io/ 
+
+* `JS Bin`
+
+* `Autoprefixer CSS` https://autoprefixer.github.io/
+
+* `CSS Minifier` https://www.toptal.com/developers/cssminifier 
+
+
+### Guias de Estilos
+
+Colección  de elementos y reglas pre establecidas que aseguran la consistencia y coherencia de nuestro código.
+
+> en empresas mas grandes hay gente que se dedica a definir los lineamientos de las tecnologias que van a emplear
+
+- lenguajes de programacion
+
+- frameworks
+
+- generacion de funciones, lineamientos para generar/definir: selectores, marcado de html, formato a las imágenes.
+
+Las gias de estilo aplica a todo los lenguajes y a toda las tecnologias
+
+> !recuerda _el objetivo de la arquitectura css es tener un codigo ordenado que pueda ser escalable,  que sea predecible, reutilizable_
+
+las guias son recomendaciones de profecionales más experimentados: 
+
+* [***Code Guide*** ](https://codeguide.co/) estandar te dá buenas prácticas para escribir código html,css .
+
+* ***W3C Design System***
+
+* ***Website Style Guide*** es como un repositorio de otras páginas
+
+* ***Airbnb CSS / Sass Styleguide***
+
+* [***Idiomatic CSS***](https://github.com/necolas/idiomatic-css)cuando tienes varios selectores no los definas en una sola linea  para tener mayor legibilidad, no mesclar sistemas de colores 
+
+* ***CSS Guidelines*** es una guia
+
+La intencion de estas guias es colaborar con la comunidad y darnos una serie de lineamientos independientemente del lenguaje que estes trabajando siempre va existir _mark Otto_
+
+### ¿Que erramientas uso?
+
+si vas empesando preucupate por dominar las bases de html, css, js
+
+Hoy en dia hay muchos frameworks, librerias
+
+quisa el mejor camino es empesar por el frontend dominar html para el contenido,  dominar css para la presentacion, js para la parte de la programacion. conforme vayas ganando experiencia te vas a dar cuenta que es lo que mas te gusta front(interaccion, programacion) o te gusta mas lo abstracto backend, base de datos,  administracion de servidores, redes,yo creo que un buen punto es empesar por el frontend por que independientemente tu te especialices en db, en entornos de produccion, en administracion de nubes siempre va servir mucho que tu sepas frontend el que tengas nociones de html, css javascript por que finalmente lo que los usuarios de las aplicaciones lo que el usuario ve es lo que los navegadores le permite interpretar pues en ese sentido trata de dominar ***html, css, javaScript***  con forme vayas avanzando ve implementando tecnologias como frameworks, traten de crear proyectos personales,  proyectos de familiares que les permitan empesar a poner en practica todos estos conocimientos y en esos pequeños proyectos personales que les van a servir para crecer y ganar experiencia traten de implementar diferentes tipos de tecnologias un proyecto haganlo con css artesanal,  ya que dominen css artesanal pasense algunos frameworks como Bootstrap, y con un poco más de conocimiento con la terminal con estos entornos de programacion como Node.js herramientas como WebPack pues empiezen a integrar estas herramientas como procesadores y post procesadores leanse dede un **inicio** alguna de estas guias de estilos, tambien lean alguna de las **metodologias que vimos**  para la organizacion del código css y poco a poco conforme vayan conociendo estas tecnologias traten de irla implementando pero __No se casen con ninguna__  por que puede ser que en un futuro esa tecnologia o herramienta ya no exista. pero lo que nunca he visto caer son las tecnologias base : "html, css y javaScript" Centrense en dominar estas bases, tambien va depender mucho  de hacia donde los lleve su via profecional, si deciden integrarse como miembros de un equipo de desarrollo de una empresa, de una consultoria pues seguramente se tendran que adaptar a las herramientas que usen. vas a conocer personas que hasta cierto punto van a fungir como mentores que te puedan ir orientando en cualquier duda que tu vayas a tener, si te pasas a otros mundos como las bases de datos el lenguaje de programacion a lado del servidor te vas a dar cuenta que en todos lados mas o menos se sigue los mismos principios siempre va ver librerias, frameworks, herramientas guias de estilos para mejorar nuestro flujo de trabajo en todo momento 
+
+siguiente: te voy a enseñar una arquitectura que he creado para mis proyectos presonales, medianamente complejos que uso a nivel de Css y que me ha dado resultado no significa que sea la tuya
+
+### Arquitectura Minimalista
+
+* agarro una sola hoja de estilos y genero estos 5 comentarios
+
+* los comentarios con más asteriscos me permite detectar donde se encuentran las seciones
+
+
+```css
+    /* ********** Custom Properties ********** */
+/* ********** Reset ********** */
+/* ********** Components ********** */
+/* ********** Utilities ********** */
+/* ********** Site Styles ********** */
+```
+
+1. defino las variables css que voy a usar y las defino en el selecor Root.
+
+2. reseteo no utilizo las hojas de estilo como __reset o normalize__ lo que reseteo es el box-zising y apartir de ahi aplicar una serie de estilos muy particulares a algunas etiquetas que esos estilos los voy a querer a lo largo de las etiquetas
+
+3. componentes. los defino eje: cabezera, menú de navegacion, una targeta, 
+
+4. tengo una zona de utilidades muy al estilo de Bootstrap una regla que modifica un atributo o una propiedad de css 
+
+5. ya ya tengo una seccion donde tengo los estilos particulares de cada proyecto
+
+Esto contribuye al concepto de : _Debemos diseñar Sistemas, no Páginas_  por que yo puedo construir una base de ciertas variables que pueda utilizar de un proyecto a otro y tenerlas definidas en mi seccion de Custom propertis lo unico que de un proyecto vaya desechando es los estilos particulares de cada sitio o proyecto de tal manera eso me permite hacer como mi propio framework, que no me hace iniciar todo de 0 esto de la arquitectura lo he hablado en mi taller de maquetacion
+
+cuando desarrollo proyectos pequeños, esta arquitectura de css minimalista quiza sea una opcion a toda esta boragine de informacion (metodologias, guias de estilo, y herramientas) como para que tu puedas comenzar  con tus proyectos bajo estas directrices.
+
+### ¿Que sigue?
+
+te suguiero seguir con el curso de figma, toma el curso de maquetacion, javascript
